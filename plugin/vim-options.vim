@@ -125,9 +125,20 @@ highlight SignColumn cterm=NONE ctermfg=0 ctermbg=8
 
 
 "-----------------------------------------------------------------------------------------------------------------------
+" Plugin Paths
+"-----------------------------------------------------------------------------------------------------------------------
+if has('nvim')
+  let EditorDir=$HOME.'/.config/nvim'
+else
+  let EditorDir=$HOME'~/.vim'
+endif
+  
+
+
+"-----------------------------------------------------------------------------------------------------------------------
 " Nerdtree Plugin
 "-----------------------------------------------------------------------------------------------------------------------
-if !empty(glob('plugged/nerdtree/plugin/NERD_tree.vim'))
+if !empty(glob(EditorDir.'/plugged/nerdtree/plugin/NERD_tree.vim'))
     let NERDTreeShowLineNumbers=1
     nnoremap <leader>n :NERDTreeTabsToggle<CR>
     nnoremap <leader>m :NERDTreeFind<CR>
@@ -147,7 +158,7 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " Emmet Plugin
 "-----------------------------------------------------------------------------------------------------------------------
-if !empty(glob('plugged/emmet-vim/plugin/emmet.vim'))
+if !empty(glob(EditorDir.'plugged/emmet-vim/plugin/emmet.vim'))
   let g:use_emmet_complete_tag = 1
 endif
 "-----------------------------------------------------------------------------------------------------------------------
@@ -157,7 +168,7 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " Indent Lines Plugin
 "-----------------------------------------------------------------------------------------------------------------------
-if !empty(glob('plugged/vim-indent-guides/plugin/indent_guides.vim'))
+if !empty(glob(EditorDir.'plugged/vim-indent-guides/plugin/indent_guides.vim'))
   let g:indent_guides_enable_on_vim_startup = 1
   let g:indent_guides_auto_colors = 0
   let g:indent_guides_exclude_filetypes =['help', 'nerdtree']
@@ -173,7 +184,7 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " Vdebug Plugin
 "-----------------------------------------------------------------------------------------------------------------------
-if !empty(glob('plugged/vdebug/plugin/vdebug.vim'))
+if !empty(glob(EditorDir.'plugged/vdebug/plugin/vdebug.vim'))
   let g:vdebug_options = {
   \    "watch_window_style" : 'compact',
   \    "port" : 9000,
@@ -193,7 +204,7 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " Unite Plugin
 "-----------------------------------------------------------------------------------------------------------------------
-if !empty(glob('plugged/unite.vim/plugin/unite.vim'))
+if !empty(glob(EditorDir.'plugged/unite.vim/plugin/unite.vim'))
   let g:unite_enable_start_insert = 1
   let g:unite_split_rule = "botright"
   let g:unite_force_overwrite_statusline = 0
@@ -232,7 +243,7 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " SuperTab Plugin
 "-----------------------------------------------------------------------------------------------------------------------
-if !empty(glob('plugged/supertab/plugin/supertab.vim'))
+if !empty(glob(EditorDir.'plugged/supertab/plugin/supertab.vim'))
   let g:SuperTabMappingForward = '<tab>'
   let g:SuperTabMappingBackward = '<s-tab>'
   let g:SuperTabLongestHighlight = 0
@@ -245,7 +256,7 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " Ultisnips
 "-----------------------------------------------------------------------------------------------------------------------
-if !empty(glob('plugged/ultisnips/plugin/UltiSnips.vim'))
+if !empty(glob(EditorDir.'plugged/ultisnips/plugin/UltiSnips.vim'))
   let g:UltiSnipsEditSplit="vertical"
   let g:UltiSnipsListSnippets="<c-s>"
   let g:UltiSnipsExpandTrigger="<tab>"
@@ -260,7 +271,7 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " Fugitive 
 "-----------------------------------------------------------------------------------------------------------------------
-if !empty(glob('plugged/vim-fugitive/plugin/fugitive.vim'))
+if !empty(glob(EditorDir.'plugged/vim-fugitive/plugin/fugitive.vim'))
   nnoremap <leader>gc :Gcommit --verbose<CR>
   nnoremap <leader>gd :Gdiff<CR>
   nnoremap <leader>gl :Glog<CR>
@@ -288,7 +299,7 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " Python-Syntax 
 "-----------------------------------------------------------------------------------------------------------------------
-if !empty(glob('plugged/python-syntax/syntax/python.vim'))
+if !empty(glob(EditorDir.'plugged/python-syntax/syntax/python.vim'))
   let python_highlight_all = 1
 endif
 "-----------------------------------------------------------------------------------------------------------------------
@@ -298,7 +309,7 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " CtrlP Plugin
 "-----------------------------------------------------------------------------------------------------------------------
-if !empty(glob('plugged/ctrlp.vim/plugin/ctrlp.vim'))
+if !empty(glob(EditorDir.'plugged/ctrlp.vim/plugin/ctrlp.vim'))
   let g:ctrlp_working_path_mode = 'a'
   let g:ctrlp_by_filename = 1
   let g:ctrlp_status_func = {
@@ -333,7 +344,7 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " Flake8 Plugin
 "-----------------------------------------------------------------------------------------------------------------------
-if !empty(glob('plugged/vim-flake8/autoload/flake8.vim'))
+if !empty(glob(EditorDir.'plugged/vim-flake8/autoload/flake8.vim'))
   autocmd FileType python map <buffer> <F9> :call Flake8()<CR>
   let g:flake8_show_in_gutter=1 
   autocmd BufWritePost *.py call Flake8()
@@ -345,7 +356,7 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " Markdown
 "-----------------------------------------------------------------------------------------------------------------------
-if !empty(glob('plugged/vim-markdown/indent/markdown.vim'))
+if !empty(glob(EditorDir.'plugged/vim-markdown/indent/markdown.vim'))
   let g:vim_markdown_folding_disabled=1
 endif
 "-----------------------------------------------------------------------------------------------------------------------
@@ -355,7 +366,7 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " Dev-icons
 "-----------------------------------------------------------------------------------------------------------------------
-if !empty(glob('plugged/vim-devicons/plugin/webdevicons.vim'))
+if !empty(glob(EditorDir.'plugged/vim-devicons/plugin/webdevicons.vim'))
   let g:webdevicons_enable_nerdtree = 1
   let g:webdevicons_enable = 1
   let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
@@ -369,7 +380,7 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " Dash
 "-----------------------------------------------------------------------------------------------------------------------
-if !empty(glob('plugged/dash.vim/plugin/dash.vim'))
+if !empty(glob(EditorDir.'plugged/dash.vim/plugin/dash.vim'))
   nnoremap K :Dash<CR>
 endif
 "-----------------------------------------------------------------------------------------------------------------------
@@ -379,7 +390,7 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " Deoplete
 "-----------------------------------------------------------------------------------------------------------------------
-if !empty(glob('plugged/deoplete.nvim/plugin/deoplete.vim'))
+if !empty(glob(EditorDir.'plugged/deoplete.nvim/plugin/deoplete.vim'))
   let g:deoplete#enable_at_startup = 1
 endif
 "-----------------------------------------------------------------------------------------------------------------------
@@ -389,7 +400,7 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " Neomake
 "-----------------------------------------------------------------------------------------------------------------------
-if !empty(glob('plugged/neomake/plugin/neomake.vim'))
+if !empty(glob(EditorDir.'plugged/neomake/plugin/neomake.vim'))
   autocmd! BufWritePost * Neomake
   let g:neomake_javascript_enabled_makers = ['eslint']
   "let g:neomake_verbose = 3
@@ -406,7 +417,7 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " CamelCaseMotion
 "-----------------------------------------------------------------------------------------------------------------------
-if !empty(glob('plugged/CamelCaseMotion/plugin/camelcasemotion.vim'))
+if !empty(glob(EditorDir.'plugged/CamelCaseMotion/plugin/camelcasemotion.vim'))
   map <silent> ,w <Plug>CamelCaseMotion_w
   map <silent> ,e <Plug>CamelCaseMotion_e
   map <silent> ,b <Plug>CamelCaseMotion_b
@@ -418,7 +429,7 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " Vim JSON
 "-----------------------------------------------------------------------------------------------------------------------
-if !empty(glob('plugged/vim-json/indent/json.vim'))
+if !empty(glob(EditorDir.'plugged/vim-json/indent/json.vim'))
   let g:vim_json_syntax_conceal = 0
 endif
 "-----------------------------------------------------------------------------------------------------------------------
@@ -428,7 +439,7 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " Ack Searching
 "-----------------------------------------------------------------------------------------------------------------------
-if !empty(glob('plugged/ack.vim/plugin/ack.vim'))
+if !empty(glob(EditorDir.'plugged/ack.vim/plugin/ack.vim'))
   nnoremap <space>/ :call AckSearch()<CR>
   function! AckSearch()
     call inputsave()
