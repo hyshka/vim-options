@@ -130,7 +130,7 @@ highlight SignColumn cterm=NONE ctermfg=0 ctermbg=8
 if has('nvim')
   let EditorDir=$HOME.'/.config/nvim'
 else
-  let EditorDir=$HOME.'~/.vim'
+  let EditorDir=$HOME.'/.vim'
 endif
   
 
