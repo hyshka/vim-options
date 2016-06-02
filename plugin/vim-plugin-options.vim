@@ -27,9 +27,7 @@ set hlsearch!  " Turn off highlight search
 set backupdir-=.
 set backupdir+=.
 set backupdir-=~/
-set backupdir^=~/.config/nvim/nvim-files/backups/
 set backup
-set directory=~/.config/nvim/nvim-files/swaps/
 set background=dark
 set statusline=
 set statusline+=%1*\ %02c\                    "Colnr
