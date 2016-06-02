@@ -1,4 +1,132 @@
 "-----------------------------------------------------------------------------------------------------------------------
+" User Preferences
+"-----------------------------------------------------------------------------------------------------------------------
+filetype plugin indent on " Make sure indenting works
+let mapleader="\\" " Set map leader
+set omnifunc=syntaxcomplete#Complete " Set Autocomplete
+set expandtab " Expand tabs into spaces
+set tabstop=2 " Number of space that tab counts for
+set shiftwidth=2 " Number of spaces for each autoindent
+set textwidth=0 " Maximium width of text that is being inserted. 0 disables it
+set history=1000 " Set history of : commands
+set autoindent " Copy the indentation from the previous line
+set cindent " Get ammount of indent according to C indent rules
+set relativenumber " Use relative numbers
+set number " Show line numbers
+set nowrap " Turn off TextWrapping
+set completeopt=longest,menuone " Autocomplete options
+set wildmode=longest,list " Completion mode for wildchar
+set backspace=indent,eol,start " Backspace over everything in insert mode
+set laststatus=2 " Show the status bar always
+set wildignore=*/app/cache,*/vendor,*/env,*.pyc,*/venv " Ignore useless files
+set splitright " Horizontal Splits go to the right
+set splitbelow " Vertical  Splits go underneath
+set nofoldenable " Disable Folding, don't really use it
+set incsearch " Move cursor to matched string
+set hlsearch!  " Turn off highlight search
+set backupdir-=.
+set backupdir+=.
+set backupdir-=~/
+set backupdir^=~/.config/nvim/nvim-files/backups/
+set backup
+set directory=~/.config/nvim/nvim-files/swaps/
+set background=dark
+set statusline=
+set statusline+=%1*\ %02c\                    "Colnr
+set statusline+=%2*\ »                        "RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
+set statusline+=%3*\ %<%F\                    "File+path
+set statusline+=%2*\«
+set statusline+=%2*\ %=\ %l/%L\ (%02p%%)\             "Rownumber/total (%)
+"-----------------------------------------------------------------------------------------------------------------------
+
+
+
+"-----------------------------------------------------------------------------------------------------------------------
+" Custom Mappings
+"-----------------------------------------------------------------------------------------------------------------------
+:vmap y ygv<ESC> " Highlighting in vim leaves your cursor wherever you ended at
+" Formating a json file
+com! Formatjson %!python -m json.tool
+" Command for figuring out highlight group
+map ,hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
+" Faster saving
+noremap <leader>w :update<CR>
+" Faster quiting
+noremap <leader>q :quit!<CR>
+" Visually select pasted text
+nnoremap gp `[v`]
+" Yank withouth newline
+nmap yY ^y$
+"-----------------------------------------------------------------------------------------------------------------------
+
+
+
+"-----------------------------------------------------------------------------------------------------------------------
+" FileType Options
+"-----------------------------------------------------------------------------------------------------------------------
+au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null " File ident on xml files
+autocmd FileType python set tabstop=4|set shiftwidth=4
+autocmd FileType php set tabstop=4|set shiftwidth=4
+autocmd FileType haskell set tabstop=8|set shiftwidth=4|set softtabstop=4
+au BufRead,BufNewFile *.twig set filetype=htmljinja
+au BufRead,BufNewFile *.html set filetype=htmljinja
+au BufNewFile,BufRead *.yml set filetype=yaml
+au BufNewFile,BufRead *.sls set filetype=yaml
+au BufNewFile,BufRead *.inc set filetype=php
+au BufNewFile,BufRead *.module set filetype=php
+au BufRead,BufNewFile *.ejs set filetype=htmljinja
+"-----------------------------------------------------------------------------------------------------------------------
+
+
+
+"-----------------------------------------------------------------------------------------------------------------------
+" Window Mappings
+"-----------------------------------------------------------------------------------------------------------------------
+nnoremap <C-w>t :tabnew<CR>
+" allows incsearch highlighting for range commands
+cnoremap <leader>t <CR>:t''<CR>
+cnoremap <leader>T <CR>:t''<CR>ddkP
+cnoremap <leader>m <CR>:m''<CR>
+cnoremap <leader>M <CR>:m''<CR>ddkP
+cnoremap <leader>d <CR>:d<CR>``
+"-----------------------------------------------------------------------------------------------------------------------
+
+
+
+"-----------------------------------------------------------------------------------------------------------------------
+" Color/Theming Options
+"-----------------------------------------------------------------------------------------------------------------------
+" Solarized cterm colors
+" 0 = almost dark blue // 1 = red
+" 2 = green            // 3 = yellow
+" 4 = light blue       // 5 = pink
+" 6 = cyan             // 7 = beige
+" 8 = dark blue        // 9 = orange
+" 10 = dark grey       // 11 = grey
+" 12 = light grey      // 13 = purple
+" 14 = grey            // 15 = white
+" 16 = black
+"
+"Colorscheme
+colorscheme gruvbox
+" Vim diff Colors
+highlight DiffAdd    cterm=NONE ctermfg=0 ctermbg=2 
+highlight DiffDelete cterm=NONE ctermfg=0 ctermbg=1
+highlight DiffChange cterm=NONE ctermfg=0 ctermbg=6
+highlight DiffText   cterm=NONE ctermfg=0 ctermbg=6
+" Highligh current cursorline
+hi CursorLineNR cterm=bold ctermfg=226
+" Status line colors  per mode 
+hi User1 ctermfg=226  ctermbg=8 cterm=bold
+hi User3 ctermfg=4  ctermbg=0
+hi User2 ctermfg=6  ctermbg=0
+" Change gutter color
+highlight SignColumn cterm=NONE ctermfg=0 ctermbg=8
+"-----------------------------------------------------------------------------------------------------------------------
+
+
+
+"-----------------------------------------------------------------------------------------------------------------------
 " Nerdtree Plugin
 "-----------------------------------------------------------------------------------------------------------------------
 if !empty(glob('plugged/nerdtree/plugin/NERD_tree.vim'))
@@ -14,6 +142,8 @@ if !empty(glob('plugged/nerdtree/plugin/NERD_tree.vim'))
     let g:NERDTreeDirArrowExpandable = '▸'
     let g:NERDTreeDirArrowCollapsible = '▾'
 endif
+"-----------------------------------------------------------------------------------------------------------------------
+
 
 
 "-----------------------------------------------------------------------------------------------------------------------
@@ -22,6 +152,8 @@ endif
 if !empty(glob('plugged/emmet-vim/plugin/emmet.vim'))
   let g:use_emmet_complete_tag = 1
 endif
+"-----------------------------------------------------------------------------------------------------------------------
+
 
 
 "-----------------------------------------------------------------------------------------------------------------------
@@ -36,6 +168,8 @@ if !empty(glob('plugged/vim-indent-guides/plugin/indent_guides.vim'))
   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=0
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=0
 endif
+"-----------------------------------------------------------------------------------------------------------------------
+
 
 
 "-----------------------------------------------------------------------------------------------------------------------
@@ -57,6 +191,7 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 
 
+
 "-----------------------------------------------------------------------------------------------------------------------
 " Unite Plugin
 "-----------------------------------------------------------------------------------------------------------------------
@@ -69,7 +204,6 @@ if !empty(glob('plugged/unite.vim/plugin/unite.vim'))
   let g:unite_source_rec_max_cache_files=5000
   let g:unite_source_rec_async_command =
   \ ['ack', '-f', '--nofilter']
-
   " Check to see if the plugin is loaded before callinging
   if exists('g:loaded_unite')
       call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
@@ -79,7 +213,6 @@ if !empty(glob('plugged/unite.vim/plugin/unite.vim'))
       call unite#filters#matcher_default#use(['matcher_fuzzy'])
       call unite#filters#sorter_default#use(['sorter_rank'])
   endif
-
   nnoremap <space>s :<C-u>Unite -buffer-name=buffer buffer -winheight=40<cr>
   nnoremap <space>y :<C-u>Unite -buffer-name=yank history/yank -quick-match -max-multi-lines=1 -winheight=40<cr>
   " Custom mappings for the unite buffer
@@ -150,6 +283,9 @@ if !empty(glob('plugged/vim-fugitive/plugin/fugitive.vim'))
   nnoremap - [c
   nnoremap = ]c
 endif
+"-----------------------------------------------------------------------------------------------------------------------
+
+
 
 "-----------------------------------------------------------------------------------------------------------------------
 " Python-Syntax 
@@ -157,6 +293,7 @@ endif
 if !empty(glob('plugged/python-syntax/syntax/python.vim'))
   let python_highlight_all = 1
 endif
+"-----------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -191,6 +328,9 @@ if !empty(glob('plugged/ctrlp.vim/plugin/ctrlp.vim'))
   hi CtrlP_IPurple ctermfg=4  ctermbg=7
   hi CtrlP_Violet  ctermfg=4  ctermbg=8
 endif
+"-----------------------------------------------------------------------------------------------------------------------
+
+
 
 "-----------------------------------------------------------------------------------------------------------------------
 " Flake8 Plugin
@@ -200,6 +340,8 @@ if !empty(glob('plugged/vim-flake8/autoload/flake8.vim'))
   let g:flake8_show_in_gutter=1 
   autocmd BufWritePost *.py call Flake8()
 endif
+"-----------------------------------------------------------------------------------------------------------------------
+
 
 
 "-----------------------------------------------------------------------------------------------------------------------
@@ -208,6 +350,7 @@ endif
 if !empty(glob('plugged/vim-markdown/indent/markdown.vim'))
   let g:vim_markdown_folding_disabled=1
 endif
+"-----------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -221,6 +364,7 @@ if !empty(glob('plugged/vim-devicons/plugin/webdevicons.vim'))
   let g:WebDevIconsUnicodeDecorateFolderNodes = 1
   let g:DevIconsEnableFoldersOpenClose = 1
 endif
+"-----------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -230,6 +374,7 @@ endif
 if !empty(glob('plugged/dash.vim/plugin/dash.vim'))
   nnoremap K :Dash<CR>
 endif
+"-----------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -239,6 +384,8 @@ endif
 if !empty(glob('plugged/deoplete.nvim/plugin/deoplete.vim'))
   let g:deoplete#enable_at_startup = 1
 endif
+"-----------------------------------------------------------------------------------------------------------------------
+
 
 
 "-----------------------------------------------------------------------------------------------------------------------
@@ -254,6 +401,7 @@ if !empty(glob('plugged/neomake/plugin/neomake.vim'))
       \ 'errorformat': '%f: line %l\, col %c\, %m'
       \ }
 endif
+"-----------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -265,6 +413,7 @@ if !empty(glob('plugged/CamelCaseMotion/plugin/camelcasemotion.vim'))
   map <silent> ,e <Plug>CamelCaseMotion_e
   map <silent> ,b <Plug>CamelCaseMotion_b
 endif
+"-----------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -274,6 +423,7 @@ endif
 if !empty(glob('plugged/vim-json/indent/json.vim'))
   let g:vim_json_syntax_conceal = 0
 endif
+"-----------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -291,3 +441,4 @@ if !empty(glob('plugged/ack.vim/plugin/ack.vim'))
     endif
   endfunction
 endif
+"-----------------------------------------------------------------------------------------------------------------------
