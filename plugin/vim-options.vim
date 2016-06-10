@@ -139,14 +139,12 @@ endif
 " Nerdtree Plugin
 "-----------------------------------------------------------------------------------------------------------------------
 if !empty(glob(EditorDir.'/plugged/nerdtree/plugin/NERD_tree.vim'))
-    let NERDTreeShowLineNumbers=1
     nnoremap <leader>n :NERDTreeTabsToggle<CR>
     nnoremap <leader>m :NERDTreeFind<CR>
-    let NERDTreeDirArrows=0
-    let NERDTreeMapOpenSplit = 's'
-    let NERDTreeMapOpenVSplit = 'v'
-    let NERDTreeWinSize = 40
-    let NERDTreeIgnore = ['\.pyc$']
+    let g:NERDTreeShowLineNumbers=1
+    let g:NERDTreeDirArrows=0
+    let g:NERDTreeWinSize = 40
+    let g:NERDTreeIgnore = ['\.pyc$']
     let g:NERDTreeDirArrows = 1
     let g:NERDTreeDirArrowExpandable = '▸'
     let g:NERDTreeDirArrowCollapsible = '▾'
