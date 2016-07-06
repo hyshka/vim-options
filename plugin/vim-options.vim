@@ -73,6 +73,7 @@ au BufNewFile,BufRead *.sls set filetype=yaml
 au BufNewFile,BufRead *.inc set filetype=php
 au BufNewFile,BufRead *.module set filetype=php
 au BufRead,BufNewFile *.ejs set filetype=htmljinja
+au BufRead,BufNewFile *.md set filetype=markdown
 "-----------------------------------------------------------------------------------------------------------------------
 
 
