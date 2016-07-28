@@ -191,6 +191,7 @@ if !empty(glob(EditorDir.'/plugged/vdebug/plugin/vdebug.vim'))
   \         "/vagrant": "/Users/codyhiar/Sites",
   \         "/var/www/html": "/Users/hiarc/Sites/inv/redis-api",
   \         "/ask/sites/investopedia.com/web": "/Users/hiarc/Sites/inv/www",
+  \         "/ask/sites/inv-taxonomy-service": "/src",
   \     },
   \}
   "Delete all breakpoints
