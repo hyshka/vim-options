@@ -190,7 +190,7 @@ if !empty(glob(EditorDir.'/plugged/vdebug/plugin/vdebug.vim'))
   \    "path_maps" : {
   \         "/vagrant": "/Users/codyhiar/Sites",
   \         "/var/www/html": "/Users/hiarc/Sites/inv/redis-api",
-  \         "/ask/sites/investopedia.com/web": "/Users/hiarc/Sites/inv/www",
+  \         "/ask/sites/investopedia.com/web": "/src",
   \         "/ask/sites/inv-taxonomy-service": "/src",
   \     },
   \}
