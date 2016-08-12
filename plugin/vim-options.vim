@@ -422,3 +422,35 @@ if !empty(glob(EditorDir.'/plugged/ack.vim/plugin/ack.vim'))
   endfunction
 endif
 "-----------------------------------------------------------------------------------------------------------------------
+
+
+
+"-----------------------------------------------------------------------------------------------------------------------
+" Syntastic
+"-----------------------------------------------------------------------------------------------------------------------
+if !empty(glob(EditorDir.'/plugged/syntastic/plugin/syntastic.vim'))
+  let g:syntastic_php_checkers = ['php', 'phpcs']
+  let g:syntastic_php_phpcs_args = "--standard=".$HOME."/PEARish.xml,PSR2,Symfony2"
+  let g:syntastic_javascript_checkers = ['eslint']
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 0
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+  let g:syntastic_aggregate_errors = 1
+endif
+"-----------------------------------------------------------------------------------------------------------------------
+
+
+
+"-----------------------------------------------------------------------------------------------------------------------
+" Toggle List
+"-----------------------------------------------------------------------------------------------------------------------
+if !empty(glob(EditorDir.'/plugged/vim-togglelist/plugin/togglelist.vim'))
+  noremap <leader>[ :lprevious<CR>
+  noremap <leader>] :lnext<CR>
+  noremap <leader>p :ll<CR>
+  " Disable the mapping it overwrites leader q
+  let g:toggle_list_no_mappings = 1
+  nmap <script> <silent> <leader>l :call ToggleLocationList()<CR>
+endif
+"-----------------------------------------------------------------------------------------------------------------------
