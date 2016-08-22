@@ -65,6 +65,8 @@ nmap yY ^y$
 au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null " File ident on xml files
 autocmd FileType python set tabstop=4|set shiftwidth=4
 autocmd FileType php set tabstop=4|set shiftwidth=4
+autocmd FileType sh set tabstop=4|set shiftwidth=4
+autocmd FileType make set tabstop=4|set shiftwidth=4
 autocmd FileType haskell set tabstop=8|set shiftwidth=4|set softtabstop=4
 au BufRead,BufNewFile *.twig set filetype=htmljinja
 au BufRead,BufNewFile *.html set filetype=htmljinja
