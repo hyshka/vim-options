@@ -151,6 +151,11 @@ if !empty(glob(EditorDir.'/plugged/nerdtree/plugin/NERD_tree.vim'))
     let g:NERDTreeDirArrows = 1
     let g:NERDTreeDirArrowExpandable = '▸'
     let g:NERDTreeDirArrowCollapsible = '▾'
+    let g:NERDTreeMapOpenSplit = 's'
+    let g:NERDTreeMapPreviewSplit = 'gs'
+    let g:NERDTreeMapOpenVSplit = 'v'
+    let g:NERDTreeMapPreviewVSplit = 'gv'
+
 endif
 "-----------------------------------------------------------------------------------------------------------------------
 
