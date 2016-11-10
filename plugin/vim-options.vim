@@ -467,3 +467,17 @@ if !empty(glob(EditorDir.'/plugged/vim-togglelist/plugin/togglelist.vim'))
   nmap <script> <silent> <leader>l :call ToggleLocationList()<CR>
 endif
 "-----------------------------------------------------------------------------------------------------------------------
+
+
+
+"-----------------------------------------------------------------------------------------------------------------------
+" SimplyFold
+"-----------------------------------------------------------------------------------------------------------------------
+if !empty(glob(EditorDir.'/plugged/SimpylFold/ftplugin/python/SimpylFold.vim'))
+  let g:SimpylFold_docstring_preview = 1
+  " Needed for some issues
+  autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
+  autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
+  nnoremap <space>a za
+endif
+"-----------------------------------------------------------------------------------------------------------------------
