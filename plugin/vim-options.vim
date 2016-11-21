@@ -21,9 +21,9 @@ set laststatus=2 " Show the status bar always
 set wildignore=*/app/cache,*/vendor,*/env,*.pyc,*/venv " Ignore useless files
 set splitright " Horizontal Splits go to the right
 set splitbelow " Vertical  Splits go underneath
-set nofoldenable " Disable Folding, don't really use it
 set incsearch " Move cursor to matched string
 set hlsearch!  " Turn off highlight search
+set sessionoptions+=tabpages,globals " Include tab names in sessions
 set backupdir-=.
 set backupdir+=.
 set backupdir-=~/
