@@ -69,6 +69,7 @@ nnoremap <C-]> <C-w><C-]>
 " FileType Options
 "-----------------------------------------------------------------------------------------------------------------------
 au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null " File ident on xml files
+autocmd FileType html set tabstop=2|set shiftwidth=2
 autocmd FileType python set tabstop=4|set shiftwidth=4
 autocmd FileType php set tabstop=4|set shiftwidth=4
 autocmd FileType sh set tabstop=4|set shiftwidth=4
