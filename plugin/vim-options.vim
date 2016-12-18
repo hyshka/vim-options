@@ -326,7 +326,6 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 if !empty(glob(EditorDir.'/plugged/ctrlp.vim/plugin/ctrlp.vim'))
   let g:ctrlp_working_path_mode = 'a'
-  let g:ctrlp_by_filename = 1
   let g:ctrlp_status_func = {
     \ 'main': 'CtrlP_main_status',
     \ 'prog': 'CtrlP_progress_status',
