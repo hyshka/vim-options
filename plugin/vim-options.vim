@@ -304,7 +304,7 @@ if !empty(glob(EditorDir.'/plugged/vim-fugitive/plugin/fugitive.vim'))
   nnoremap <leader>du :diffupdate<CR>
   nnoremap <leader>dd :diffget<CR>
   nnoremap <leader>df :diffput<CR>
-  nnoremap - [c
+  nnoremap _ [c
   nnoremap = ]c
 endif
 "-----------------------------------------------------------------------------------------------------------------------
