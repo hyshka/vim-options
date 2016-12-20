@@ -119,10 +119,10 @@ cnoremap <leader>d <CR>:d<CR>``
 "Colorscheme
 colorscheme gruvbox
 " Vim diff Colors
-highlight DiffAdd    cterm=NONE ctermfg=0 ctermbg=2 
-highlight DiffDelete cterm=NONE ctermfg=0 ctermbg=1
-highlight DiffChange cterm=NONE ctermfg=0 ctermbg=6
-highlight DiffText   cterm=NONE ctermfg=0 ctermbg=6
+highlight DiffAdd    cterm=BOLD ctermfg=NONE ctermbg=22
+highlight DiffDelete cterm=BOLD ctermfg=NONE ctermbg=52
+highlight DiffChange cterm=BOLD ctermfg=NONE ctermbg=23
+highlight DiffText   cterm=BOLD ctermfg=NONE ctermbg=23
 " Highligh current cursorline
 hi CursorLineNR cterm=bold ctermfg=226
 " Status line colors  per mode 
