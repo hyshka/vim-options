@@ -349,7 +349,7 @@ if !empty(glob(EditorDir.'/plugged/ctrlp.vim/plugin/ctrlp.vim'))
   endf
   hi CtrlP_Purple  ctermfg=7 ctermbg=4
   hi CtrlP_IPurple ctermfg=4  ctermbg=7
-  hi CtrlP_Violet  ctermfg=4  ctermbg=8
+  hi CtrlP_Violet  ctermfg=7  ctermbg=8
 endif
 "-----------------------------------------------------------------------------------------------------------------------
 
