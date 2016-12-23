@@ -42,7 +42,17 @@ set statusline+=%2*\ %=\ %l/%L\ (%02p%%)\             "Rownumber/total (%)
 "-----------------------------------------------------------------------------------------------------------------------
 " Custom Mappings
 "-----------------------------------------------------------------------------------------------------------------------
-:vmap y ygv<ESC> " Highlighting in vim leaves your cursor wherever you ended at
+" Hardcore Mode
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+noremap h <NOP>
+noremap j <NOP>
+noremap k <NOP>
+noremap l <NOP>
+" Highlighting in vim leaves your cursor wherever you ended at
+:vmap y ygv<ESC>
 " Formating a json file
 com! Formatjson %!python -m json.tool
 " Command for figuring out highlight group
