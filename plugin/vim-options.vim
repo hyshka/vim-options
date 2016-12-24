@@ -22,7 +22,7 @@ set wildignore=*/app/cache,*/vendor,*/env,*.pyc,*/venv " Ignore useless files
 set splitright " Horizontal Splits go to the right
 set splitbelow " Vertical  Splits go underneath
 set incsearch " Move cursor to matched string
-set hlsearch!  " Turn off highlight search
+set hlsearch  " Turn off highlight search
 set sessionoptions+=tabpages,globals " Include tab names in sessions
 set backupdir-=.
 set backupdir+=.
@@ -37,20 +37,65 @@ set statusline+=%2*\«
 set statusline+=%2*\ %=\ %l/%L\ (%02p%%)\             "Rownumber/total (%)
 "-----------------------------------------------------------------------------------------------------------------------
 
+"-----------------------------------------------------------------------------------------------------------------------
+" Basic movements (h, j, k, l) require a number prefix. Break bad habits
+"-----------------------------------------------------------------------------------------------------------------------
+function! DisableIfNonCounted(move) range
+    if v:count
+        return a:move
+    else
+        " You can make this do something annoying like:
+           " echoerr "Count required!"
+           " sleep 2
+        return ""
+    endif
+endfunction
+
+function! SetDisablingOfBasicMotionsIfNonCounted(on)
+    let keys_to_disable = get(g:, "keys_to_disable_if_not_preceded_by_count", ["j", "k", "l", "h"])
+    if a:on
+        for key in keys_to_disable
+            execute "noremap <expr> <silent> " . key . " DisableIfNonCounted('" . key . "')"
+        endfor
+        let g:keys_to_disable_if_not_preceded_by_count = keys_to_disable
+        let g:is_non_counted_basic_motions_disabled = 1
+    else
+        for key in keys_to_disable
+            try
+                execute "unmap " . key
+            catch /E31:/
+            endtry
+        endfor
+        let g:is_non_counted_basic_motions_disabled = 0
+    endif
+endfunction
+
+function! ToggleDisablingOfBasicMotionsIfNonCounted()
+    let is_disabled = get(g:, "is_non_counted_basic_motions_disabled", 0)
+    if is_disabled
+        call SetDisablingOfBasicMotionsIfNonCounted(0)
+    else
+        call SetDisablingOfBasicMotionsIfNonCounted(1)
+    endif
+endfunction
+
+command! ToggleDisablingOfNonCountedBasicMotions :call ToggleDisablingOfBasicMotionsIfNonCounted()
+command! DisableNonCountedBasicMotions :call SetDisablingOfBasicMotionsIfNonCounted(1)
+command! EnableNonCountedBasicMotions :call SetDisablingOfBasicMotionsIfNonCounted(0)
+
+DisableNonCountedBasicMotions
 
 
 "-----------------------------------------------------------------------------------------------------------------------
 " Custom Mappings
 "-----------------------------------------------------------------------------------------------------------------------
+" Turn off syntax highlighting
+nnoremap <leader><space> :noh<CR>
 " Hardcore Mode
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
-noremap h <NOP>
-noremap j <NOP>
-noremap k <NOP>
-noremap l <NOP>
 " Highlighting in vim leaves your cursor wherever you ended at
 :vmap y ygv<ESC>
 " Formating a json file
