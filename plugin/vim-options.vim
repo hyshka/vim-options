@@ -506,7 +506,7 @@ if !empty(glob(EditorDir.'/plugged/syntastic/plugin/syntastic.vim'))
   let g:syntastic_check_on_open = 0
   let g:syntastic_check_on_wq = 1
   let g:syntastic_aggregate_errors = 1
-  let g:syntastic_mode_map = { 'mode': 'passive' }
+  let g:syntastic_mode_map = { 'mode': 'active' }
   function! ToggleSyntasticMode()
 python << EOF
 import vim
