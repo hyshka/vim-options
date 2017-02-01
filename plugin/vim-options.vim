@@ -245,6 +245,7 @@ if !empty(glob(EditorDir.'/plugged/vim-indent-guides/plugin/indent_guides.vim'))
   let g:indent_guides_guide_size = 1
   autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=0
   autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=0
+  autocmd VimEnter,Colorscheme * :IndentGuidesEnable
 endif
 "-----------------------------------------------------------------------------------------------------------------------
 
