@@ -172,7 +172,7 @@ cnoremap <leader>d <CR>:d<CR>``
 " 16 = black
 "
 "Colorscheme
-colorscheme gruvbox
+"colorscheme gruvbox
 " Vim diff Colors
 highlight DiffAdd    cterm=BOLD ctermfg=NONE ctermbg=22
 highlight DiffDelete cterm=BOLD ctermfg=NONE ctermbg=52
@@ -180,7 +180,7 @@ highlight DiffChange cterm=BOLD ctermfg=NONE ctermbg=23
 highlight DiffText   cterm=BOLD ctermfg=NONE ctermbg=23
 " Highligh current cursorline
 hi CursorLineNR cterm=bold ctermfg=226
-" Status line colors  per mode 
+" Status line colors  per mode
 hi User1 ctermfg=226  ctermbg=8 cterm=bold
 hi User3 ctermfg=4  ctermbg=0
 hi User2 ctermfg=6  ctermbg=0
@@ -198,7 +198,7 @@ if has('nvim')
 else
   let EditorDir=$HOME.'/.vim'
 endif
-  
+
 
 
 "-----------------------------------------------------------------------------------------------------------------------
@@ -340,7 +340,7 @@ endif
 
 
 "-----------------------------------------------------------------------------------------------------------------------
-" Fugitive 
+" Fugitive
 "-----------------------------------------------------------------------------------------------------------------------
 if !empty(glob(EditorDir.'/plugged/vim-fugitive/plugin/fugitive.vim'))
   nnoremap <leader>gc :Gcommit --verbose<CR>
@@ -368,7 +368,7 @@ endif
 
 
 "-----------------------------------------------------------------------------------------------------------------------
-" Python-Syntax 
+" Python-Syntax
 "-----------------------------------------------------------------------------------------------------------------------
 if !empty(glob(EditorDir.'/plugged/python-syntax/syntax/python.vim'))
   let python_highlight_all = 1
@@ -499,9 +499,10 @@ endif
 " Syntastic
 "-----------------------------------------------------------------------------------------------------------------------
 if !empty(glob(EditorDir.'/plugged/syntastic/plugin/syntastic.vim'))
-  let g:syntastic_php_checkers = ['php', 'phpcs']
-  let g:syntastic_php_phpcs_args = "--standard=".$HOME."/PEARish.xml,PSR2,Symfony2"
+  "let g:syntastic_php_checkers = ['php', 'phpcs']
+  "let g:syntastic_php_phpcs_args = "--standard=".$HOME."/PEARish.xml,PSR2,Symfony2"
   let g:syntastic_javascript_checkers = ['eslint']
+  let g:syntastic_sass_checkers = ['sass_lint']
   let g:syntastic_always_populate_loc_list = 1
   let g:syntastic_auto_loc_list = 0
   let g:syntastic_check_on_open = 1
