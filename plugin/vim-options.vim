@@ -161,6 +161,11 @@ cnoremap <leader>d <CR>:d<CR>``
 "-----------------------------------------------------------------------------------------------------------------------
 " Color/Theming Options
 "-----------------------------------------------------------------------------------------------------------------------
+
+"Colorscheme
+let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme base16-tomorrow
+
 " Solarized cterm colors
 " 0 = almost dark blue // 1 = red
 " 2 = green            // 3 = yellow
@@ -172,21 +177,21 @@ cnoremap <leader>d <CR>:d<CR>``
 " 14 = grey            // 15 = white
 " 16 = black
 "
-"Colorscheme
-"colorscheme gruvbox
-" Vim diff Colors
-highlight DiffAdd    cterm=BOLD ctermfg=NONE ctermbg=22
-highlight DiffDelete cterm=BOLD ctermfg=NONE ctermbg=52
-highlight DiffChange cterm=BOLD ctermfg=NONE ctermbg=23
-highlight DiffText   cterm=BOLD ctermfg=NONE ctermbg=23
-" Highligh current cursorline
-hi CursorLineNR cterm=bold ctermfg=226
-" Status line colors  per mode
-hi User1 ctermfg=226  ctermbg=8 cterm=bold
-hi User3 ctermfg=4  ctermbg=0
-hi User2 ctermfg=6  ctermbg=0
-" Change gutter color
-highlight SignColumn cterm=NONE ctermfg=0 ctermbg=8
+""Colorscheme
+""colorscheme gruvbox
+"" Vim diff Colors
+"highlight DiffAdd    cterm=BOLD ctermfg=NONE ctermbg=22
+"highlight DiffDelete cterm=BOLD ctermfg=NONE ctermbg=52
+"highlight DiffChange cterm=BOLD ctermfg=NONE ctermbg=23
+"highlight DiffText   cterm=BOLD ctermfg=NONE ctermbg=23
+"" Highligh current cursorline
+"hi CursorLineNR cterm=bold ctermfg=226
+"" Status line colors  per mode
+"hi User1 ctermfg=226  ctermbg=8 cterm=bold
+"hi User3 ctermfg=4  ctermbg=0
+"hi User2 ctermfg=6  ctermbg=0
+"" Change gutter color
+"highlight SignColumn cterm=NONE ctermfg=0 ctermbg=8
 "-----------------------------------------------------------------------------------------------------------------------
 
 
