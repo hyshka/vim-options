@@ -429,13 +429,13 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " Dev-icons
 "-----------------------------------------------------------------------------------------------------------------------
-"if !empty(glob(EditorDir.'/plugged/vim-devicons/plugin/webdevicons.vim'))
+if !empty(glob(EditorDir.'/plugged/vim-devicons/plugin/webdevicons.vim'))
 "  let g:webdevicons_enable_nerdtree = 1
 "  let g:webdevicons_enable = 1
 "  let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
-"  let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-"  let g:DevIconsEnableFoldersOpenClose = 1
-"endif
+  let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+  let g:DevIconsEnableFoldersOpenClose = 1
+endif
 "-----------------------------------------------------------------------------------------------------------------------
 
 
