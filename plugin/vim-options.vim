@@ -35,6 +35,7 @@ set statusline+=%2*\ »                        "RIGHT-POINTING DOUBLE ANGLE QUOT
 set statusline+=%3*\ %<%F\                    "File+path
 set statusline+=%2*\«
 set statusline+=%2*\ %=\ %l/%L\ (%02p%%)\             "Rownumber/total (%)
+set hidden " Don't abandon buffers when switching between them
 "-----------------------------------------------------------------------------------------------------------------------
 
 "-----------------------------------------------------------------------------------------------------------------------
@@ -205,7 +206,7 @@ endif
 " Nerdtree Plugin
 "-----------------------------------------------------------------------------------------------------------------------
 if !empty(glob(EditorDir.'/plugged/nerdtree/plugin/NERD_tree.vim'))
-    nnoremap <leader>n :NERDTreeTabsToggle<CR>
+    nnoremap <leader>n :NERDTreeToggle<CR>
     nnoremap <leader>m :NERDTreeFind<CR>
     let g:NERDTreeShowLineNumbers=1
 "    let g:NERDTreeDirArrows=0
