@@ -513,18 +513,18 @@ if !empty(glob(EditorDir.'/plugged/syntastic/plugin/syntastic.vim'))
   let g:syntastic_check_on_wq = 0
 "  let g:syntastic_aggregate_errors = 1
 "  let g:syntastic_mode_map = { 'mode': 'active' }
-  function! ToggleSyntasticMode()
-    python << EOF
-      import vim
-      import ast
-      value = dict(vim.eval('g:syntastic_mode_map'))
-      vim.command('let l:syntastic_current_mode = \''+value['mode']+'\'')
-    EOF
-    SyntasticToggleMode
-    if l:syntastic_current_mode == 'passive'
-      SyntasticCheck
-    endif
-  endfunction
+function! ToggleSyntasticMode()
+python << EOF
+import vim
+import ast
+value = dict(vim.eval('g:syntastic_mode_map'))
+vim.command('let l:syntastic_current_mode = \''+value['mode']+'\'')
+EOF
+SyntasticToggleMode
+if l:syntastic_current_mode == 'passive'
+SyntasticCheck
+endif
+endfunction
   nnoremap <leader>s :call ToggleSyntasticMode()<CR>
 endif
 "-----------------------------------------------------------------------------------------------------------------------
