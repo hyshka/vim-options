@@ -9,7 +9,7 @@ set tabstop=2 " Number of space that tab counts for
 set shiftwidth=2 " Number of spaces for each autoindent
 set textwidth=0 " Maximium width of text that is being inserted. 0 disables it
 set history=1000 " Set history of : commands
-set autoindent " Copy the indentation from the previous line
+"set autoindent " Copy the indentation from the previous line
 set cindent " Get ammount of indent according to C indent rules
 set relativenumber " Use relative numbers
 set number " Show line numbers
@@ -28,7 +28,6 @@ set backupdir-=.
 set backupdir+=.
 set backupdir-=~/
 set backup
-set background=dark
 set statusline=
 set statusline+=%1*\ %02c\                    "Colnr
 set statusline+=%2*\ »                        "RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
