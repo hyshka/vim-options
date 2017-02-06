@@ -1,14 +1,14 @@
 "-----------------------------------------------------------------------------------------------------------------------
 " User Preferences
 "-----------------------------------------------------------------------------------------------------------------------
-filetype plugin indent on " Make sure indenting works
+"filetype plugin indent on " Make sure indenting works
 let mapleader="\\" " Set map leader
 set omnifunc=syntaxcomplete#Complete " Set Autocomplete
 set expandtab " Expand tabs into spaces
 set tabstop=2 " Number of space that tab counts for
 set shiftwidth=2 " Number of spaces for each autoindent
 set textwidth=0 " Maximium width of text that is being inserted. 0 disables it
-set history=1000 " Set history of : commands
+"set history=1000 " Set history of : commands
 "set autoindent " Copy the indentation from the previous line
 set cindent " Get ammount of indent according to C indent rules
 set relativenumber " Use relative numbers
@@ -16,14 +16,14 @@ set number " Show line numbers
 set nowrap " Turn off TextWrapping
 set completeopt=longest,menuone " Autocomplete options
 set wildmode=longest,list " Completion mode for wildchar
-set backspace=indent,eol,start " Backspace over everything in insert mode
-set laststatus=2 " Show the status bar always
+"set backspace=indent,eol,start " Backspace over everything in insert mode
+"set laststatus=2 " Show the status bar always
 set wildignore=*/app/cache,*/vendor,*/env,*.pyc,*/venv " Ignore useless files
 set splitright " Horizontal Splits go to the right
 set splitbelow " Vertical  Splits go underneath
-set incsearch " Move cursor to matched string
-set hlsearch  " Turn off highlight search
-set sessionoptions+=tabpages,globals " Include tab names in sessions
+"set incsearch " Move cursor to matched string
+"set hlsearch  " Turn off highlight search
+"set sessionoptions+=tabpages,globals " Include tab names in sessions
 set backupdir-=.
 set backupdir+=.
 set backupdir-=~/
