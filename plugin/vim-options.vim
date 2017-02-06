@@ -162,9 +162,9 @@ cnoremap <leader>d <CR>:d<CR>``
 "-----------------------------------------------------------------------------------------------------------------------
 
 "Colorscheme
-let base16colorspace = 256  " Access colors present in 256 colorspace
+let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-tomorrow
-set background = light
+set background=light
 
 " Solarized cterm colors
 " 0 = almost dark blue // 1 = red
