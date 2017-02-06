@@ -163,8 +163,9 @@ cnoremap <leader>d <CR>:d<CR>``
 "-----------------------------------------------------------------------------------------------------------------------
 
 "Colorscheme
-let base16colorspace=256  " Access colors present in 256 colorspace
+let base16colorspace = 256  " Access colors present in 256 colorspace
 colorscheme base16-tomorrow
+set background = light
 
 " Solarized cterm colors
 " 0 = almost dark blue // 1 = red
@@ -214,10 +215,9 @@ if !empty(glob(EditorDir.'/plugged/nerdtree/plugin/NERD_tree.vim'))
     nnoremap <leader>n :NERDTreeToggle<CR>
     nnoremap <leader>m :NERDTreeFind<CR>
     let g:NERDTreeShowLineNumbers=1
-"    let g:NERDTreeDirArrows=0
     let g:NERDTreeWinSize = 40
     let g:NERDTreeIgnore = ['\.pyc$']
-"    let g:NERDTreeDirArrows = 1
+"    let g:NERDTreeDirArrows=0
 "    let g:NERDTreeDirArrowExpandable = '▸'
 "    let g:NERDTreeDirArrowCollapsible = '▾'
 "    let g:NERDTreeMapOpenSplit = 's'
@@ -242,16 +242,16 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " Indent Lines Plugin
 "-----------------------------------------------------------------------------------------------------------------------
-"if !empty(glob(EditorDir.'/plugged/vim-indent-guides/plugin/indent_guides.vim'))
-  "let g:indent_guides_enable_on_vim_startup = 1
+if !empty(glob(EditorDir.'/plugged/vim-indent-guides/plugin/indent_guides.vim'))
+  let g:indent_guides_enable_on_vim_startup = 1
+  let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+  let g:indent_guides_start_level = 2
+  let g:indent_guides_guide_size = 1
   "let g:indent_guides_auto_colors = 0
-  "let g:indent_guides_exclude_filetypes =['help', 'nerdtree']
-  "let g:indent_guides_start_level = 2
-  "let g:indent_guides_guide_size = 1
   "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=235
   "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=237
   "autocmd VimEnter,Colorscheme * :IndentGuidesEnable
-"endif
+endif
 "-----------------------------------------------------------------------------------------------------------------------
 
 
@@ -347,27 +347,27 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " Fugitive
 "-----------------------------------------------------------------------------------------------------------------------
-"if !empty(glob(EditorDir.'/plugged/vim-fugitive/plugin/fugitive.vim'))
-"  nnoremap <leader>gc :Gcommit --verbose<CR>
-"  nnoremap <leader>gd :Gdiff<CR>
-"  nnoremap <leader>gl :Glog<CR>
-"  nnoremap <leader>gb :Gblame<CR>
-"  function! ToggleGStatus()
-"    if buflisted(bufname('.git/index'))
-"      bd .git/index
-"    else
-"      Gstatus
-"    endif
-"  endfunction
-"  command ToggleGStatus :call ToggleGStatus()
-"  nnoremap <leader>gs :ToggleGStatus<CR>
-"  " Diff commands
-"  nnoremap <leader>du :diffupdate<CR>
-"  nnoremap <leader>dd :diffget<CR>
-"  nnoremap <leader>df :diffput<CR>
-"  nnoremap _ [c
-"  nnoremap = ]c
-"endif
+if !empty(glob(EditorDir.'/plugged/vim-fugitive/plugin/fugitive.vim'))
+  nnoremap <leader>gc :Gcommit --verbose<CR>
+  nnoremap <leader>gd :Gdiff<CR>
+  nnoremap <leader>gl :Glog<CR>
+  nnoremap <leader>gb :Gblame<CR>
+  function! ToggleGStatus()
+    if buflisted(bufname('.git/index'))
+      bd .git/index
+    else
+      Gstatus
+    endif
+  endfunction
+  command ToggleGStatus :call ToggleGStatus()
+  nnoremap <leader>gs :ToggleGStatus<CR>
+  " Diff commands
+  nnoremap <leader>du :diffupdate<CR>
+  nnoremap <leader>dd :diffget<CR>
+  nnoremap <leader>df :diffput<CR>
+  nnoremap _ [c
+  nnoremap = ]c
+endif
 "-----------------------------------------------------------------------------------------------------------------------
 
 
@@ -385,13 +385,13 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " CtrlP Plugin
 "-----------------------------------------------------------------------------------------------------------------------
-"if !empty(glob(EditorDir.'/plugged/ctrlp.vim/plugin/ctrlp.vim'))
-"  let g:ctrlp_working_path_mode = 'a'
+if !empty(glob(EditorDir.'/plugged/ctrlp.vim/plugin/ctrlp.vim'))
+  let g:ctrlp_working_path_mode = 'a'
 "  let g:ctrlp_status_func = {
 "    \ 'main': 'CtrlP_main_status',
 "    \ 'prog': 'CtrlP_progress_status',
 "    \ }
-"  let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+  let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 "  " Arguments: focus, byfname, s:regexp, prv, item, nxt, marked
 "  "            a:1    a:2      a:3       a:4  a:5   a:6  a:7
 "  fu! CtrlP_main_status(...)
@@ -411,7 +411,7 @@ endif
 "  hi CtrlP_Purple  ctermfg=7 ctermbg=4
 "  hi CtrlP_IPurple ctermfg=4  ctermbg=7
 "  hi CtrlP_Violet  ctermfg=7  ctermbg=8
-"endif
+endif
 "-----------------------------------------------------------------------------------------------------------------------
 
 
@@ -503,31 +503,31 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " Syntastic
 "-----------------------------------------------------------------------------------------------------------------------
-"if !empty(glob(EditorDir.'/plugged/syntastic/plugin/syntastic.vim'))
+if !empty(glob(EditorDir.'/plugged/syntastic/plugin/syntastic.vim'))
 "  "let g:syntastic_php_checkers = ['php', 'phpcs']
 "  "let g:syntastic_php_phpcs_args = "--standard=".$HOME."/PEARish.xml,PSR2,Symfony2"
-"  let g:syntastic_javascript_checkers = ['eslint']
-"  let g:syntastic_sass_checkers = ['sass_lint']
-"  let g:syntastic_always_populate_loc_list = 1
-"  let g:syntastic_auto_loc_list = 0
-"  let g:syntastic_check_on_open = 1
-"  let g:syntastic_check_on_wq = 1
+  let g:syntastic_javascript_checkers = ['eslint']
+  let g:syntastic_sass_checkers = ['sass_lint']
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
 "  let g:syntastic_aggregate_errors = 1
 "  let g:syntastic_mode_map = { 'mode': 'active' }
-"  function! ToggleSyntasticMode()
-"python << EOF
-"import vim
-"import ast
-"value = dict(vim.eval('g:syntastic_mode_map'))
-"vim.command('let l:syntastic_current_mode = \''+value['mode']+'\'')
-"EOF
-"    SyntasticToggleMode
-"    if l:syntastic_current_mode == 'passive'
-"      SyntasticCheck
-"    endif
-"  endfunction
-"  nnoremap <leader>s :call ToggleSyntasticMode()<CR>
-"endif
+  function! ToggleSyntasticMode()
+    python << EOF
+      import vim
+      import ast
+      value = dict(vim.eval('g:syntastic_mode_map'))
+      vim.command('let l:syntastic_current_mode = \''+value['mode']+'\'')
+    EOF
+    SyntasticToggleMode
+    if l:syntastic_current_mode == 'passive'
+      SyntasticCheck
+    endif
+  endfunction
+  nnoremap <leader>s :call ToggleSyntasticMode()<CR>
+endif
 "-----------------------------------------------------------------------------------------------------------------------
 
 
@@ -535,14 +535,14 @@ endif
 "-----------------------------------------------------------------------------------------------------------------------
 " Toggle List
 "-----------------------------------------------------------------------------------------------------------------------
-"if !empty(glob(EditorDir.'/plugged/vim-togglelist/plugin/togglelist.vim'))
-"  noremap <leader>[ :lprevious<CR>
-"  noremap <leader>] :lnext<CR>
-"  noremap <leader>p :ll<CR>
-"  " Disable the mapping it overwrites leader q
-"  let g:toggle_list_no_mappings = 1
-"  nmap <script> <silent> <leader>l :call ToggleLocationList()<CR>
-"endif
+if !empty(glob(EditorDir.'/plugged/vim-togglelist/plugin/togglelist.vim'))
+  noremap <leader>[ :lprevious<CR>
+  noremap <leader>] :lnext<CR>
+  noremap <leader>p :ll<CR>
+  " Disable the mapping it overwrites leader q
+  let g:toggle_list_no_mappings = 1
+  nmap <script> <silent> <leader>l :call ToggleLocationList()<CR>
+endif
 "-----------------------------------------------------------------------------------------------------------------------
 
 
