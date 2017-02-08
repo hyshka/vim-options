@@ -163,8 +163,8 @@ cnoremap <leader>d <CR>:d<CR>``
 
 "Colorscheme
 let base16colorspace=256  " Access colors present in 256 colorspace
-set background=light
 colorscheme base16-tomorrow
+"set background=light
 
 " Solarized cterm colors
 " 0 = almost dark blue // 1 = red
@@ -351,15 +351,15 @@ if !empty(glob(EditorDir.'/plugged/vim-fugitive/plugin/fugitive.vim'))
   nnoremap <leader>gd :Gdiff<CR>
   nnoremap <leader>gl :Glog<CR>
   nnoremap <leader>gb :Gblame<CR>
-  function! ToggleGStatus()
-    if buflisted(bufname('.git/index'))
-      bd .git/index
-    else
-      Gstatus
-    endif
-  endfunction
-  " command ToggleGStatus :call ToggleGStatus()
-  nnoremap <leader>gs :ToggleGStatus<CR>
+"  function! ToggleGStatus()
+"    if buflisted(bufname('.git/index'))
+"      bd .git/index
+"    else
+"      Gstatus
+"    endif
+"  endfunction
+"  command ToggleGStatus :call ToggleGStatus()
+"  nnoremap <leader>gs :ToggleGStatus<CR>
   " Diff commands
   nnoremap <leader>du :diffupdate<CR>
   nnoremap <leader>dd :diffget<CR>
