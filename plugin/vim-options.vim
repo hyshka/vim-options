@@ -358,7 +358,7 @@ if !empty(glob(EditorDir.'/plugged/vim-fugitive/plugin/fugitive.vim'))
       Gstatus
     endif
   endfunction
-  command ToggleGStatus :call ToggleGStatus()
+  " command ToggleGStatus :call ToggleGStatus()
   nnoremap <leader>gs :ToggleGStatus<CR>
   " Diff commands
   nnoremap <leader>du :diffupdate<CR>
@@ -508,7 +508,7 @@ if !empty(glob(EditorDir.'/plugged/syntastic/plugin/syntastic.vim'))
   let g:syntastic_javascript_checkers = ['eslint']
   let g:syntastic_sass_checkers = ['sass_lint']
   let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_auto_loc_list = 0
   let g:syntastic_check_on_open = 1
   let g:syntastic_check_on_wq = 0
 "  let g:syntastic_aggregate_errors = 1
