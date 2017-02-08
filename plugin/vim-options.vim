@@ -410,6 +410,7 @@ if !empty(glob(EditorDir.'/plugged/ctrlp.vim/plugin/ctrlp.vim'))
 "  hi CtrlP_Purple  ctermfg=7 ctermbg=4
 "  hi CtrlP_IPurple ctermfg=4  ctermbg=7
 "  hi CtrlP_Violet  ctermfg=7  ctermbg=8
+  nnoremap <Space>b :CtrlPBuffer<CR>
 endif
 "-----------------------------------------------------------------------------------------------------------------------
 
