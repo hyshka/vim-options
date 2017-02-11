@@ -232,7 +232,11 @@ endif
 "endif
 if !empty(glob(EditorDir.'/plugged/indentline/after/plugin/indentLine.vim'))
   let g:indentLine_setColors = 0
+  " vim
   let g:indentLine_color_term = 18
+  " none X terminal
+  let g:indentLine_color_tty_light = 18 " (default: 4)
+  let g:indentLine_color_dark = 18 " (default: 2)
   "let g:indentLine_char = '┆'
   let g:indentLine_char = ''
   nnoremap <leader>ig :IndentLinesToggle<CR>
