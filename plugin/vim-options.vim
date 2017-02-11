@@ -234,7 +234,7 @@ if !empty(glob(EditorDir.'/plugged/indentline/after/plugin/indentLine.vim'))
   let g:indentLine_setColors = 0
   let g:indentLine_color_term = 18
   "let g:indentLine_char = '┆'
-  let g:indentLine_char = 'U+E034'
+  let g:indentLine_char = ''
   nnoremap <leader>ig :IndentLinesToggle<CR>
 endif
 "----------------------------------------------------------------------------------------------------------------------
