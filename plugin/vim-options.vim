@@ -221,24 +221,16 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 " Indent Lines Plugin
 "----------------------------------------------------------------------------------------------------------------------
-"if !empty(glob(EditorDir.'/plugged/vim-indent-guides/plugin/indent_guides.vim'))
-"  let g:indent_guides_enable_on_vim_startup = 1
-"  let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
-"  let g:indent_guides_start_level = 2
-"  let g:indent_guides_guide_size = 2
-"  let g:indent_guides_auto_colors = 0
-"  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=0
-"  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=255
-"endif
 if !empty(glob(EditorDir.'/plugged/indentline/after/plugin/indentLine.vim'))
+  " disable auto-colors
   let g:indentLine_setColors = 0
   " vim
   let g:indentLine_color_term = 18
-  " none X terminal
+  " non-X terminal
   let g:indentLine_color_tty_light = 18 " (default: 4)
   let g:indentLine_color_dark = 18 " (default: 2)
   "let g:indentLine_char = '┆'
-  let g:indentLine_char = ''
+  let g:indentLine_char = '' " using our patched font
   nnoremap <leader>ig :IndentLinesToggle<CR>
 endif
 "----------------------------------------------------------------------------------------------------------------------
@@ -464,17 +456,17 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 " Ack Searching
 "----------------------------------------------------------------------------------------------------------------------
-"if !empty(glob(EditorDir.'/plugged/ack.vim/plugin/ack.vim'))
-"  nnoremap <space>/ :call AckSearch()<CR>
-"  function! AckSearch()
-"    call inputsave()
-"    let term = input('Search: ')
-"    call inputrestore()
-"    if !empty(term)
-"        execute "Ack '" . term . "'"
-"    endif
-"  endfunction
-"endif
+if !empty(glob(EditorDir.'/plugged/ack.vim/plugin/ack.vim'))
+  nnoremap <space>/ :call AckSearch()<CR>
+  function! AckSearch()
+    call inputsave()
+    let term = input('Search: ')
+    call inputrestore()
+    if !empty(term)
+        execute "Ack '" . term . "'"
+    endif
+  endfunction
+endif
 "----------------------------------------------------------------------------------------------------------------------
 
 
