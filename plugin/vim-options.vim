@@ -406,6 +406,9 @@ if !empty(glob(EditorDir.'/plugged/vim-devicons/plugin/webdevicons.vim'))
 "  let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
   let g:WebDevIconsUnicodeDecorateFolderNodes = 1
   let g:DevIconsEnableFoldersOpenClose = 1
+  " make vue files display as js
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
+  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vue'] = ''
 endif
 "----------------------------------------------------------------------------------------------------------------------
 
