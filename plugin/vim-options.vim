@@ -221,15 +221,19 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 " Indent Lines Plugin
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob(EditorDir.'/plugged/vim-indent-guides/plugin/indent_guides.vim'))
-  let g:indent_guides_enable_on_vim_startup = 1
-  let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
-  let g:indent_guides_start_level = 2
-  let g:indent_guides_guide_size = 2
-  let g:indent_guides_auto_colors = 0
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=0
-  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=255
-  "autocmd VimEnter,Colorscheme * :IndentGuidesEnable
+"if !empty(glob(EditorDir.'/plugged/vim-indent-guides/plugin/indent_guides.vim'))
+"  let g:indent_guides_enable_on_vim_startup = 1
+"  let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+"  let g:indent_guides_start_level = 2
+"  let g:indent_guides_guide_size = 2
+"  let g:indent_guides_auto_colors = 0
+"  autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=0
+"  autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=255
+"endif
+if !empty(glob(EditorDir.'/plugged/indentline/after/plugin/indentLine.vim'))
+  let g:indentLine_setColors = 0
+  let g:indentLine_color_term = 18
+  nnoremap <leader>ig :IndentLinesToggle<CR>
 endif
 "----------------------------------------------------------------------------------------------------------------------
 
