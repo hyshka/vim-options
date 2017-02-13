@@ -161,6 +161,7 @@ set background=light
 
 "" Highligh current cursorline
 "hi CursorLineNR cterm=bold ctermfg=226
+hi CursorLineNR cterm=bold
 
 "" Status line colors  per mode
 "hi User1 ctermfg=226  ctermbg=8 cterm=bold
