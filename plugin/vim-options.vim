@@ -27,6 +27,7 @@ set statusline+=%3*\ %<%F\                    "File+path
 set statusline+=%2*\«
 set statusline+=%2*\ %=\ %l/%L\ (%02p%%)\             "Rownumber/total (%)
 set hidden " Don't abandon buffers when switching between them
+set cursorline " highlight current line
 "set hlsearch  " Turn off highlight search
 "set sessionoptions+=tabpages,globals " Include tab names in sessions
 "----------------------------------------------------------------------------------------------------------------------
