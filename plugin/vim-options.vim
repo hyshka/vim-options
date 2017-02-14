@@ -533,7 +533,7 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 " Colorizer
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob(EditorDir.'/plugged/Colorizer/plugin/ColorizerPlugin.vim'))
+if !empty(glob(EditorDir.'/plugged/colorizer/plugin/ColorizerPlugin.vim'))
   let g:colorizer_auto_filetype='css,scss,sass,less' " only colorize these extensions
   "let g:colorizer_colornames = 0
 endif
