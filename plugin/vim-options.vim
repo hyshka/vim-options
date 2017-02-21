@@ -121,19 +121,19 @@ nnoremap <C-]> <C-w><C-]>
 "----------------------------------------------------------------------------------------------------------------------
 au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null " File ident on xml files
 autocmd FileType html set tabstop=2|set shiftwidth=2
-autocmd FileType htmljinja set tabstop=2|set shiftwidth=2
+"autocmd FileType htmljinja set tabstop=2|set shiftwidth=2
 autocmd FileType python set tabstop=4|set shiftwidth=4
 autocmd FileType php set tabstop=4|set shiftwidth=4
 autocmd FileType sh set tabstop=4|set shiftwidth=4
 autocmd FileType make set tabstop=4|set shiftwidth=4 noexpandtab
 autocmd FileType haskell set tabstop=8|set shiftwidth=4|set softtabstop=4
-au BufRead,BufNewFile *.twig set syntax=htmljinja
-au BufRead,BufNewFile *.html set syntax=htmljinja
+"au BufRead,BufNewFile *.twig set syntax=htmljinja
+"au BufRead,BufNewFile *.html set syntax=htmljinja
 au BufNewFile,BufRead *.yml set filetype=yaml
 au BufNewFile,BufRead *.sls set filetype=yaml
 au BufNewFile,BufRead *.inc set filetype=php
 au BufNewFile,BufRead *.module set filetype=php
-au BufRead,BufNewFile *.ejs set syntax=htmljinja
+"au BufRead,BufNewFile *.ejs set syntax=htmljinja
 au BufRead,BufNewFile *.md set filetype=markdown
 "----------------------------------------------------------------------------------------------------------------------
 
