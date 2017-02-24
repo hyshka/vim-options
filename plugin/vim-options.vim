@@ -1,25 +1,28 @@
 "----------------------------------------------------------------------------------------------------------------------
 " User Preferences
 "----------------------------------------------------------------------------------------------------------------------
+filetype plugin on " Enable netrw plugin
 let mapleader="\\" " Set map leader
-set omnifunc=syntaxcomplete#Complete " Set Autocomplete
+" Vim options that neovim has turned on but vim has off/ignores
+set nocompatible " Vim is non-compatible with vi. Neovim ignores this
+set hlsearch " After a '/' search, highlight the matches
+" Regular settings
+set path=** " Set path to look at all directories under current root
+set wildignore=*/app/cache,*/vendor,*/env,*.pyc,*/venv,*/__pycache__ " Ignore useless files
+"set omnifunc=syntaxcomplete#Complete " Set Autocomplete
 set expandtab " Expand tabs into spaces
 set tabstop=2 " Number of space that tab counts for
 set shiftwidth=2 " Number of spaces for each autoindent
-set textwidth=0 " Maximium width of text that is being inserted. 0 disables it
-set cindent " Get ammount of indent according to C indent rules
+"set textwidth=0 " Maximium width of text that is being inserted. 0 disables it
+"set cindent " Get ammount of indent according to C indent rules
 set relativenumber " Use relative numbers
 set number " Show line numbers
 set nowrap " Turn off TextWrapping
-set completeopt=longest,menuone " Autocomplete options
-set wildmode=longest,list " Completion mode for wildchar
-set wildignore=*/app/cache,*/vendor,*/env,*.pyc,*/venv " Ignore useless files
+set completeopt=menu,preview,noinsert " Autocomplete options
+set wildmode=list:longest,full " Completion mode for wildchar
 set splitright " Horizontal Splits go to the right
 set splitbelow " Vertical  Splits go underneath
-set backupdir-=.
-set backupdir+=.
-set backupdir-=~/
-set backup
+" Custom status line
 set statusline=
 set statusline+=%1*\ %02c\                    "Colnr
 set statusline+=%2*\ »                        "RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
@@ -30,6 +33,31 @@ set hidden " Don't abandon buffers when switching between them
 set cursorline " highlight current line
 "set hlsearch  " Turn off highlight search
 "set sessionoptions+=tabpages,globals " Include tab names in sessions
+" Make netrw prettier
+let g:netrw_banner = 0  " Hide the banner
+let g:netrw_liststyle = 3     " Tree view
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' " Hide dotfiles
+"----------------------------------------------------------------------------------------------------------------------
+
+
+"----------------------------------------------------------------------------------------------------------------------
+" Vim vs Neovim settings
+"----------------------------------------------------------------------------------------------------------------------
+if has('nvim')
+  let EditorDir=$HOME.'/.config/nvim/'
+	silent! execute '!mkdir -p .vimcache/backup'
+	" Set Backup dirs
+	set backupdir=.vimcache/backup/
+	set directory=.vimcache/swp/
+  "let g:syntastic_python_python_exec = '/usr/bin/python3'
+else
+  " Vim Options
+  let EditorDir=$HOME.'/.vim/'
+	" Set Backup dirs
+  set backupdir=~/.vim/vim-files/backups/
+  set directory=~/.vim/vim-files/swaps/
+  "let g:vimwiki_list = [{'path': '~/Wiki/wiki', 'path_html': '~/Wiki/wiki_html/', 'ext': '.markdown'}]
+endif
 "----------------------------------------------------------------------------------------------------------------------
 
 
