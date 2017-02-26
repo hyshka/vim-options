@@ -3,9 +3,11 @@
 "----------------------------------------------------------------------------------------------------------------------
 filetype plugin on " Enable netrw plugin
 let mapleader="\\" " Set map leader
+
 " Vim options that neovim has turned on but vim has off/ignores
 set nocompatible " Vim is non-compatible with vi. Neovim ignores this
 set hlsearch " After a '/' search, highlight the matches
+
 " Regular settings
 set path=** " Set path to look at all directories under current root
 set wildignore=*/app/cache,*/vendor,*/env,*.pyc,*/venv,*/__pycache__ " Ignore useless files
@@ -22,6 +24,7 @@ set completeopt=menu,preview,noinsert " Autocomplete options
 set wildmode=list:longest,full " Completion mode for wildchar
 set splitright " Horizontal Splits go to the right
 set splitbelow " Vertical  Splits go underneath
+
 " Custom status line
 set statusline=
 set statusline+=%1*\ %02c\                    "Colnr
@@ -33,14 +36,17 @@ set hidden " Don't abandon buffers when switching between them
 set cursorline " highlight current line
 "set hlsearch  " Turn off highlight search
 "set sessionoptions+=tabpages,globals " Include tab names in sessions
+
 " Make netrw prettier
 let g:netrw_banner = 0  " Hide the banner
+"let g:netrw_browse_split=4  " open in prior window
+let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle = 3     " Tree view
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' " Hide dotfiles
 "----------------------------------------------------------------------------------------------------------------------
 
 
-"----------------------------------------------------------------------------------------------------------------------
+o----------------------------------------------------------------------------------------------------------------------
 " Vim vs Neovim settings
 "----------------------------------------------------------------------------------------------------------------------
 if has('nvim')
@@ -141,6 +147,8 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-]> <C-w><C-]>
+" Create the `tags` file (may need to install ctags first)
+command! MakeTags !ctags -R .
 "----------------------------------------------------------------------------------------------------------------------
 
 
@@ -205,17 +213,6 @@ hi CursorLineNR cterm=bold
 "highlight DiffDelete cterm=BOLD ctermfg=NONE ctermbg=52
 "highlight DiffChange cterm=BOLD ctermfg=NONE ctermbg=23
 "highlight DiffText   cterm=BOLD ctermfg=NONE ctermbg=23
-"----------------------------------------------------------------------------------------------------------------------
-
-
-"----------------------------------------------------------------------------------------------------------------------
-" Plugin Paths
-"----------------------------------------------------------------------------------------------------------------------
-if has('nvim')
-  let EditorDir=$HOME.'/.config/nvim'
-else
-  let EditorDir=$HOME.'/.vim'
-endif
 "----------------------------------------------------------------------------------------------------------------------
 
 
