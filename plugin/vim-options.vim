@@ -24,6 +24,9 @@ set completeopt=menu,preview,noinsert " Autocomplete options
 set wildmode=list:longest,full " Completion mode for wildchar
 set splitright " Horizontal Splits go to the right
 set splitbelow " Vertical  Splits go underneath
+set hidden " Don't abandon buffers when switching between them
+set cursorline " highlight current line
+"set sessionoptions+=tabpages,globals " Include tab names in sessions
 
 " Custom status line
 set statusline=
@@ -32,10 +35,6 @@ set statusline+=%2*\ »                        "RIGHT-POINTING DOUBLE ANGLE QUOT
 set statusline+=%3*\ %<%F\                    "File+path
 set statusline+=%2*\«
 set statusline+=%2*\ %=\ %l/%L\ (%02p%%)\             "Rownumber/total (%)
-set hidden " Don't abandon buffers when switching between them
-set cursorline " highlight current line
-"set hlsearch  " Turn off highlight search
-"set sessionoptions+=tabpages,globals " Include tab names in sessions
 
 " Make netrw prettier
 let g:netrw_banner = 0  " Hide the banner
@@ -158,14 +157,12 @@ command! MakeTags !ctags -R .
 au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null " File ident on xml files
 autocmd FileType html set tabstop=2|set shiftwidth=2
 autocmd FileType htmldjango set tabstop=2|set shiftwidth=2
-"autocmd FileType htmljinja set tabstop=2|set shiftwidth=2
 autocmd FileType python set tabstop=4|set shiftwidth=4
 autocmd FileType php set tabstop=4|set shiftwidth=4
 autocmd FileType sh set tabstop=4|set shiftwidth=4
 autocmd FileType make set tabstop=4|set shiftwidth=4 noexpandtab
 autocmd FileType haskell set tabstop=8|set shiftwidth=4|set softtabstop=4
 "au BufRead,BufNewFile *.twig set syntax=htmljinja
-"au BufRead,BufNewFile *.html set syntax=htmljinja
 au BufNewFile,BufRead *.yml set filetype=yaml
 au BufNewFile,BufRead *.sls set filetype=yaml
 au BufNewFile,BufRead *.inc set filetype=php
@@ -318,32 +315,6 @@ endif
 "    imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
 "    imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
 "  endfunction
-"endif
-"----------------------------------------------------------------------------------------------------------------------
-
-
-"----------------------------------------------------------------------------------------------------------------------
-" SuperTab Plugin
-"----------------------------------------------------------------------------------------------------------------------
-"if !empty(glob(EditorDir.'/plugged/supertab/plugin/supertab.vim'))
-"  let g:SuperTabMappingForward = '<tab>'
-"  let g:SuperTabMappingBackward = '<s-tab>'
-"  let g:SuperTabLongestHighlight = 0
-"  let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-"endif
-"----------------------------------------------------------------------------------------------------------------------
-
-
-"----------------------------------------------------------------------------------------------------------------------
-" Ultisnips
-"----------------------------------------------------------------------------------------------------------------------
-"if !empty(glob(EditorDir.'/plugged/ultisnips/plugin/UltiSnips.vim'))
-"  let g:UltiSnipsEditSplit="vertical"
-"  let g:UltiSnipsListSnippets="<c-s>"
-"  let g:UltiSnipsExpandTrigger="<tab>"
-"  let g:UltiSnipsJumpForwardTrigger="<c-k>"
-"  let g:UltiSnipsJumpBackwardTrigger="<c-l>"
-"  :command! SNIPS tabnew ~/.config/nvim/plugged/vim-snippets/snippets
 "endif
 "----------------------------------------------------------------------------------------------------------------------
 
