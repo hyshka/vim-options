@@ -162,6 +162,7 @@ autocmd FileType php set tabstop=4|set shiftwidth=4
 autocmd FileType sh set tabstop=4|set shiftwidth=4
 autocmd FileType make set tabstop=4|set shiftwidth=4 noexpandtab
 autocmd FileType haskell set tabstop=8|set shiftwidth=4|set softtabstop=4
+autocmd FileType scss set tabstop=2|set shiftwidth=2
 "au BufRead,BufNewFile *.twig set syntax=htmljinja
 au BufNewFile,BufRead *.yml set filetype=yaml
 au BufNewFile,BufRead *.sls set filetype=yaml
