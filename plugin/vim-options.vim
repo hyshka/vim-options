@@ -196,6 +196,9 @@ let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-tomorrow
 set background=light
 
+"" highlight colorcolumn markers
+"hi ColorColumn ctermbg=18
+
 "" Highligh current cursorline
 "hi CursorLineNR cterm=bold ctermfg=226
 hi CursorLineNR cterm=bold
