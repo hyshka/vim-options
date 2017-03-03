@@ -27,6 +27,7 @@ set splitbelow " Vertical  Splits go underneath
 set hidden " Don't abandon buffers when switching between them
 set cursorline " highlight current line
 "set sessionoptions+=tabpages,globals " Include tab names in sessions
+set colorcolumn=80,120 " display colored column at these line lengths
 
 " Custom status line
 set statusline=
