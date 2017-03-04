@@ -201,6 +201,9 @@ cnoremap <leader>T <CR>:t''<CR>ddkP
 cnoremap <leader>m <CR>:m''<CR>
 cnoremap <leader>M <CR>:m''<CR>ddkP
 cnoremap <leader>d <CR>:d<CR>``
+
+" clever tab
+inoremap <Tab> <C-R>=CleverTab()<CR>
 "----------------------------------------------------------------------------------------------------------------------
 
 "----------------------------------------------------------------------------------------------------------------------
@@ -225,6 +228,16 @@ function! MyStatusLine()
 	" File progress
 	let statusline .= "| %P/%L"
 	return statusline
+endfunction
+
+" Taken from ins-completion docs. Tab if only whitespace, autocomplete if
+" there is text
+function! CleverTab()
+	if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+    return "\<Tab>"
+  else
+    return "\<C-N>"
+  endif
 endfunction
 "----------------------------------------------------------------------------------------------------------------------
 
@@ -328,9 +341,9 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 " Python-Syntax
 "----------------------------------------------------------------------------------------------------------------------
-"if !empty(glob(EditorDir.'/plugged/python-syntax/syntax/python.vim'))
-"  let python_highlight_all = 1
-"endif
+if !empty(glob(EditorDir.'/plugged/python-syntax/syntax/python.vim'))
+  let python_highlight_all = 1
+endif
 "----------------------------------------------------------------------------------------------------------------------
 
 
@@ -382,9 +395,9 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 " Markdown
 "----------------------------------------------------------------------------------------------------------------------
-"if !empty(glob(EditorDir.'/plugged/vim-markdown/indent/markdown.vim'))
-"  let g:vim_markdown_folding_disabled=1
-"endif
+if !empty(glob(EditorDir.'/plugged/vim-markdown/indent/markdown.vim'))
+  let g:vim_markdown_folding_disabled=1
+endif
 "----------------------------------------------------------------------------------------------------------------------
 
 
@@ -405,40 +418,22 @@ endif
 
 
 "----------------------------------------------------------------------------------------------------------------------
-" Dash
-"----------------------------------------------------------------------------------------------------------------------
-"if !empty(glob(EditorDir.'/plugged/dash.vim/plugin/dash.vim'))
-"  nnoremap K :Dash<CR>
-"endif
-"----------------------------------------------------------------------------------------------------------------------
-
-
-"----------------------------------------------------------------------------------------------------------------------
-" Deoplete
-"----------------------------------------------------------------------------------------------------------------------
-"if !empty(glob(EditorDir.'/plugged/deoplete.nvim/plugin/deoplete.vim'))
-"  let g:deoplete#enable_at_startup = 1
-"endif
-"----------------------------------------------------------------------------------------------------------------------
-
-
-"----------------------------------------------------------------------------------------------------------------------
 " CamelCaseMotion
 "----------------------------------------------------------------------------------------------------------------------
-"if !empty(glob(EditorDir.'/plugged/CamelCaseMotion/plugin/camelcasemotion.vim'))
-"  map <silent> ,w <Plug>CamelCaseMotion_w
-"  map <silent> ,e <Plug>CamelCaseMotion_e
-"  map <silent> ,b <Plug>CamelCaseMotion_b
-"endif
+if !empty(glob(EditorDir.'/plugged/CamelCaseMotion/plugin/camelcasemotion.vim'))
+  map <silent> ,w <Plug>CamelCaseMotion_w
+  map <silent> ,e <Plug>CamelCaseMotion_e
+  map <silent> ,b <Plug>CamelCaseMotion_b
+endif
 "----------------------------------------------------------------------------------------------------------------------
 
 
 "----------------------------------------------------------------------------------------------------------------------
 " Vim JSON
 "----------------------------------------------------------------------------------------------------------------------
-"if !empty(glob(EditorDir.'/plugged/vim-json/indent/json.vim'))
-"  let g:vim_json_syntax_conceal = 0
-"endif
+if !empty(glob(EditorDir.'/plugged/vim-json/indent/json.vim'))
+  let g:vim_json_syntax_conceal = 0
+endif
 "----------------------------------------------------------------------------------------------------------------------
 
 
@@ -463,29 +458,27 @@ endif
 " Syntastic
 "----------------------------------------------------------------------------------------------------------------------
 if !empty(glob(EditorDir.'/plugged/syntastic/plugin/syntastic.vim'))
-"  "let g:syntastic_php_checkers = ['php', 'phpcs']
-"  "let g:syntastic_php_phpcs_args = "--standard=".$HOME."/PEARish.xml,PSR2,Symfony2"
   let g:syntastic_javascript_checkers = ['eslint']
   let g:syntastic_scss_checkers = ['sass_lint']
   let g:syntastic_always_populate_loc_list = 1
   let g:syntastic_auto_loc_list = 0
   let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 0
-"  let g:syntastic_aggregate_errors = 1
-"  let g:syntastic_mode_map = { 'mode': 'active' }
-"function! ToggleSyntasticMode()
-"python << EOF
-"import vim
-"import ast
-"value = dict(vim.eval('g:syntastic_mode_map'))
-"vim.command('let l:syntastic_current_mode = \''+value['mode']+'\'')
-"EOF
-"SyntasticToggleMode
-"if l:syntastic_current_mode == 'passive'
-"SyntasticCheck
-"endif
-"endfunction
-"  nnoremap <leader>s :call ToggleSyntasticMode()<CR>
+  let g:syntastic_check_on_wq = 1
+	let g:syntastic_aggregate_errors = 1
+	let g:syntastic_mode_map = { 'mode': 'active' }
+	function! ToggleSyntasticMode()
+python << EOF
+import vim
+import ast
+value = dict(vim.eval('g:syntastic_mode_map'))
+vim.command('let l:syntastic_current_mode = \''+value['mode']+'\'')
+EOF
+		SyntasticToggleMode
+		if l:syntastic_current_mode == 'passive'
+			SyntasticCheck
+		endif
+	endfunction
+	nnoremap <leader>s :call ToggleSyntasticMode()<CR>
 endif
 "----------------------------------------------------------------------------------------------------------------------
 
@@ -501,19 +494,6 @@ if !empty(glob(EditorDir.'/plugged/vim-togglelist/plugin/togglelist.vim'))
   let g:toggle_list_no_mappings = 1
   nmap <script> <silent> <leader>l :call ToggleLocationList()<CR>
 endif
-"----------------------------------------------------------------------------------------------------------------------
-
-
-"----------------------------------------------------------------------------------------------------------------------
-" SimplyFold
-"----------------------------------------------------------------------------------------------------------------------
-"if !empty(glob(EditorDir.'/plugged/SimpylFold/ftplugin/python/SimpylFold.vim'))
-"  let g:SimpylFold_docstring_preview = 1
-"  " Needed for some issues
-"  autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
-"  autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
-"  nnoremap <space>a za
-"endif
 "----------------------------------------------------------------------------------------------------------------------
 
 
