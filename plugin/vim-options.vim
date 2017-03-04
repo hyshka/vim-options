@@ -501,8 +501,17 @@ endif
 " Colorizer
 "----------------------------------------------------------------------------------------------------------------------
 if !empty(glob(EditorDir.'/plugged/colorizer/plugin/ColorizerPlugin.vim'))
-  let g:colorizer_auto_filetype='css,scss,sass,less' " only colorize these extensions
+  let g:colorizer_auto_filetype='css,scss,sass' " only colorize these extensions
   "let g:colorizer_colornames = 0
+endif
+"----------------------------------------------------------------------------------------------------------------------
+
+
+"----------------------------------------------------------------------------------------------------------------------
+" Javascript Library Syntax
+"----------------------------------------------------------------------------------------------------------------------
+if !empty(glob(EditorDir.'/plugged/javascript-libraries-syntax.vim/autoload/jslibsyntax.vim'))
+	let g:used_javascript_libs = 'jquery,vue'
 endif
 "----------------------------------------------------------------------------------------------------------------------
 
