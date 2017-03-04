@@ -8,34 +8,59 @@ let mapleader="\\" " Set map leader
 set nocompatible " Vim is non-compatible with vi. Neovim ignores this
 set hlsearch " After a '/' search, highlight the matches
 
-" Regular settings
-set path=** " Set path to look at all directories under current root
-set wildignore=*/app/cache,*/vendor,*/env,*.pyc,*/venv,*/__pycache__ " Ignore useless files
-"set omnifunc=syntaxcomplete#Complete " Set Autocomplete
-set expandtab " Expand tabs into spaces
-set tabstop=2 " Number of space that tab counts for
-set shiftwidth=2 " Number of spaces for each autoindent
-"set textwidth=0 " Maximium width of text that is being inserted. 0 disables it
-"set cindent " Get ammount of indent according to C indent rules
-set relativenumber " Use relative numbers
-set number " Show line numbers
-set nowrap " Turn off TextWrapping
-set completeopt=menu,preview,noinsert " Autocomplete options
-set wildmode=list:longest,full " Completion mode for wildchar
+" For clever completion with the :find command
+set path+=**
+
+" Always use bash syntax for sh filetype
+let g:is_bash=1
+
+" Search
+set ignorecase smartcase
+set grepprg=grep\ -IrsnH
+
+" Splits
 set splitright " Horizontal Splits go to the right
 set splitbelow " Vertical  Splits go underneath
+
+" Buffers
 set hidden " Don't abandon buffers when switching between them
+
+" Text display
+set list
+
+" Typing behavious
+set showmatch
+set wildmode=list:longest,full " Completion mode for wildchar
+set wildignore=*/app/cache,*/vendor,*/env,*.pyc,*/venv,*/__pycache__ " Ignore useless files
+set completeopt=menu,preview,noinsert " Autocomplete options
+
+" Formatting
+set nowrap " Turn off TextWrapping
+set tabstop=2 " Number of space that tab counts for
+set shiftwidth=2 " Number of spaces for each autoindent
+set softtabstop=2
+"set textwidth=0 " Maximium width of text that is being inserted. 0 disables it
+set foldlevelstart=2
+
+" Word splitting
+set iskeyword+=-
+
+" Line numbers
+set relativenumber " Use relative numbers
+set number " Show line numbers
+
+" Visual aids
 set cursorline " highlight current line
-"set sessionoptions+=tabpages,globals " Include tab names in sessions
 set colorcolumn=80,120 " display colored column at these line lengths
 
 " Custom status line
-set statusline=
-set statusline+=%1*\ %02c\                    "Colnr
-set statusline+=%2*\ »                        "RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
-set statusline+=%3*\ %<%F\                    "File+path
-set statusline+=%2*\«
-set statusline+=%2*\ %=\ %l/%L\ (%02p%%)\             "Rownumber/total (%)
+set statusline=%!MyStatusLine()
+"set statusline=
+"set statusline+=%1*\ %02c\                    "Colnr
+"set statusline+=%2*\ »                        "RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
+"set statusline+=%3*\ %<%F\                    "File+path
+"set statusline+=%2*\«
+"set statusline+=%2*\ %=\ %l/%L\ (%02p%%)\             "Rownumber/total (%)
 
 " Make netrw prettier
 let g:netrw_banner = 0  " Hide the banner
@@ -68,115 +93,107 @@ endif
 
 
 "----------------------------------------------------------------------------------------------------------------------
-" Basic movements (h, j, k, l) require a number prefix. Break bad habits
+" Autocommands
 "----------------------------------------------------------------------------------------------------------------------
-function! DisableIfNonCounted(move) range
-    if v:count
-        return a:move
-    else
-        " You can make this do something annoying like:
-           " echoerr "Count required!"
-           " sleep 2
-        return ""
-    endif
-endfunction
+" Make the modification indicator [+] white on red background
+au ColorScheme * hi User1 gui=bold term=bold cterm=bold guifg=white guibg=red ctermfg=white ctermbg=red
 
-function! SetDisablingOfBasicMotionsIfNonCounted(on)
-    let keys_to_disable = get(g:, "keys_to_disable_if_not_preceded_by_count", ["j", "k", "l", "h"])
-    if a:on
-        for key in keys_to_disable
-            execute "noremap <expr> <silent> " . key . " DisableIfNonCounted('" . key . "')"
-        endfor
-        let g:keys_to_disable_if_not_preceded_by_count = keys_to_disable
-        let g:is_non_counted_basic_motions_disabled = 1
-    else
-        for key in keys_to_disable
-            try
-                execute "unmap " . key
-            catch /E31:/
-            endtry
-        endfor
-        let g:is_non_counted_basic_motions_disabled = 0
-    endif
-endfunction
+" Tweak the color of the fold display column
+au ColorScheme * hi FoldColumn cterm=bold ctermbg=233 ctermfg=146
 
-function! ToggleDisablingOfBasicMotionsIfNonCounted()
-    let is_disabled = get(g:, "is_non_counted_basic_motions_disabled", 0)
-    if is_disabled
-        call SetDisablingOfBasicMotionsIfNonCounted(0)
-    else
-        call SetDisablingOfBasicMotionsIfNonCounted(1)
-    endif
-endfunction
+" Spaces Only
+au FileType swift,mustache,markdown,cpp,hpp,vim,sh,html,htmldjango,css,sass,scss,javascript,coffee,python,ruby,eruby setl expandtab list
 
-command! ToggleDisablingOfNonCountedBasicMotions :call ToggleDisablingOfBasicMotionsIfNonCounted()
-command! DisableNonCountedBasicMotions :call SetDisablingOfBasicMotionsIfNonCounted(1)
-command! EnableNonCountedBasicMotions :call SetDisablingOfBasicMotionsIfNonCounted(0)
+" Tabs Only
+au FileType c,h,make setl foldmethod=syntax noexpandtab nolist
+au FileType gitconfig,apache,sql setl noexpandtab nolist
 
-DisableNonCountedBasicMotions
+" Folding
+au FileType html,htmldjango,css,sass,scss,javascript,coffee,python,ruby,eruby setl foldmethod=indent foldenable
+au FileType json setl foldmethod=indent foldenable shiftwidth=4 softtabstop=4 tabstop=4 expandtab
+
+" Tabstop/Shiftwidth
+au FileType mustache,ruby,eruby,javascript,coffee,sass,scss setl softtabstop=2 shiftwidth=2 tabstop=2
+au FileType rst setl softtabstop=3 shiftwidth=3 tabstop=3
+"au FileType python,sh, setl softtabstop=4 shiftwidth=4 tabstop=4
+
+" Other
+au FileType python let b:python_highlight_all=1
+au FileType markdown setl linebreak
+
+" Old
+"au BufNewFile,BufRead *.yml set filetype=yaml
+"au BufNewFile,BufRead *.sls set filetype=yaml
+"au BufRead,BufNewFile *.md set filetype=markdown
 "----------------------------------------------------------------------------------------------------------------------
-
 
 "----------------------------------------------------------------------------------------------------------------------
 " Custom Mappings
 "----------------------------------------------------------------------------------------------------------------------
+
+" Run shell command
+" ... and print output
+nnoremap <C-h> :.w !bash<CR>
+" ... and append output
+nnoremap <C-l> yyp!!bash<CR>
+
+" Select the stuff I just pasted
+nnoremap gV `[V`]
+
+" Change indent continuously
+vmap < <gv
+vmap > >gv
+
+" camelCase => camel_case
+vnoremap ,case :s/\v\C(([a-z]+)([A-Z]))/\2_\l\3/g<CR>
+
+" Diff Mode
+nnoremap <silent> ,j :if &diff \| exec 'normal ]czz' \| endif<CR>
+nnoremap <silent> ,k :if &diff \| exec 'normal [czz' \| endif<CR>
+nnoremap <silent> ,p :if &diff \| exec 'normal dp' \| endif<CR>
+nnoremap <silent> ,o :if &diff \| exec 'normal do' \| endif<CR>
+nnoremap <silent> ZD :if &diff \| exec ':qall' \| endif<CR>
+
+" Insert timestamp
+nnoremap <C-d> "=strftime("%-l:%M%p")<CR>P
+inoremap <C-d> <C-r>=strftime("%-l:%M%p")<CR>
+
 " Turn off syntax highlighting
 nnoremap <leader><space> :noh<CR>
+
 " Hardcore Mode
 noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
 " Highlighting in vim leaves your cursor wherever you ended at
 :vmap y ygv<ESC>
+
 " Formating a json file
 com! Formatjson %!python -m json.tool
+
 " Command for figuring out highlight group
 map <leader>hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
+
 " Faster saving
 noremap <leader>w :update<CR>
 " Faster quiting
 noremap <leader>q :quit!<CR>
-" Visually select pasted text
-nnoremap gp `[v`]
+
 " Yank without newline
 nmap yY ^y$
+
 " Window switching
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-]> <C-w><C-]>
+
 " Create the `tags` file (may need to install ctags first)
 command! MakeTags !ctags -R .
-"----------------------------------------------------------------------------------------------------------------------
 
-
-"----------------------------------------------------------------------------------------------------------------------
-" FileType Options
-"----------------------------------------------------------------------------------------------------------------------
-au FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null " File ident on xml files
-autocmd FileType html set tabstop=2|set shiftwidth=2
-autocmd FileType htmldjango set tabstop=2|set shiftwidth=2
-autocmd FileType python set tabstop=4|set shiftwidth=4
-autocmd FileType php set tabstop=4|set shiftwidth=4
-autocmd FileType sh set tabstop=4|set shiftwidth=4
-autocmd FileType make set tabstop=4|set shiftwidth=4 noexpandtab
-autocmd FileType haskell set tabstop=8|set shiftwidth=4|set softtabstop=4
-autocmd FileType scss set tabstop=2|set shiftwidth=2
-"au BufRead,BufNewFile *.twig set syntax=htmljinja
-au BufNewFile,BufRead *.yml set filetype=yaml
-au BufNewFile,BufRead *.sls set filetype=yaml
-au BufNewFile,BufRead *.inc set filetype=php
-au BufNewFile,BufRead *.module set filetype=php
-"au BufRead,BufNewFile *.ejs set syntax=htmljinja
-au BufRead,BufNewFile *.md set filetype=markdown
-"----------------------------------------------------------------------------------------------------------------------
-
-
-"----------------------------------------------------------------------------------------------------------------------
-" Window Mappings
-"----------------------------------------------------------------------------------------------------------------------
 nnoremap <C-w>t :tabnew<CR>
 " allows incsearch highlighting for range commands
 cnoremap <leader>t <CR>:t''<CR>
@@ -186,6 +203,30 @@ cnoremap <leader>M <CR>:m''<CR>ddkP
 cnoremap <leader>d <CR>:d<CR>``
 "----------------------------------------------------------------------------------------------------------------------
 
+"----------------------------------------------------------------------------------------------------------------------
+" Custom Functions
+"----------------------------------------------------------------------------------------------------------------------
+function! MyStatusLine()
+	let statusline = ""
+	" Filename (F -> full, f -> relative)
+	let statusline .= "%f"
+	" Buffer flags
+	let statusline .= "%( %h%1*%m%*%r%w%) "
+	" File format and type
+	let statusline .= "(%{&ff}%(\/%Y%))"
+	" Left/right separator
+	let statusline .= "%="
+	" Line & column
+	let statusline .= "(%l,%c%V) "
+	" Character under cursor (decimal)
+	let statusline .= "%03.3b "
+	" Character under cursor (hexadecimal)
+	let statusline .= "0x%02.2B "
+	" File progress
+	let statusline .= "| %P/%L"
+	return statusline
+endfunction
+"----------------------------------------------------------------------------------------------------------------------
 
 "----------------------------------------------------------------------------------------------------------------------
 " Color/Theming Options
@@ -240,15 +281,6 @@ endif
 
 
 "----------------------------------------------------------------------------------------------------------------------
-" Emmet Plugin
-"----------------------------------------------------------------------------------------------------------------------
-"if !empty(glob(EditorDir.'/plugged/emmet-vim/plugin/emmet.vim'))
-  "let g:use_emmet_complete_tag = 1
-"endif
-"----------------------------------------------------------------------------------------------------------------------
-
-
-"----------------------------------------------------------------------------------------------------------------------
 " Indent Lines Plugin
 "----------------------------------------------------------------------------------------------------------------------
 if !empty(glob(EditorDir.'/plugged/indentline/after/plugin/indentLine.vim'))
@@ -263,64 +295,6 @@ if !empty(glob(EditorDir.'/plugged/indentline/after/plugin/indentLine.vim'))
   let g:indentLine_char = '' " using our patched font
   nnoremap <leader>ig :IndentLinesToggle<CR>
 endif
-"----------------------------------------------------------------------------------------------------------------------
-
-
-"----------------------------------------------------------------------------------------------------------------------
-" Vdebug Plugin
-"----------------------------------------------------------------------------------------------------------------------
-"if !empty(glob(EditorDir.'/plugged/vdebug/plugin/vdebug.vim'))
-  "let g:vdebug_options = {
-  "\    "watch_window_style" : 'compact',
-  "\    "port" : 9000,
-  "\    "path_maps" : {
-  "\         "/vagrant": "/Users/codyhiar/Sites",
-  "\         "/var/www/html": "/Users/hiarc/Sites/inv/redis-api",
-  "\         "/ask/sites/investopedia.com/web": "/src",
-  "\         "/ask/sites/inv-taxonomy-service": "/src",
-  "\     },
-  "\}
-  ""Delete all breakpoints
-  ":command! BR BreakpointRemove *
-"endif
-"----------------------------------------------------------------------------------------------------------------------
-
-
-"----------------------------------------------------------------------------------------------------------------------
-" Unite Plugin
-"----------------------------------------------------------------------------------------------------------------------
-"if !empty(glob(EditorDir.'/plugged/unite.vim/plugin/unite.vim'))
-"  let g:unite_enable_start_insert = 1
-"  let g:unite_split_rule = "botright"
-"  let g:unite_force_overwrite_statusline = 0
-"  let g:unite_winheight = 10
-"  let g:unite_source_history_yank_enable = 1
-"  let g:unite_source_rec_max_cache_files=5000
-"  let g:unite_source_rec_async_command =
-"  \ ['ack', '-f', '--nofilter']
-"  " Check to see if the plugin is loaded before callinging
-"  if exists('g:loaded_unite')
-"      call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-"            \ 'ignore_pattern', join([
-"            \ '\.git/',
-"            \ ], '\|'))
-"      call unite#filters#matcher_default#use(['matcher_fuzzy'])
-"      call unite#filters#sorter_default#use(['sorter_rank'])
-"  endif
-"  nnoremap <space>s :<C-u>Unite -buffer-name=buffer buffer -winheight=40<cr>
-"  nnoremap <space>y :<C-u>Unite -buffer-name=yank history/yank -quick-match -max-multi-lines=1 -winheight=40<cr>
-"  " Custom mappings for the unite buffer
-"  autocmd FileType unite call s:unite_settings()
-"  function! s:unite_settings()
-"    " Enable navigation with control-j and control-k in insert mode
-"    let b:SuperTabDisabled=1
-"    imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-"    imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-"    imap <silent><buffer><expr> <C-x> unite#do_action('split')
-"    imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-"    imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
-"  endfunction
-"endif
 "----------------------------------------------------------------------------------------------------------------------
 
 
@@ -364,6 +338,17 @@ endif
 " CtrlP Plugin
 "----------------------------------------------------------------------------------------------------------------------
 if !empty(glob(EditorDir.'/plugged/ctrlp.vim/plugin/ctrlp.vim'))
+
+	" Making ctrl-p better and faster
+	if executable('ag')
+		let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+		let g:ackprg = 'ag --vimgrep'
+	endif
+	let g:ctrlp_clear_cache_on_exit = 0
+	let g:ctrlp_cache_dir = './.vimcache/ctrlp'
+	let g:ctrlp_map = '<Space>p'
+	let g:syntastic_python_python_exec = '/usr/bin/python3'
+
   let g:ctrlp_working_path_mode = 'a'
 "  let g:ctrlp_status_func = {
 "    \ 'main': 'CtrlP_main_status',
@@ -539,4 +524,54 @@ if !empty(glob(EditorDir.'/plugged/colorizer/plugin/ColorizerPlugin.vim'))
   let g:colorizer_auto_filetype='css,scss,sass,less' " only colorize these extensions
   "let g:colorizer_colornames = 0
 endif
+"----------------------------------------------------------------------------------------------------------------------
+
+
+"----------------------------------------------------------------------------------------------------------------------
+" Basic movements (h, j, k, l) require a number prefix. Break bad habits
+"----------------------------------------------------------------------------------------------------------------------
+function! DisableIfNonCounted(move) range
+    if v:count
+        return a:move
+    else
+        " You can make this do something annoying like:
+           " echoerr "Count required!"
+           " sleep 2
+        return ""
+    endif
+endfunction
+
+function! SetDisablingOfBasicMotionsIfNonCounted(on)
+    let keys_to_disable = get(g:, "keys_to_disable_if_not_preceded_by_count", ["j", "k", "l", "h"])
+    if a:on
+        for key in keys_to_disable
+            execute "noremap <expr> <silent> " . key . " DisableIfNonCounted('" . key . "')"
+        endfor
+        let g:keys_to_disable_if_not_preceded_by_count = keys_to_disable
+        let g:is_non_counted_basic_motions_disabled = 1
+    else
+        for key in keys_to_disable
+            try
+                execute "unmap " . key
+            catch /E31:/
+            endtry
+        endfor
+        let g:is_non_counted_basic_motions_disabled = 0
+    endif
+endfunction
+
+function! ToggleDisablingOfBasicMotionsIfNonCounted()
+    let is_disabled = get(g:, "is_non_counted_basic_motions_disabled", 0)
+    if is_disabled
+        call SetDisablingOfBasicMotionsIfNonCounted(0)
+    else
+        call SetDisablingOfBasicMotionsIfNonCounted(1)
+    endif
+endfunction
+
+command! ToggleDisablingOfNonCountedBasicMotions :call ToggleDisablingOfBasicMotionsIfNonCounted()
+command! DisableNonCountedBasicMotions :call SetDisablingOfBasicMotionsIfNonCounted(1)
+command! EnableNonCountedBasicMotions :call SetDisablingOfBasicMotionsIfNonCounted(0)
+
+DisableNonCountedBasicMotions
 "----------------------------------------------------------------------------------------------------------------------
