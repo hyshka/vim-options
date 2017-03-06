@@ -352,15 +352,15 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 if !empty(glob(EditorDir.'/plugged/ctrlp.vim/plugin/ctrlp.vim'))
 
-	" Making ctrl-p better and faster
-	if executable('ag')
-		let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-		let g:ackprg = 'ag --vimgrep'
-	endif
-	let g:ctrlp_clear_cache_on_exit = 0
-	let g:ctrlp_cache_dir = './.vimcache/ctrlp'
-	let g:ctrlp_map = '<Space>p'
-	let g:syntastic_python_python_exec = '/usr/bin/python3'
+  " Making ctrl-p better and faster
+  if executable('ag')
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+    let g:ackprg = 'ag --vimgrep'
+  endif
+  let g:ctrlp_clear_cache_on_exit = 0
+  let g:ctrlp_cache_dir = './.vimcache/ctrlp'
+  let g:ctrlp_map = '<Space>p'
+  let g:syntastic_python_python_exec = '/usr/bin/python3'
 
   let g:ctrlp_working_path_mode = 'a'
 "  let g:ctrlp_status_func = {
