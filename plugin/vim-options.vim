@@ -206,7 +206,7 @@ cnoremap <leader>d <CR>:d<CR>``
 inoremap <Tab> <C-R>=CleverTab()<CR>
 
 " Use <C-L> to clear the highlighting of :set hlsearch.
-nnoremap <C-S-c> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-S-c>
+nnoremap <C-S> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-S>
 "----------------------------------------------------------------------------------------------------------------------
 
 "----------------------------------------------------------------------------------------------------------------------
