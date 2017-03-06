@@ -155,8 +155,8 @@ nnoremap <silent> ,o :if &diff \| exec 'normal do' \| endif<CR>
 nnoremap <silent> ZD :if &diff \| exec ':qall' \| endif<CR>
 
 " Insert timestamp
-nnoremap <C-d> "=strftime("%-l:%M%p")<CR>P
-inoremap <C-d> <C-r>=strftime("%-l:%M%p")<CR>
+"nnoremap <C-d> "=strftime("%-l:%M%p")<CR>P
+"inoremap <C-d> <C-r>=strftime("%-l:%M%p")<CR>
 
 " Turn off syntax highlighting
 nnoremap <leader><space> :noh<CR>
