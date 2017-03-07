@@ -209,7 +209,7 @@ inoremap <Tab> <C-R>=CleverTab()<CR>
 nnoremap <C-S> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-S>
 
 " Toggle linenumbers
-nnoremap <leader>gn :set number! relativenumber!
+nnoremap <leader>gn :set number! relativenumber!<CR>
 "----------------------------------------------------------------------------------------------------------------------
 
 "----------------------------------------------------------------------------------------------------------------------
