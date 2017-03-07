@@ -76,15 +76,15 @@ let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' " Hide dotfiles
 "----------------------------------------------------------------------------------------------------------------------
 if has('nvim')
   let EditorDir=$HOME.'/.config/nvim/'
-	silent! execute '!mkdir -p .vimcache/backup'
-	" Set Backup dirs
-	set backupdir=.vimcache/backup/
-	set directory=.vimcache/swp/
+  silent! execute '!mkdir -p .vimcache/backup'
+  " Set Backup dirs
+  set backupdir=.vimcache/backup/
+  set directory=.vimcache/swp/
   "let g:syntastic_python_python_exec = '/usr/bin/python3'
 else
   " Vim Options
   let EditorDir=$HOME.'/.vim/'
-	" Set Backup dirs
+  " Set Backup dirs
   set backupdir=~/.vim/vim-files/backups/
   set directory=~/.vim/vim-files/swaps/
   "let g:vimwiki_list = [{'path': '~/Wiki/wiki', 'path_html': '~/Wiki/wiki_html/', 'ext': '.markdown'}]
@@ -216,30 +216,30 @@ nnoremap <leader>gn :set number! relativenumber!<CR>
 " Custom Functions
 "----------------------------------------------------------------------------------------------------------------------
 function! MyStatusLine()
-	let statusline = ""
-	" Filename (F -> full, f -> relative)
-	let statusline .= "%f"
-	" Buffer flags
-	let statusline .= "%( %h%1*%m%*%r%w%) "
-	" File format and type
-	let statusline .= "(%{&ff}%(\/%Y%))"
-	" Left/right separator
-	let statusline .= "%="
-	" Line & column
-	let statusline .= "(%l,%c%V) "
-	" Character under cursor (decimal)
-	let statusline .= "%03.3b "
-	" Character under cursor (hexadecimal)
-	let statusline .= "0x%02.2B "
-	" File progress
-	let statusline .= "| %P/%L"
-	return statusline
+  let statusline = ""
+  " Filename (F -> full, f -> relative)
+  let statusline .= "%f"
+  " Buffer flags
+  let statusline .= "%( %h%1*%m%*%r%w%) "
+  " File format and type
+  let statusline .= "(%{&ff}%(\/%Y%))"
+  " Left/right separator
+  let statusline .= "%="
+  " Line & column
+  let statusline .= "(%l,%c%V) "
+  " Character under cursor (decimal)
+  let statusline .= "%03.3b "
+  " Character under cursor (hexadecimal)
+  let statusline .= "0x%02.2B "
+  " File progress
+  let statusline .= "| %P/%L"
+  return statusline
 endfunction
 
 " Taken from ins-completion docs. Tab if only whitespace, autocomplete if
 " there is text
 function! CleverTab()
-	if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
+  if strpart( getline('.'), 0, col('.')-1 ) =~ '^\s*$'
     return "\<Tab>"
   else
     return "\<C-N>"
@@ -357,42 +357,16 @@ endif
 " CtrlP Plugin
 "----------------------------------------------------------------------------------------------------------------------
 if !empty(glob(EditorDir.'/plugged/ctrlp.vim/plugin/ctrlp.vim'))
-
   " Making ctrl-p better and faster
-  if executable('ag')
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-    let g:ackprg = 'ag --vimgrep'
-  endif
+  "if executable('ag')
+  "  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  "  let g:ackprg = 'ag --vimgrep'
+  "endif
   let g:ctrlp_clear_cache_on_exit = 0
   let g:ctrlp_cache_dir = './.vimcache/ctrlp'
   let g:ctrlp_map = '<Space>p'
-  let g:syntastic_python_python_exec = '/usr/bin/python3'
-
   let g:ctrlp_working_path_mode = 'a'
-"  let g:ctrlp_status_func = {
-"    \ 'main': 'CtrlP_main_status',
-"    \ 'prog': 'CtrlP_progress_status',
-"    \ }
-  let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-"  " Arguments: focus, byfname, s:regexp, prv, item, nxt, marked
-"  "            a:1    a:2      a:3       a:4  a:5   a:6  a:7
-"  fu! CtrlP_main_status(...)
-"    let regex = a:3 ? '%#CtrlP_Violet#regex %*' : ''
-"    let prv = '%#CtrlP_Purple# '.a:4.' %*'
-"    let item = '%#CtrlP_IPurple# '.a:5.' %*'
-"    let nxt = '%#CtrlP_Purple# '.a:6.' %*'
-"    let byfname = '%#CtrlP_Violet# '.a:2.' %*'
-"    let dir = '%#CtrlP_Purple# '.fnamemodify(getcwd(), ':~').' %*'
-"    retu prv . item . nxt . '%#CtrlP_Violet#%=%*%<' . byfname . regex . dir
-"  endf
-"  fu! CtrlP_progress_status(...)
-"    let len = '%#Function# '.a:1.' %*'
-"    let dir = ' %=%<%#LineNr# '.getcwd().' %*'
-"    retu len.dir
-"  endf
-"  hi CtrlP_Purple  ctermfg=7 ctermbg=4
-"  hi CtrlP_IPurple ctermfg=4  ctermbg=7
-"  hi CtrlP_Violet  ctermfg=7  ctermbg=8
+  let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git'
   nnoremap <Space>b :CtrlPBuffer<CR>
 endif
 "----------------------------------------------------------------------------------------------------------------------
@@ -470,21 +444,22 @@ if !empty(glob(EditorDir.'/plugged/syntastic/plugin/syntastic.vim'))
   let g:syntastic_auto_loc_list = 0
   let g:syntastic_check_on_open = 1
   let g:syntastic_check_on_wq = 1
-	let g:syntastic_aggregate_errors = 1
-	let g:syntastic_mode_map = { 'mode': 'active' }
-	function! ToggleSyntasticMode()
+  let g:syntastic_aggregate_errors = 1
+  let g:syntastic_python_python_exec = '/usr/bin/python3'
+  let g:syntastic_mode_map = { 'mode': 'active' }
+  function! ToggleSyntasticMode()
 python << EOF
 import vim
 import ast
 value = dict(vim.eval('g:syntastic_mode_map'))
 vim.command('let l:syntastic_current_mode = \''+value['mode']+'\'')
 EOF
-		SyntasticToggleMode
-		if l:syntastic_current_mode == 'passive'
-			SyntasticCheck
-		endif
-	endfunction
-	nnoremap <leader>s :call ToggleSyntasticMode()<CR>
+    SyntasticToggleMode
+    if l:syntastic_current_mode == 'passive'
+      SyntasticCheck
+    endif
+  endfunction
+  nnoremap <leader>s :call ToggleSyntasticMode()<CR>
 endif
 "----------------------------------------------------------------------------------------------------------------------
 
@@ -517,7 +492,7 @@ endif
 " Javascript Library Syntax
 "----------------------------------------------------------------------------------------------------------------------
 if !empty(glob(EditorDir.'/plugged/javascript-libraries-syntax.vim/autoload/jslibsyntax.vim'))
-	let g:used_javascript_libs = 'jquery,vue'
+  let g:used_javascript_libs = 'jquery,vue'
 endif
 "----------------------------------------------------------------------------------------------------------------------
 
