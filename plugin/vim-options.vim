@@ -1,12 +1,12 @@
 "----------------------------------------------------------------------------------------------------------------------
 " User Preferences
 "----------------------------------------------------------------------------------------------------------------------
-filetype plugin on " Enable netrw plugin
-let mapleader="\\" " Set map leader
-
 " Vim options that neovim has turned on but vim has off/ignores
 set nocompatible " Vim is non-compatible with vi. Neovim ignores this
 set hlsearch " After a '/' search, highlight the matches
+
+" Set custom leader key
+let mapleader="\\" " Set map leader
 
 " For clever completion with the :find command
 set path+=**
@@ -55,14 +55,9 @@ set colorcolumn=80,120 " display colored column at these line lengths
 
 " Custom status line
 set statusline=%!MyStatusLine()
-"set statusline=
-"set statusline+=%1*\ %02c\                    "Colnr
-"set statusline+=%2*\ »                        "RIGHT-POINTING DOUBLE ANGLE QUOTATION MARK
-"set statusline+=%3*\ %<%F\                    "File+path
-"set statusline+=%2*\«
-"set statusline+=%2*\ %=\ %l/%L\ (%02p%%)\             "Rownumber/total (%)
 
 " Make netrw prettier
+filetype plugin on " Enable netrw plugin
 let g:netrw_banner = 0  " Hide the banner
 "let g:netrw_browse_split=4  " open in prior window
 let g:netrw_altv=1          " open splits to the right
@@ -80,7 +75,6 @@ if has('nvim')
   " Set Backup dirs
   set backupdir=.vimcache/backup/
   set directory=.vimcache/swp/
-  "let g:syntastic_python_python_exec = '/usr/bin/python3'
 else
   " Vim Options
   let EditorDir=$HOME.'/.vim/'
@@ -205,7 +199,7 @@ cnoremap <leader>d <CR>:d<CR>``
 " clever tab
 inoremap <Tab> <C-R>=CleverTab()<CR>
 
-" Use <C-L> to clear the highlighting of :set hlsearch.
+" Use <C-S> to clear the highlighting of :set hlsearch.
 nnoremap <C-S> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-S>
 
 " Toggle linenumbers
@@ -364,7 +358,7 @@ if !empty(glob(EditorDir.'/plugged/ctrlp.vim/plugin/ctrlp.vim'))
   "endif
   let g:ctrlp_clear_cache_on_exit = 0
   let g:ctrlp_cache_dir = './.vimcache/ctrlp'
-  let g:ctrlp_map = '<Space>p'
+  let g:ctrlp_map = '<leader>p'
   let g:ctrlp_working_path_mode = 'a'
   let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git'
   nnoremap <Space>b :CtrlPBuffer<CR>
@@ -470,7 +464,7 @@ endif
 if !empty(glob(EditorDir.'/plugged/vim-togglelist/plugin/togglelist.vim'))
   noremap <leader>[ :lprevious<CR>
   noremap <leader>] :lnext<CR>
-  noremap <leader>p :ll<CR>
+  "noremap <leader>p :ll<CR>
   " Disable the mapping it overwrites leader q
   let g:toggle_list_no_mappings = 1
   nmap <script> <silent> <leader>l :call ToggleLocationList()<CR>
