@@ -207,6 +207,9 @@ inoremap <Tab> <C-R>=CleverTab()<CR>
 
 " Use <C-L> to clear the highlighting of :set hlsearch.
 nnoremap <C-S> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-S>
+
+" Toggle linenumbers
+nnoremap <leader>gn :set number! relativenumber!
 "----------------------------------------------------------------------------------------------------------------------
 
 "----------------------------------------------------------------------------------------------------------------------
