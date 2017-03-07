@@ -358,7 +358,7 @@ if !empty(glob(EditorDir.'/plugged/ctrlp.vim/plugin/ctrlp.vim'))
   "endif
   let g:ctrlp_clear_cache_on_exit = 0
   let g:ctrlp_cache_dir = './.vimcache/ctrlp'
-  let g:ctrlp_map = '<leader>p'
+  let g:ctrlp_map = '<Space>p'
   let g:ctrlp_working_path_mode = 'a'
   let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git'
   nnoremap <Space>b :CtrlPBuffer<CR>
@@ -464,7 +464,7 @@ endif
 if !empty(glob(EditorDir.'/plugged/vim-togglelist/plugin/togglelist.vim'))
   noremap <leader>[ :lprevious<CR>
   noremap <leader>] :lnext<CR>
-  "noremap <leader>p :ll<CR>
+  noremap <leader>p :ll<CR>
   " Disable the mapping it overwrites leader q
   let g:toggle_list_no_mappings = 1
   nmap <script> <silent> <leader>l :call ToggleLocationList()<CR>
