@@ -205,6 +205,9 @@ nnoremap <C-S> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-S>
 
 " Toggle linenumbers
 nnoremap <leader>gn :set number! relativenumber!<CR>
+
+" Shortcut for find command
+nnoremap <leader>f :find 
 "----------------------------------------------------------------------------------------------------------------------
 
 "----------------------------------------------------------------------------------------------------------------------
