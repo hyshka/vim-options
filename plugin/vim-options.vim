@@ -107,6 +107,9 @@ au FileType json setl shiftwidth=4 softtabstop=4 tabstop=4
 au FileType python let b:python_highlight_all=1
 au FileType markdown setl linebreak
 
+" Commentstrings
+autocmd FileType htmldjango setlocal commentstring={#\ %s\ #}
+
 " Old
 "au BufNewFile,BufRead *.yml set filetype=yaml
 "au BufNewFile,BufRead *.sls set filetype=yaml
