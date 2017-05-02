@@ -51,18 +51,10 @@ set number " Show line numbers
 
 " Visual aids
 set cursorline " highlight current line
-set colorcolumn=80,120 " display colored column at these line lengths
+set colorcolumn=120 " display colored column at these line lengths
 
 " Custom status line
 set statusline=%!MyStatusLine()
-
-" Make netrw prettier
-filetype plugin on " Enable netrw plugin
-let g:netrw_banner = 0  " Hide the banner
-"let g:netrw_browse_split=4  " open in prior window
-let g:netrw_altv=1          " open splits to the right
-let g:netrw_liststyle = 3     " Tree view
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+' " Hide dotfiles
 "----------------------------------------------------------------------------------------------------------------------
 
 
@@ -96,19 +88,18 @@ au ColorScheme * hi User1 gui=bold term=bold cterm=bold guifg=white guibg=red ct
 au ColorScheme * hi FoldColumn cterm=bold ctermbg=233 ctermfg=146
 
 " Spaces Only
-au FileType swift,mustache,markdown,cpp,hpp,vim,sh,html,htmldjango,css,sass,scss,javascript,coffee,json,python,ruby,eruby setl expandtab list
+au FileType markdown,cpp,vim,sh,html,htmldjango,css,sass,scss,javascript,json,python setl expandtab list
 
 " Tabs Only
 au FileType c,h,make setl foldmethod=syntax noexpandtab nolist
 au FileType gitconfig,apache,sql setl noexpandtab nolist
 
 " Folding
-"au FileType html,htmldjango,css,sass,scss,javascript,coffee,python,ruby,eruby,json setl foldmethod=indent foldenable
-au FileType html,htmldjango,css,sass,scss,javascript,coffee,python,ruby,eruby,json setl foldmethod=manual
+"au FileType html,htmldjango,css,sass,scss,javascript,python,json setl foldmethod=indent foldenable
+au FileType html,htmldjango,css,sass,scss,javascript,python,json setl foldmethod=manual
 
 " Tabstop/Shiftwidth
-au FileType mustache,ruby,eruby,javascript,coffee,sass,scss setl softtabstop=2 shiftwidth=2 tabstop=2
-au FileType rst setl softtabstop=3 shiftwidth=3 tabstop=3
+au FileType javascript,sass,scss setl softtabstop=2 shiftwidth=2 tabstop=2
 au FileType json setl shiftwidth=4 softtabstop=4 tabstop=4
 "au FileType python,sh, setl softtabstop=4 shiftwidth=4 tabstop=4
 
