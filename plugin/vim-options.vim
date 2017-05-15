@@ -248,6 +248,10 @@ let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-tomorrow
 set background=light
 
+" disables opaque background
+hi Normal ctermbg=none
+hi NonText ctermbg=none
+
 "" highlight colorcolumn markers
 "hi ColorColumn ctermbg=18
 
