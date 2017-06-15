@@ -42,7 +42,7 @@ set softtabstop=2
 "set textwidth=0 " Maximium width of text that is being inserted. 0 disables it
 set foldlevelstart=2
 
-" Word splitting
+" Word splitting (add hyphen)
 set iskeyword+=-
 
 " Line numbers
@@ -55,6 +55,9 @@ set colorcolumn=120 " display colored column at these line lengths
 
 " Custom status line
 set statusline=%!MyStatusLine()
+
+" Limit syntax highlighting to speed up vim in files with large line lengths
+set synmaxcol=250
 "----------------------------------------------------------------------------------------------------------------------
 
 
