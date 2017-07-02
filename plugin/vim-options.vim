@@ -508,3 +508,13 @@ if !empty(glob(EditorDir.'/plugged/javascript-libraries-syntax.vim/autoload/jsli
   let g:used_javascript_libs = 'jquery,vue'
 endif
 "----------------------------------------------------------------------------------------------------------------------
+
+
+"----------------------------------------------------------------------------------------------------------------------
+" Clipper (clipboard proxy)
+"----------------------------------------------------------------------------------------------------------------------
+if !empty(glob(EditorDir.'/plugged/vim-clipper/plugin/clipper.vim'))
+  " specify UNIX domain socker to send data over
+  let g:ClipperAddress=~/.clipper.sock
+endif
+"----------------------------------------------------------------------------------------------------------------------
