@@ -57,7 +57,7 @@ set colorcolumn=120 " display colored column at these line lengths
 set statusline=%!MyStatusLine()
 
 " Limit syntax highlighting to speed up vim in files with large line lengths
-set synmaxcol=250
+set synmaxcol=80
 "----------------------------------------------------------------------------------------------------------------------
 
 
