@@ -515,6 +515,6 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 if !empty(glob(EditorDir.'/plugged/vim-clipper/plugin/clipper.vim'))
   " specify UNIX domain socker to send data over
-  let g:ClipperAddress=~/.clipper.sock
+  let g:ClipperAddress='~/.clipper.sock'
 endif
 "----------------------------------------------------------------------------------------------------------------------
