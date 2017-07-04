@@ -117,6 +117,11 @@ autocmd FileType htmldjango setlocal commentstring={#\ %s\ #}
 "au BufNewFile,BufRead *.yml set filetype=yaml
 "au BufNewFile,BufRead *.sls set filetype=yaml
 "au BufRead,BufNewFile *.md set filetype=markdown
+
+" Highlight long lines at 80 mark
+au BufNewFile,BufRead * call matchadd('ColorColumn', '\%81v', 100)
+" Highlight super long lines
+au BufNewFile,BufRead * call matchadd('Error', '\%121v', 100)
 "----------------------------------------------------------------------------------------------------------------------
 
 "----------------------------------------------------------------------------------------------------------------------
@@ -261,6 +266,9 @@ set background=light
 "" Highligh current cursorline
 "hi CursorLineNR cterm=bold ctermfg=226
 hi CursorLineNR cterm=bold
+
+" Highlight color for long lines
+highlight ColorColumn ctermbg=cyan
 
 "" Status line colors  per mode
 "hi User1 ctermfg=226  ctermbg=8 cterm=bold
