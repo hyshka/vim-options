@@ -270,10 +270,10 @@ set background=light
 "hi NonText ctermbg=none
 
 "" highlight colorcolumn markers
-hi ColorColumn ctermbg=19
+hi ColorColumn ctermbg=20
 
 "" Highligh current cursorline
-hi CursorLineNR cterm=bold ctermfg=15
+hi CursorLineNR cterm=bold ctermfg=4
 
 "" Status line colors  per mode
 "hi User1 ctermfg=226  ctermbg=8 cterm=bold
