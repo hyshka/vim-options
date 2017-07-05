@@ -65,14 +65,14 @@ set synmaxcol=250
 " Vim vs Neovim settings
 "----------------------------------------------------------------------------------------------------------------------
 if has('nvim')
-  let EditorDir=$HOME.'/.config/nvim/'
+  let $EditorDir=$HOME.'/.config/nvim/'
   silent! execute '!mkdir -p .vimcache/backup'
   " Set Backup dirs
   set backupdir=.vimcache/backup/
   set directory=.vimcache/swp/
 else
   " Vim Options
-  let EditorDir=$HOME.'/.vim/'
+  let $EditorDir=$HOME.'/.vim/'
   " Set Backup dirs
   set backupdir=~/.vim/vim-files/backups/
   set directory=~/.vim/vim-files/swaps/
@@ -213,12 +213,12 @@ nnoremap <leader>f :find
 
 " Snippets
 nnoremap <leader>,date :-1read !date +\%F<CR>
-nnoremap <leader>,clog :-1read EditorDir/plugged/vim-options/snippets/javascript/clog.js<CR>/jump<CR>
-nnoremap <leader>,fabfile :-1read EditorDir/plugged/vim-options/snippets/python/fabfile.py<CR>
-nnoremap <leader>,cutf8 :-1read EditorDir/plugged/vim-options/snippets/python/cutf8.py<CR>jf.i
-nnoremap <leader>,pudb :-1read EditorDir/plugged/vim-options/snippets/python/pudb.py<CR>V
-nnoremap <leader>,pydef :-1read EditorDir/plugged/vim-options/snippets/python/pydef.py<CR>/jump<CR>V12j
-nnoremap <leader>,pyclass :-1read EditorDir/plugged/vim-options/snippets/python/pyclass.py<CR>/jump<CR>
+nnoremap <leader>,clog :-1read $EditorDir/plugged/vim-options/snippets/javascript/clog.js<CR>/jump<CR>
+nnoremap <leader>,fabfile :-1read $EditorDir/plugged/vim-options/snippets/python/fabfile.py<CR>
+nnoremap <leader>,cutf8 :-1read $EditorDir/plugged/vim-options/snippets/python/cutf8.py<CR>jf.i
+nnoremap <leader>,pudb :-1read $EditorDir/plugged/vim-options/snippets/python/pudb.py<CR>V
+nnoremap <leader>,pydef :-1read $EditorDir/plugged/vim-options/snippets/python/pydef.py<CR>/jump<CR>V12j
+nnoremap <leader>,pyclass :-1read $EditorDir/plugged/vim-options/snippets/python/pyclass.py<CR>/jump<CR>
 "----------------------------------------------------------------------------------------------------------------------
 
 "----------------------------------------------------------------------------------------------------------------------
@@ -298,7 +298,7 @@ highlight ColorColumn ctermbg=cyan
 "----------------------------------------------------------------------------------------------------------------------
 " Nerdtree Plugin
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob(EditorDir.'/plugged/nerdtree/plugin/NERD_tree.vim'))
+if !empty(glob($EditorDir.'/plugged/nerdtree/plugin/NERD_tree.vim'))
     nnoremap <leader>n :NERDTreeToggle<CR>
     nnoremap <leader>m :NERDTreeFind<CR>
     let g:NERDTreeShowLineNumbers=1
@@ -318,7 +318,7 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 " Indent Lines Plugin
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob(EditorDir.'/plugged/indentline/after/plugin/indentLine.vim'))
+if !empty(glob($EditorDir.'/plugged/indentline/after/plugin/indentLine.vim'))
   " disable auto-colors
   let g:indentLine_setColors = 0
   " vim
@@ -336,7 +336,7 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 " Fugitive
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob(EditorDir.'/plugged/vim-fugitive/plugin/fugitive.vim'))
+if !empty(glob($EditorDir.'/plugged/vim-fugitive/plugin/fugitive.vim'))
   nnoremap <leader>gc :Gcommit --verbose<CR>
   nnoremap <leader>gd :Gdiff<CR>
   nnoremap <leader>gl :Glog<CR>
@@ -363,7 +363,7 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 " Python-Syntax
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob(EditorDir.'/plugged/python-syntax/syntax/python.vim'))
+if !empty(glob($EditorDir.'/plugged/python-syntax/syntax/python.vim'))
   let python_highlight_all = 1
 endif
 "----------------------------------------------------------------------------------------------------------------------
@@ -372,7 +372,7 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 " CtrlP Plugin
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob(EditorDir.'/plugged/ctrlp.vim/plugin/ctrlp.vim'))
+if !empty(glob($EditorDir.'/plugged/ctrlp.vim/plugin/ctrlp.vim'))
   " Making ctrl-p better and faster
   "if executable('ag')
   "  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
@@ -391,7 +391,7 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 " Markdown
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob(EditorDir.'/plugged/vim-markdown/indent/markdown.vim'))
+if !empty(glob($EditorDir.'/plugged/vim-markdown/indent/markdown.vim'))
   let g:vim_markdown_folding_disabled=1
   let g:vim_markdown_conceal = 0 " don't conceal anything, dammit.
 endif
@@ -401,7 +401,7 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 " Dev-icons
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob(EditorDir.'/plugged/vim-devicons/plugin/webdevicons.vim'))
+if !empty(glob($EditorDir.'/plugged/vim-devicons/plugin/webdevicons.vim'))
 "  let g:webdevicons_enable_nerdtree = 1
 "  let g:webdevicons_enable = 1
 "  let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
@@ -417,7 +417,7 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 " CamelCaseMotion
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob(EditorDir.'/plugged/CamelCaseMotion/plugin/camelcasemotion.vim'))
+if !empty(glob($EditorDir.'/plugged/CamelCaseMotion/plugin/camelcasemotion.vim'))
   map <silent> ,w <Plug>CamelCaseMotion_w
   map <silent> ,e <Plug>CamelCaseMotion_e
   map <silent> ,b <Plug>CamelCaseMotion_b
@@ -428,7 +428,7 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 " Vim JSON
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob(EditorDir.'/plugged/vim-json/indent/json.vim'))
+if !empty(glob($EditorDir.'/plugged/vim-json/indent/json.vim'))
   let g:vim_json_syntax_conceal = 0
 endif
 "----------------------------------------------------------------------------------------------------------------------
@@ -437,7 +437,7 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 " Ack Searching
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob(EditorDir.'/plugged/ack.vim/plugin/ack.vim'))
+if !empty(glob($EditorDir.'/plugged/ack.vim/plugin/ack.vim'))
   nnoremap <space>/ :call AckSearch()<CR>
   function! AckSearch()
     call inputsave()
@@ -454,7 +454,7 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 " Syntastic
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob(EditorDir.'/plugged/syntastic/plugin/syntastic.vim'))
+if !empty(glob($EditorDir.'/plugged/syntastic/plugin/syntastic.vim'))
   let g:syntastic_javascript_checkers = ['eslint']
   let g:syntastic_css_checkers = ['stylelint']
   " let g:syntastic_css_stylelint_args = '--configFile ~/stylelint.config.js'
@@ -487,7 +487,7 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 " Toggle List
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob(EditorDir.'/plugged/vim-togglelist/plugin/togglelist.vim'))
+if !empty(glob($EditorDir.'/plugged/vim-togglelist/plugin/togglelist.vim'))
   noremap <leader>[ :lprevious<CR>
   noremap <leader>] :lnext<CR>
   noremap <leader>p :ll<CR>
@@ -501,7 +501,7 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 " Colorizer
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob(EditorDir.'/plugged/colorizer/plugin/ColorizerPlugin.vim'))
+if !empty(glob($EditorDir.'/plugged/colorizer/plugin/ColorizerPlugin.vim'))
   let g:colorizer_auto_filetype='css,scss,sass' " only colorize these extensions
   "let g:colorizer_colornames = 0
 endif
@@ -511,7 +511,7 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 " Stylefmt
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob(EditorDir.'/plugged/vim-stylefmt/plugin/stylefmt.vim'))
+if !empty(glob($EditorDir.'/plugged/vim-stylefmt/plugin/stylefmt.vim'))
   nnoremap <silent> <leader>cs :Stylefmt<CR>
   vnoremap <silent> <leader>cs :StylefmtVisual<CR>
 endif
@@ -521,7 +521,7 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 " Javascript Library Syntax
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob(EditorDir.'/plugged/javascript-libraries-syntax.vim/autoload/jslibsyntax.vim'))
+if !empty(glob($EditorDir.'/plugged/javascript-libraries-syntax.vim/autoload/jslibsyntax.vim'))
   let g:used_javascript_libs = 'jquery,vue'
 endif
 "----------------------------------------------------------------------------------------------------------------------
@@ -530,7 +530,7 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 " Clipper (clipboard proxy)
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob(EditorDir.'/plugged/vim-clipper/plugin/clipper.vim'))
+if !empty(glob($EditorDir.'/plugged/vim-clipper/plugin/clipper.vim'))
   " specify UNIX domain socket to send data over
   let g:ClipperAddress='~/.clipper.sock'
   " disable port number so socket works
