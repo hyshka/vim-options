@@ -51,7 +51,7 @@ set number " Show line numbers
 
 " Visual aids
 set cursorline " highlight current line
-"set colorcolumn=120 " display colored column at these line lengths
+set colorcolumn=0 " don't display colored column at these line lengths
 
 " Custom status line
 set statusline=%!MyStatusLine()
@@ -270,10 +270,10 @@ set background=light
 "hi NonText ctermbg=none
 
 "" highlight colorcolumn markers
-hi ColorColumn ctermbg=20
+hi ColorColumn ctermbg=3
 
 "" Highligh current cursorline
-hi CursorLineNR cterm=bold ctermfg=4
+hi CursorLineNR cterm=bold
 
 "" Status line colors  per mode
 "hi User1 ctermfg=226  ctermbg=8 cterm=bold
