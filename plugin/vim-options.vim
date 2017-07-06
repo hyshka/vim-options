@@ -58,6 +58,9 @@ set statusline=%!MyStatusLine()
 
 " Limit syntax highlighting to speed up vim in files with large line lengths
 set synmaxcol=250
+
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
 "----------------------------------------------------------------------------------------------------------------------
 
 
@@ -102,9 +105,9 @@ au FileType gitconfig,apache,sql setl noexpandtab nolist
 au FileType html,htmldjango,css,sass,scss,javascript,python,json setl foldmethod=manual
 
 " Tabstop/Shiftwidth
-au FileType javascript,sass,scss setl softtabstop=2 shiftwidth=2 tabstop=2
+"au FileType javascript,sass,scss setl softtabstop=2 shiftwidth=2 tabstop=2
 au FileType json setl shiftwidth=4 softtabstop=4 tabstop=4
-"au FileType python,sh, setl softtabstop=4 shiftwidth=4 tabstop=4
+au FileType python,sh, setl softtabstop=4 shiftwidth=4 tabstop=4
 
 " Other
 au FileType python let b:python_highlight_all=1
@@ -122,6 +125,9 @@ autocmd FileType htmldjango setlocal commentstring={#\ %s\ #}
 au BufNewFile,BufRead * call matchadd('ColorColumn', '\%81v', 100)
 " Highlight super long lines
 au BufNewFile,BufRead * call matchadd('Error', '\%121v', 100)
+
+" Return to last edit position when opening files (You want this!)
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 "----------------------------------------------------------------------------------------------------------------------
 
 "----------------------------------------------------------------------------------------------------------------------
@@ -219,6 +225,15 @@ nnoremap <leader>,cutf8 :-1read $EditorDir/plugged/vim-options/snippets/python/c
 nnoremap <leader>,pudb :-1read $EditorDir/plugged/vim-options/snippets/python/pudb.py<CR>V
 nnoremap <leader>,pydef :-1read $EditorDir/plugged/vim-options/snippets/python/pydef.py<CR>/jump<CR>V12j
 nnoremap <leader>,pyclass :-1read $EditorDir/plugged/vim-options/snippets/python/pyclass.py<CR>/jump<CR>
+
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
+vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
+
+" Treat long lines as break lines (useful when moving around in them)
+map j gj
+map k gk
 "----------------------------------------------------------------------------------------------------------------------
 
 "----------------------------------------------------------------------------------------------------------------------
@@ -236,10 +251,6 @@ function! MyStatusLine()
   let statusline .= "%="
   " Line & column
   let statusline .= "(%l,%c%V) "
-  " Character under cursor (decimal)
-  let statusline .= "%03.3b "
-  " Character under cursor (hexadecimal)
-  let statusline .= "0x%02.2B "
   " File progress
   let statusline .= "| %P/%L"
   return statusline
