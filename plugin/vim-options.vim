@@ -464,9 +464,11 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 if !empty(glob($EditorDir.'/plugged/syntastic/plugin/syntastic.vim'))
   let g:syntastic_javascript_checkers = ['eslint']
+  let g:syntastic_javascript_eslint_exe = 'npm run lint:scripts -s'
   let g:syntastic_css_checkers = ['stylelint']
-  " let g:syntastic_css_stylelint_args = '--configFile ~/stylelint.config.js'
+  let g:syntastic_css_stylelint_args = '--configFile ~/stylelint.config.js'
   let g:syntastic_scss_checkers = ['stylelint']
+  let g:syntastic_scss_stylelint_exe = 'npm run lint:styles -s'
   " let g:syntastic_scss_stylelint_args = '--configFile ~/stylelint.config.js'
   let g:syntastic_always_populate_loc_list = 1
   let g:syntastic_auto_loc_list = 0
