@@ -545,5 +545,7 @@ if !empty(glob($EditorDir.'/plugged/vim-clipper/plugin/clipper.vim'))
   "let g:ClipperAddress='~/.clipper.sock'
   " disable port number so socket works
   "let g:ClipperPort=0
+  " push to docker host
+  let g:ClipperAddress='172.17.0.1'
 endif
 "----------------------------------------------------------------------------------------------------------------------
