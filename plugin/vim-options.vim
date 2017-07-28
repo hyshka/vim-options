@@ -542,8 +542,8 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 if !empty(glob($EditorDir.'/plugged/vim-clipper/plugin/clipper.vim'))
   " specify UNIX domain socket to send data over
-  let g:ClipperAddress='~/.clipper.sock'
+  "let g:ClipperAddress='~/.clipper.sock'
   " disable port number so socket works
-  let g:ClipperPort=0
+  "let g:ClipperPort=0
 endif
 "----------------------------------------------------------------------------------------------------------------------
