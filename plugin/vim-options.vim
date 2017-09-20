@@ -130,7 +130,7 @@ au BufNewFile,BufRead * call matchadd('Error', '\%121v', 100)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Load some autocompletion dictionaries by default
-au FileType css,sass,scss,less setlocal omnifunc=csscomplete#CompleteCSS noci
+au FileType css,sass,scss,less setlocal omnifunc=csscomplete#CompleteCSS
 au FileType html,xhtml,htmldjango setlocal omnifunc=htmlcomplete#CompleteTags
 au FileType python setlocal omnifunc=pythoncomplete#Complete
 au FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -307,6 +307,16 @@ hi CursorLineNR cterm=bold
 "highlight DiffDelete cterm=BOLD ctermfg=NONE ctermbg=52
 "highlight DiffChange cterm=BOLD ctermfg=NONE ctermbg=23
 "highlight DiffText   cterm=BOLD ctermfg=NONE ctermbg=23
+"----------------------------------------------------------------------------------------------------------------------
+
+
+"----------------------------------------------------------------------------------------------------------------------
+" Vim Commentary
+"----------------------------------------------------------------------------------------------------------------------
+if !empty(glob($EditorDir.'/plugged/vim-commentary/plugin/commentary.vim'))
+  map  gc  <Plug>Commentary
+  nmap gcc <Plug>CommentaryLine
+endif
 "----------------------------------------------------------------------------------------------------------------------
 
 
