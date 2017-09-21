@@ -353,7 +353,7 @@ if !empty(glob($EditorDir.'/plugged/indentline/after/plugin/indentLine.vim'))
   let g:indentLine_color_dark = 18 " (default: 2)
   " customize character
   let g:indentLine_char = '┊'
-  nnoremap <leader>ig :IndentLinesToggle<CR>
+  nnoremap <leader>gi :IndentLinesToggle<CR>
 endif
 "----------------------------------------------------------------------------------------------------------------------
 
