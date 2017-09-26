@@ -32,7 +32,11 @@ set list
 set showmatch
 set wildmode=list:longest,full " Completion mode for wildchar
 set wildignore=*/app/cache,*/vendor,*/env,*.pyc,*/venv,*/__pycache__ " Ignore useless files
-set completeopt=menu,preview,noinsert " Autocomplete options
+set completeopt+=menuone,noinsert " Autocomplete options
+
+" Quieter vim
+set shortmess+=c   " Shut off completion messages
+set belloff+=ctrlg " If Vim beeps during completion
 
 " Formatting
 set nowrap " Turn off TextWrapping
@@ -130,10 +134,11 @@ au BufNewFile,BufRead * call matchadd('Error', '\%121v', 100)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Load some autocompletion dictionaries by default
-au FileType css,sass,scss,less setlocal omnifunc=csscomplete#CompleteCSS
-au FileType html,xhtml,htmldjango setlocal omnifunc=htmlcomplete#CompleteTags
-au FileType python setlocal omnifunc=pythoncomplete#Complete
-au FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+set omnifunc=syntaxcomplete#Complete
+" au FileType css,sass,scss,less setlocal omnifunc=csscomplete#CompleteCSS
+" au FileType html,xhtml,htmldjango setlocal omnifunc=htmlcomplete#CompleteTags
+" au FileType python setlocal omnifunc=pythoncomplete#Complete
+" au FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
 "----------------------------------------------------------------------------------------------------------------------
 
