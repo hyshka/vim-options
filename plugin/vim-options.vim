@@ -65,6 +65,9 @@ set synmaxcol=250
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
+
+" Enable omni-completion based off of syntax
+set omnifunc=syntaxcomplete#Complete
 "----------------------------------------------------------------------------------------------------------------------
 
 
@@ -132,14 +135,6 @@ au BufNewFile,BufRead * call matchadd('Error', '\%121v', 100)
 
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-" Load some autocompletion dictionaries by default
-set omnifunc=syntaxcomplete#Complete
-" au FileType css,sass,scss,less setlocal omnifunc=csscomplete#CompleteCSS
-" au FileType html,xhtml,htmldjango setlocal omnifunc=htmlcomplete#CompleteTags
-" au FileType python setlocal omnifunc=pythoncomplete#Complete
-" au FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-
 "----------------------------------------------------------------------------------------------------------------------
 
 "----------------------------------------------------------------------------------------------------------------------
