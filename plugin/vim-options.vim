@@ -30,7 +30,7 @@ set list
 
 " Typing behavious
 set showmatch
-set wildmode=list:longest,full " Completion mode for wildchar
+set wildmode=list:full " Completion mode for wildchar
 set wildignore=*/app/cache,*/vendor,*/env,*.pyc,*/venv,*/__pycache__ " Ignore useless files
 set completeopt+=menuone,noinsert " Autocomplete options
 
