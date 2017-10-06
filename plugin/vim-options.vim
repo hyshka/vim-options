@@ -68,6 +68,9 @@ set lazyredraw
 
 " Enable omni-completion based off of syntax
 set omnifunc=syntaxcomplete#Complete
+
+" Enable mouse
+set mouse=a
 "----------------------------------------------------------------------------------------------------------------------
 
 
