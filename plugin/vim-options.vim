@@ -477,37 +477,43 @@ endif
 
 
 "----------------------------------------------------------------------------------------------------------------------
+" Ale
+"----------------------------------------------------------------------------------------------------------------------
+"----------------------------------------------------------------------------------------------------------------------
+
+
+"----------------------------------------------------------------------------------------------------------------------
 " Syntastic
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob($EditorDir.'/plugged/syntastic/plugin/syntastic.vim'))
-  let g:syntastic_javascript_checkers = ['eslint']
-  " let g:syntastic_javascript_eslint_exe = 'npm run lint:scripts -s'
-  let g:syntastic_css_checkers = ['stylelint']
-  " let g:syntastic_css_stylelint_args = '--configFile ~/stylelint.config.js'
-  let g:syntastic_scss_checkers = ['stylelint']
-  " let g:syntastic_scss_stylelint_exe = 'npm run lint:styles -s'
-  " let g:syntastic_scss_stylelint_args = '--configFile ~/stylelint.config.js'
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_auto_loc_list = 0
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 1
-  let g:syntastic_aggregate_errors = 1
-  let g:syntastic_python_python_exec = '/usr/bin/python3'
-  let g:syntastic_mode_map = { 'mode': 'active' }
-  function! ToggleSyntasticMode()
-python << EOF
-import vim
-import ast
-value = dict(vim.eval('g:syntastic_mode_map'))
-vim.command('let l:syntastic_current_mode = \''+value['mode']+'\'')
-EOF
-    SyntasticToggleMode
-    if l:syntastic_current_mode == 'passive'
-      SyntasticCheck
-    endif
-  endfunction
-  nnoremap <leader>s :call ToggleSyntasticMode()<CR>
-endif
+" if !empty(glob($EditorDir.'/plugged/syntastic/plugin/syntastic.vim'))
+"   let g:syntastic_javascript_checkers = ['eslint']
+"   " let g:syntastic_javascript_eslint_exe = 'npm run lint:scripts -s'
+"   let g:syntastic_css_checkers = ['stylelint']
+"   " let g:syntastic_css_stylelint_args = '--configFile ~/stylelint.config.js'
+"   let g:syntastic_scss_checkers = ['stylelint']
+"   " let g:syntastic_scss_stylelint_exe = 'npm run lint:styles -s'
+"   " let g:syntastic_scss_stylelint_args = '--configFile ~/stylelint.config.js'
+"   let g:syntastic_always_populate_loc_list = 1
+"   let g:syntastic_auto_loc_list = 0
+"   let g:syntastic_check_on_open = 1
+"   let g:syntastic_check_on_wq = 1
+"   let g:syntastic_aggregate_errors = 1
+"   let g:syntastic_python_python_exec = '/usr/bin/python3'
+"   let g:syntastic_mode_map = { 'mode': 'active' }
+"   function! ToggleSyntasticMode()
+" python << EOF
+" import vim
+" import ast
+" value = dict(vim.eval('g:syntastic_mode_map'))
+" vim.command('let l:syntastic_current_mode = \''+value['mode']+'\'')
+" EOF
+"     SyntasticToggleMode
+"     if l:syntastic_current_mode == 'passive'
+"       SyntasticCheck
+"     endif
+"   endfunction
+"   nnoremap <leader>s :call ToggleSyntasticMode()<CR>
+" endif
 "----------------------------------------------------------------------------------------------------------------------
 
 
