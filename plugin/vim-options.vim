@@ -6,7 +6,9 @@ set nocompatible " Vim is non-compatible with vi. Neovim ignores this
 set hlsearch " After a '/' search, highlight the matches
 
 " Set custom leader key
-let mapleader="\\" " Set map leader
+" let mapleader="\\" " Set map leader
+let mapleader = ","
+let maplocalleader = ","
 
 " For clever completion with the :find command
 set path+=**
@@ -30,8 +32,8 @@ set list
 
 " Typing behavious
 set showmatch
-set wildmode=list:full " Completion mode for wildchar
-set wildignore=*/app/cache,*/vendor,*/env,*.pyc,*/venv,*/__pycache__ " Ignore useless files
+set wildmode=list:longest,full " Completion mode for wildchar
+set wildignore=*~,.git,node_modules,*/app/cache,*/vendor,*/env,*.pyc,*/venv,*/__pycache__ " Ignore useless files
 set completeopt+=menuone,noinsert " Autocomplete options
 
 " Quieter vim
@@ -64,13 +66,16 @@ set statusline=%!MyStatusLine()
 set synmaxcol=250
 
 " Don't redraw while executing macros (good performance config)
-set lazyredraw
+" set lazyredraw
 
 " Enable omni-completion based off of syntax
 set omnifunc=syntaxcomplete#Complete
 
 " Enable mouse
 set mouse=a
+
+" set nobackup                " No backups left after done editing
+" set nowritebackup           " No backups made while editing
 "----------------------------------------------------------------------------------------------------------------------
 
 
@@ -245,6 +250,16 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
+
+" clost quickfix window
+nmap <leader>x cclose
+
+" Vimdiff commands
+nnoremap <leader>du :diffupdate<CR>
+nnoremap <leader>dd :diffget<CR>
+nnoremap <leader>df :diffput<CR>
+nnoremap _ [c
+nnoremap = ]c
 "----------------------------------------------------------------------------------------------------------------------
 
 "----------------------------------------------------------------------------------------------------------------------
@@ -324,26 +339,6 @@ endif
 
 
 "----------------------------------------------------------------------------------------------------------------------
-" Nerdtree Plugin
-"----------------------------------------------------------------------------------------------------------------------
-if !empty(glob($EditorDir.'/plugged/nerdtree/plugin/NERD_tree.vim'))
-    nnoremap <leader>n :NERDTreeToggle<CR>
-    nnoremap <leader>m :NERDTreeFind<CR>
-    let g:NERDTreeShowLineNumbers=1
-    let g:NERDTreeWinSize = 40
-    let g:NERDTreeIgnore = ['\.pyc$']
-"    let g:NERDTreeDirArrows=0
-"    let g:NERDTreeDirArrowExpandable = '▸'
-"    let g:NERDTreeDirArrowCollapsible = '▾'
-"    let g:NERDTreeMapOpenSplit = 's'
-"    let g:NERDTreeMapPreviewSplit = 'gs'
-"    let g:NERDTreeMapOpenVSplit = 'v'
-"    let g:NERDTreeMapPreviewVSplit = 'gv'
-endif
-"----------------------------------------------------------------------------------------------------------------------
-
-
-"----------------------------------------------------------------------------------------------------------------------
 " Indent Lines Plugin
 "----------------------------------------------------------------------------------------------------------------------
 if !empty(glob($EditorDir.'/plugged/indentline/after/plugin/indentLine.vim'))
@@ -365,25 +360,19 @@ endif
 " Fugitive
 "----------------------------------------------------------------------------------------------------------------------
 if !empty(glob($EditorDir.'/plugged/vim-fugitive/plugin/fugitive.vim'))
+  " Command for toggling git status
+  function! ToggleGStatus()
+    if buflisted(bufname('.git/index'))
+      bd .git/index
+    else
+      Gstatus
+    endif
+  endfunction
+  command ToggleGStatus :call ToggleGStatus()
+  nnoremap <leader>gs :ToggleGStatus<CR>
   nnoremap <leader>gc :Gcommit --verbose<CR>
   nnoremap <leader>gd :Gdiff<CR>
-  nnoremap <leader>gl :Glog<CR>
   nnoremap <leader>gb :Gblame<CR>
-"  function! ToggleGStatus()
-"    if buflisted(bufname('.git/index'))
-"      bd .git/index
-"    else
-"      Gstatus
-"    endif
-"  endfunction
-"  command ToggleGStatus :call ToggleGStatus()
-"  nnoremap <leader>gs :ToggleGStatus<CR>
-  " Diff commands
-  nnoremap <leader>du :diffupdate<CR>
-  nnoremap <leader>dd :diffget<CR>
-  nnoremap <leader>df :diffput<CR>
-  nnoremap _ [c
-  nnoremap = ]c
 endif
 "----------------------------------------------------------------------------------------------------------------------
 
@@ -391,54 +380,19 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 " Python-Syntax
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob($EditorDir.'/plugged/python-syntax/syntax/python.vim'))
-  let python_highlight_all = 1
-endif
-"----------------------------------------------------------------------------------------------------------------------
-
-
-"----------------------------------------------------------------------------------------------------------------------
-" CtrlP Plugin
-"----------------------------------------------------------------------------------------------------------------------
-if !empty(glob($EditorDir.'/plugged/ctrlp.vim/plugin/ctrlp.vim'))
-  " Making ctrl-p better and faster
-  "if executable('ag')
-  "  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  "  let g:ackprg = 'ag --vimgrep'
-  "endif
-  let g:ctrlp_clear_cache_on_exit = 0
-  let g:ctrlp_cache_dir = './.vimcache/ctrlp'
-  let g:ctrlp_map = '<Space>p'
-  let g:ctrlp_working_path_mode = 'a'
-  let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|DS_Store\|git'
-  nnoremap <Space>b :CtrlPBuffer<CR>
-endif
+" if !empty(glob($EditorDir.'/plugged/python-syntax/syntax/python.vim'))
+"   let python_highlight_all = 1
+" endif
 "----------------------------------------------------------------------------------------------------------------------
 
 
 "----------------------------------------------------------------------------------------------------------------------
 " Markdown
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob($EditorDir.'/plugged/vim-markdown/indent/markdown.vim'))
-  let g:vim_markdown_folding_disabled=1
-  let g:vim_markdown_conceal = 0 " don't conceal anything, dammit.
-endif
-"----------------------------------------------------------------------------------------------------------------------
-
-
-"----------------------------------------------------------------------------------------------------------------------
-" Dev-icons
-"----------------------------------------------------------------------------------------------------------------------
-if !empty(glob($EditorDir.'/plugged/vim-devicons/plugin/webdevicons.vim'))
-"  let g:webdevicons_enable_nerdtree = 1
-"  let g:webdevicons_enable = 1
-"  let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
-  let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-  let g:DevIconsEnableFoldersOpenClose = 1
-  " make vue files display as js
-  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
-  let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['vue'] = ''
-endif
+" if !empty(glob($EditorDir.'/plugged/vim-markdown/indent/markdown.vim'))
+"   let g:vim_markdown_folding_disabled=1
+"   let g:vim_markdown_conceal = 0 " don't conceal anything, dammit.
+" endif
 "----------------------------------------------------------------------------------------------------------------------
 
 
@@ -456,26 +410,34 @@ endif
 "----------------------------------------------------------------------------------------------------------------------
 " Vim JSON
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob($EditorDir.'/plugged/vim-json/indent/json.vim'))
-  let g:vim_json_syntax_conceal = 0
-endif
+" if !empty(glob($EditorDir.'/plugged/vim-json/indent/json.vim'))
+"   let g:vim_json_syntax_conceal = 0
+" endif
 "----------------------------------------------------------------------------------------------------------------------
 
 
 "----------------------------------------------------------------------------------------------------------------------
 " Ack Searching
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob($EditorDir.'/plugged/ack.vim/plugin/ack.vim'))
-  nnoremap <space>/ :call AckSearch()<CR>
-  function! AckSearch()
-    call inputsave()
-    let term = input('Search: ')
-    call inputrestore()
-    if !empty(term)
-        execute "Ack '" . term . "'"
-    endif
-  endfunction
-endif
+ if !empty(glob($EditorDir.'/plugged/ack.vim/plugin/ack.vim'))
+  if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+  endif
+
+  " if you don't want to jump to first result...
+  " cnoreabbrev Ack Ack!
+  " nnoremap <Leader>a :Ack!<Space>
+
+"   nnoremap <space>/ :call AckSearch()<CR>
+"   function! AckSearch()
+"     call inputsave()
+"     let term = input('Search: ')
+"     call inputrestore()
+"     if !empty(term)
+"         execute "Ack '" . term . "'"
+"     endif
+"   endfunction
+ endif
 "----------------------------------------------------------------------------------------------------------------------
 
 
@@ -483,47 +445,17 @@ endif
 " Ale
 "----------------------------------------------------------------------------------------------------------------------
 if !empty(glob($EditorDir.'/plugged/ale/plugin/ale.vim'))
-  let g:ale_lint_on_insert_leave = 1
+  let g:ale_sign_column_always = 1
+  let g:ale_lint_on_text_changed = 'never'
+  " let g:ale_lint_on_insert_leave = 1
+  let g:ale_python_mypy_options='--ignore-missing-imports'
   let g:ale_fixers = {
     \'javascript': ['eslint'],
     \'scss': ['stylelint'],
   \}
+  highlight clear ALEErrorSign
+  highlight clear ALEWarningSign
 endif
-"----------------------------------------------------------------------------------------------------------------------
-
-
-"----------------------------------------------------------------------------------------------------------------------
-" Syntastic
-"----------------------------------------------------------------------------------------------------------------------
-" if !empty(glob($EditorDir.'/plugged/syntastic/plugin/syntastic.vim'))
-"   let g:syntastic_javascript_checkers = ['eslint']
-"   " let g:syntastic_javascript_eslint_exe = 'npm run lint:scripts -s'
-"   let g:syntastic_css_checkers = ['stylelint']
-"   " let g:syntastic_css_stylelint_args = '--configFile ~/stylelint.config.js'
-"   let g:syntastic_scss_checkers = ['stylelint']
-"   " let g:syntastic_scss_stylelint_exe = 'npm run lint:styles -s'
-"   " let g:syntastic_scss_stylelint_args = '--configFile ~/stylelint.config.js'
-"   let g:syntastic_always_populate_loc_list = 1
-"   let g:syntastic_auto_loc_list = 0
-"   let g:syntastic_check_on_open = 1
-"   let g:syntastic_check_on_wq = 1
-"   let g:syntastic_aggregate_errors = 1
-"   let g:syntastic_python_python_exec = '/usr/bin/python3'
-"   let g:syntastic_mode_map = { 'mode': 'active' }
-"   function! ToggleSyntasticMode()
-" python << EOF
-" import vim
-" import ast
-" value = dict(vim.eval('g:syntastic_mode_map'))
-" vim.command('let l:syntastic_current_mode = \''+value['mode']+'\'')
-" EOF
-"     SyntasticToggleMode
-"     if l:syntastic_current_mode == 'passive'
-"       SyntasticCheck
-"     endif
-"   endfunction
-"   nnoremap <leader>s :call ToggleSyntasticMode()<CR>
-" endif
 "----------------------------------------------------------------------------------------------------------------------
 
 
@@ -552,21 +484,11 @@ endif
 
 
 "----------------------------------------------------------------------------------------------------------------------
-" Stylefmt
-"----------------------------------------------------------------------------------------------------------------------
-if !empty(glob($EditorDir.'/plugged/vim-stylefmt/plugin/stylefmt.vim'))
-  nnoremap <silent> <leader>cs :Stylefmt<CR>
-  vnoremap <silent> <leader>cs :StylefmtVisual<CR>
-endif
-"----------------------------------------------------------------------------------------------------------------------
-
-
-"----------------------------------------------------------------------------------------------------------------------
 " Javascript Library Syntax
 "----------------------------------------------------------------------------------------------------------------------
-if !empty(glob($EditorDir.'/plugged/javascript-libraries-syntax.vim/autoload/jslibsyntax.vim'))
-  let g:used_javascript_libs = 'jquery,vue'
-endif
+" if !empty(glob($EditorDir.'/plugged/javascript-libraries-syntax.vim/autoload/jslibsyntax.vim'))
+"   let g:used_javascript_libs = 'jquery,vue'
+" endif
 "----------------------------------------------------------------------------------------------------------------------
 
 
@@ -582,3 +504,24 @@ if !empty(glob($EditorDir.'/plugged/vim-clipper/plugin/clipper.vim'))
   let g:ClipperAddress='172.17.0.1'
 endif
 "----------------------------------------------------------------------------------------------------------------------
+
+
+"----------------------------------------------------------------------------------------------------------------------
+" fzf
+"----------------------------------------------------------------------------------------------------------------------
+if !empty(glob($EditorDir.'/plugged/fzf.vim/plugin/fzf.vim'))
+  nmap ; :Buffers<CR>
+  nmap <Leader>t :Files<CR>
+  nmap <Leader>r :Tags<CR>
+endif
+"----------------------------------------------------------------------------------------------------------------------
+
+
+"-----------------------------------------------------------------------------------------------------------------------
+" Ranger Intergration
+"-----------------------------------------------------------------------------------------------------------------------
+if !empty(glob($EditorDir.'plugged/ranger.vim/plugin/ranger.vim'))
+  let g:ranger_map_keys = 0
+  nnoremap <leader>n :Ranger<CR>
+endif
+"-----------------------------------------------------------------------------------------------------------------------
