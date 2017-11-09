@@ -445,8 +445,11 @@ endif
 " Ale
 "----------------------------------------------------------------------------------------------------------------------
 if !empty(glob($EditorDir.'/plugged/ale/plugin/ale.vim'))
-  let g:ale_sign_column_always = 1
+  " TODO: disable ale until I fix stylelint bug
+  let g:ale_enabled = 0
+  " let g:ale_sign_column_always = 1
   let g:ale_lint_on_text_changed = 'never'
+  " let g:ale_lint_on_enter = 0
   " let g:ale_lint_on_insert_leave = 1
   let g:ale_python_mypy_options='--ignore-missing-imports'
   let g:ale_fixers = {
@@ -455,6 +458,9 @@ if !empty(glob($EditorDir.'/plugged/ale/plugin/ale.vim'))
   \}
   highlight clear ALEErrorSign
   highlight clear ALEWarningSign
+  " TODO: navigate between errors quickly
+  " nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+  " nmap <silent> <C-j> <Plug>(ale_next_wrap)
 endif
 "----------------------------------------------------------------------------------------------------------------------
 
