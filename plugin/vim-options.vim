@@ -227,7 +227,7 @@ inoremap <Tab> <C-R>=CleverTab()<CR>
 nnoremap <C-S> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-S>
 
 " Toggle linenumbers
-nnoremap <leader>gn :set number! relativenumber!<CR>
+nnoremap <leader>gn :set number!<CR>
 
 " Shortcut for find command
 nnoremap <leader>f :find 
@@ -250,9 +250,6 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
-
-" clost quickfix window
-nmap <leader>x cclose
 
 " Vimdiff commands
 nnoremap <leader>du :diffupdate<CR>
