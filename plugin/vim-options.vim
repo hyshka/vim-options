@@ -319,8 +319,8 @@ nnoremap <leader>n :Ranger<CR>
 " Indent Guides
 let g:indent_guides_start_level = 2
 let g:indent_guides_auto_colors = 0
-hi IndentGuidesOdd  ctermbg=black
-hi IndentGuidesEven ctermbg=darkgrey
+hi IndentGuidesOdd  ctermbg=white
+hi IndentGuidesEven ctermbg=lightgrey
 
 
 "----------------------------------------------------------------------------------------------------------------------
