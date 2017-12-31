@@ -317,6 +317,7 @@ let g:ranger_map_keys = 0
 nnoremap <leader>n :Ranger<CR>
 
 " Indent Guides
+let g:indent_guides_start_level = 2
 " TODO
 " disable auto-colors
 " let g:indentLine_setColors = 0
