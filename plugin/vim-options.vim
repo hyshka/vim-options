@@ -317,18 +317,14 @@ let g:ranger_map_keys = 0
 nnoremap <leader>n :Ranger<CR>
 
 " Indent Guides
+let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
+let g:indent_guides_auto_colors = 0
+hi IndentGuidesOdd  ctermbg=white
+hi IndentGuidesEven ctermbg=lightgrey
 " TODO
-" disable auto-colors
-" let g:indentLine_setColors = 0
 " " vim
 " let g:indentLine_color_term = 18
-" " non-X terminal
-" let g:indentLine_color_tty_light = 18 " (default: 4)
-" let g:indentLine_color_dark = 18 " (default: 2)
-" " customize character
-" let g:indentLine_char = '┊'
-" nnoremap <leader>gi :IndentLinesToggle<CR>
 
 
 "----------------------------------------------------------------------------------------------------------------------
