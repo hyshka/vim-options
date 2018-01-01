@@ -7,14 +7,13 @@ nmap \A :set formatoptions+=a<CR>:echo "autowrap enabled"<CR>
 nmap \a :set formatoptions-=a<CR>:echo "autowrap disabled"<CR>
 nmap \d :ALEToggleBuffer<CR>
 nmap \g :Gstatus<CR>
-nmap \l :setlocal number!<CR>:setlocal number?<CR> 
+nmap \l :setlocal number! relativenumber!<CR>:setlocal number? relativenumber?<CR> 
 nmap \o :set paste!<CR>:set paste?<CR>
 nmap \q :nohlsearch<CR>
 nmap \u :setlocal list!<CR>:setlocal list?<CR>
 nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
 nmap \x :cclose<CR> " close quickfix
 " nmap \z :w<CR>:!open %<CR><CR>
-
 
 " Set custom leader key
 let mapleader = ","
@@ -68,9 +67,6 @@ vmap > >gv
 
 " camelCase => camel_case
 vnoremap <leader>case :s/\v\C(([a-z]+)([A-Z]))/\2_\l\3/g<CR>
-
-" Command for figuring out highlight group
-map <leader>hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 
 " Snippets
 nnoremap <leader>date :read !date +\%F<CR>
@@ -194,9 +190,9 @@ set wildignore=*.class,*.o,*~,*.pyc,.git,node_modules  " Ignore certain files in
 set splitright              " Horizontal Splits go to the right
 set splitbelow              " Vertical  Splits go underneath
 set grepprg=grep\ -IrsnH    " TODO: document these options
-set cursorline              " highlight current line
-set statusline=%!MyStatusLine() " Custom status line
-set synmaxcol=250           " Limit syntax highlighting to speed up vim in files with large line lengths
+" set cursorline              " highlight current line
+" set statusline=%!MyStatusLine() " Custom status line
+" set synmaxcol=250           " Limit syntax highlighting to speed up vim in files with large line lengths
 set omnifunc=syntaxcomplete#Complete " Enable omni-completion based off of syntax
 
 " Essential for filetype plugins.
@@ -209,12 +205,6 @@ filetype plugin indent on
 " set iskeyword+=- " Word splitting (add hyphen)
 " set lazyredraw " Don't redraw while executing macros (good performance config)
 """ END REVIEW """
-
-
-"----------------------------------------------------------------------------------------------------------------------
-" Vim vs Neovim settings
-"----------------------------------------------------------------------------------------------------------------------
-"----------------------------------------------------------------------------------------------------------------------
 
 
 " ----------------------------------------------------------------------------
@@ -265,10 +255,10 @@ if executable('ag')
 endif
 
 " GitGutter styling to use · instead of +/-
-let g:gitgutter_sign_added = '∙'
-let g:gitgutter_sign_modified = '∙'
-let g:gitgutter_sign_removed = '∙'
-let g:gitgutter_sign_modified_removed = '∙'
+" let g:gitgutter_sign_added = '∙'
+" let g:gitgutter_sign_modified = '∙'
+" let g:gitgutter_sign_removed = '∙'
+" let g:gitgutter_sign_modified_removed = '∙'
 
 " SuperTab
 let g:SuperTabLongestEnhanced=1
@@ -281,10 +271,10 @@ let g:ale_fixers = {
   \'javascript': ['eslint'],
   \'scss': ['stylelint'],
 \}
-let g:ale_sign_warning = '▲'
-let g:ale_sign_error = '✗'
-highlight link ALEWarningSign String
-highlight link ALEErrorSign Title
+" let g:ale_sign_warning = '▲'
+" let g:ale_sign_error = '✗'
+" highlight link ALEWarningSign String
+" highlight link ALEErrorSign Title
 " TODO: navigate between errors quickly
 " nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 " nmap <silent> <C-j> <Plug>(ale_next_wrap)
@@ -317,97 +307,31 @@ let g:ranger_map_keys = 0
 nnoremap <leader>n :Ranger<CR>
 
 " Indent Guides
+let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_auto_colors = 0
-hi IndentGuidesOdd  ctermbg=black
-hi IndentGuidesEven ctermbg=18
 
 
 "----------------------------------------------------------------------------------------------------------------------
 " COLORS
 "----------------------------------------------------------------------------------------------------------------------
 
+" if filereadable(expand("~/.vimrc_background"))
+"   let base16colorspace=256
+"   source ~/.vimrc_background
+" endif
+
 " Make sure colored syntax mode is on, and make it Just Work with 256-color terminals.
 set background=light
 
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
-endif
-
-" Window splits & ruler are too bright, so change to white on grey (non-GUI)
-highlight StatusLine       cterm=NONE ctermbg=blue ctermfg=white
-highlight StatusLineTerm   cterm=NONE ctermbg=blue ctermfg=white
-highlight StatusLineNC     cterm=NONE ctermbg=black ctermfg=white
-highlight StatusLineTermNC cterm=NONE ctermbg=black ctermfg=white
-highlight VertSplit        cterm=NONE ctermbg=black ctermfg=white
-
-" The Ignore color should be... ignorable
-silent! highlight Ignore cterm=bold ctermfg=black ctermbg=bg
-highlight clear FoldColumn
-highlight def link FoldColumn Ignore
-highlight clear Folded
-highlight link Folded Ignore
-highlight clear LineNr
-highlight! def link LineNr Ignore
-
-" Custom search colors
-highlight clear Search
-highlight Search term=NONE cterm=NONE ctermfg=white ctermbg=black
-
-" Make hilighted matching parents less annoying
-highlight clear MatchParen
-highlight link MatchParen Search
-
-" Make trailing spaces very visible
-highlight SpecialKey ctermbg=Yellow guibg=Yellow
-
-" Make menu selections visible
-highlight PmenuSel ctermfg=black ctermbg=magenta
-
-" The sign column slows down remote terminals
-highlight clear SignColumn
-highlight link SignColumn Ignore
-
-" Markdown could be more fruit salady
-highlight link markdownH1 PreProc
-highlight link markdownH2 PreProc
-highlight link markdownLink Character
-highlight link markdownBold String
-highlight link markdownItalic Statement
-highlight link markdownCode Delimiter
-highlight link markdownCodeBlock Delimiter
-highlight link markdownListMarker Todo
-
-
-
-""" REVIEW """
-"" highlight colorcolumn markers
-hi ColorColumn ctermbg=3
-
-"" Highligh current cursorline
-hi CursorLineNR cterm=bold
-
-"" Status line colors  per mode
-"hi User1 ctermfg=226  ctermbg=8 cterm=bold
-"hi User3 ctermfg=4  ctermbg=0
-"hi User2 ctermfg=6  ctermbg=0
-
-"" Change gutter color
-"highlight SignColumn cterm=NONE ctermfg=0 ctermbg=8
-
-"" Vim diff Colors
-"highlight DiffAdd    cterm=BOLD ctermfg=NONE ctermbg=22
-"highlight DiffDelete cterm=BOLD ctermfg=NONE ctermbg=52
-"highlight DiffChange cterm=BOLD ctermfg=NONE ctermbg=23
-"highlight DiffText   cterm=BOLD ctermfg=NONE ctermbg=23
-
-" Make the modification indicator [+] white on red background
-" au ColorScheme * hi User1 gui=bold term=bold cterm=bold guifg=white guibg=red ctermfg=white ctermbg=red
-
-" Tweak the color of the fold display column
-" au ColorScheme * hi FoldColumn cterm=bold ctermbg=233 ctermfg=146
-
+let g:PaperColor_Theme_Options = {
+  \   'theme': {
+  \     'default': {
+  \       'transparent_background': 1
+  \     }
+  \   }
+  \ }
+colorscheme PaperColor
 
 " ----------------------------------------------------------------------------
 " FILE TYPE TRIGGERS
