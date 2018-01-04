@@ -46,7 +46,6 @@ autocmd VimResized * :wincmd =
 " Search for the word under the cursor in the current directory
 nmap <M-k>    mo:Ack! "\b<cword>\b" <CR>
 nmap <Esc>k   mo:Ack! "\b<cword>\b" <CR>
-" nmap ˚        mo:Ack! "\b<cword>\b" <CR>
 nmap <M-S-k>  mo:Ggrep! "\b<cword>\b" <CR>
 nmap <Esc>K   mo:Ggrep! "\b<cword>\b" <CR>
 
@@ -194,6 +193,7 @@ set grepprg=grep\ -IrsnH    " TODO: document these options
 " set statusline=%!MyStatusLine() " Custom status line
 " set synmaxcol=250           " Limit syntax highlighting to speed up vim in files with large line lengths
 set omnifunc=syntaxcomplete#Complete " Enable omni-completion based off of syntax
+set noshowmode              " Don't need this anymore due to lightline plugin
 
 " Essential for filetype plugins.
 filetype plugin indent on
@@ -310,6 +310,11 @@ nnoremap <leader>n :Ranger<CR>
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_auto_colors = 0
+
+" Lightline
+let g:lightline = {
+  \ 'colorscheme': 'PaperColor light',
+  \ }
 
 
 "----------------------------------------------------------------------------------------------------------------------
