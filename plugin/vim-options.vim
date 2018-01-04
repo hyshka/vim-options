@@ -313,7 +313,7 @@ let g:indent_guides_auto_colors = 0
 
 " Lightline
 let g:lightline = {
-  \ 'colorscheme': 'PaperColor light',
+  \ 'colorscheme': 'PaperColor',
   \ }
 
 
