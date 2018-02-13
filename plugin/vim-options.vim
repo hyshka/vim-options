@@ -265,6 +265,8 @@ let g:SuperTabLongestEnhanced=1
 let g:SuperTabLongestHighlight=1
 
 " ALE
+let g:ale_enabled 0
+let g:ale_lint_on_enter 0
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_python_mypy_options='--ignore-missing-imports'
 let g:ale_fixers = {
