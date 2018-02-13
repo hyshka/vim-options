@@ -351,7 +351,7 @@ au BufNewFile,BufRead *.html    setlocal nocindent smartindent
 au BufNewFile,BufRead *.ini     setf conf
 au BufNewFile,BufRead *.json    set ft=json tw=0
 au BufNewFile,BufRead *.less    setlocal ft=less nocindent smartindent
-au BufNewFile,BufRead *.md      setlocal ft=markdown nolist spell
+au BufNewFile,BufRead *.md      setlocal ft=markdown nolist " spell < disable spellchecker until I set up persistant wordlists
 au BufNewFile,BufRead *.md,*.markdown setlocal foldlevel=999 tw=0 nocin
 au BufNewFile,BufRead *.rb      setlocal noai
 au BufNewFile,BufRead *.sass    setf sass
