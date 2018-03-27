@@ -44,10 +44,10 @@ nnoremap <C-]> <C-w><C-]>
 autocmd VimResized * :wincmd =
 
 " Search for the word under the cursor in the current directory
-nmap <M-k>    mo:Ack! "\b<cword>\b" <CR>
-nmap <Esc>k   mo:Ack! "\b<cword>\b" <CR>
-nmap <M-S-k>  mo:Ggrep! "\b<cword>\b" <CR>
-nmap <Esc>K   mo:Ggrep! "\b<cword>\b" <CR>
+nmap <M-k>    mo:Ack! "<cword>" <CR>
+nmap <Esc>k   mo:Ack! "<cword>" <CR>
+nmap <M-S-k>  mo:Ggrep! "<cword>" <CR>
+nmap <Esc>K   mo:Ggrep! "<cword>" <CR>
 
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
