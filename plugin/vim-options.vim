@@ -295,7 +295,7 @@ map <silent> ,b <Plug>CamelCaseMotion_b
 " if you don't want to jump to first result...
 cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
-noremap <Leader>A :Ack <cword><cr>
+noremap <Leader>A :Ack! <cword><cr>
 
 " Clipper (clipboard proxy)
 " specify UNIX domain socket to send data over
