@@ -44,10 +44,10 @@ nnoremap <C-]> <C-w><C-]>
 autocmd VimResized * :wincmd =
 
 " Search for the word under the cursor in the current directory
-nmap <M-k>    :Ack! "<cword>" <CR>
-nmap <Esc>k   :Ack! "<cword>" <CR>
-nmap <M-S-k>  :Ggrep! "<cword>" <CR>
-nmap <Esc>K   :Ggrep! "<cword>" <CR>
+" nmap <M-k>    :Ack! "<cword>" <CR>
+" nmap <Esc>k   :Ack! "<cword>" <CR>
+" nmap <M-S-k>  :Ggrep! "<cword>" <CR>
+" nmap <Esc>K   :Ggrep! "<cword>" <CR>
 
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
@@ -295,6 +295,7 @@ map <silent> ,b <Plug>CamelCaseMotion_b
 " if you don't want to jump to first result...
 cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
+noremap <Leader>A :Ack <cword><cr>
 
 " Clipper (clipboard proxy)
 " specify UNIX domain socket to send data over
