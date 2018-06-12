@@ -324,22 +324,9 @@ let g:lightline = {
 " COLORS
 "----------------------------------------------------------------------------------------------------------------------
 
-" if filereadable(expand("~/.vimrc_background"))
-"   let base16colorspace=256
-"   source ~/.vimrc_background
-" endif
-
 " Make sure colored syntax mode is on, and make it Just Work with 256-color terminals.
 set background=light
-
-let g:PaperColor_Theme_Options = {
-  \   'theme': {
-  \     'default': {
-  \       'transparent_background': 1
-  \     }
-  \   }
-  \ }
-colorscheme PaperColor
+colorscheme solarized
 
 " ----------------------------------------------------------------------------
 " FILE TYPE TRIGGERS
