@@ -316,7 +316,7 @@ let g:indent_guides_auto_colors = 0
 
 " Lightline
 let g:lightline = {
-  \ 'colorscheme': 'solarized,',
+  \ 'colorscheme': 'solarized',
   \ }
 
 " Argwrap
