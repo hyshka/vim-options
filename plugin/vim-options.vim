@@ -319,6 +319,9 @@ let g:lightline = {
   \ 'colorscheme': 'PaperColor',
   \ }
 
+" Argwrap
+nnoremap <leader>w :ArgWrap<CR>
+
 
 "----------------------------------------------------------------------------------------------------------------------
 " COLORS
