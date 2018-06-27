@@ -13,6 +13,7 @@ nmap \q :nohlsearch<CR>
 nmap \u :setlocal list!<CR>:setlocal list?<CR>
 nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
 nmap \x :cclose<CR> " close quickfix
+nmap \t :%s/\s\+$//e " remove trailing spaces from buffer
 " nmap \z :w<CR>:!open %<CR><CR>
 
 " Set custom leader key
@@ -201,7 +202,7 @@ filetype plugin indent on
 """ REVIEW """
 " let g:is_bash=1             " Always use bash syntax for sh filetype
 " set completeopt+=menuone,noinsert " Autocomplete options
-" set nowrap " Turn off TextWrapping
+set nowrap " Turn off TextWrapping
 " set iskeyword+=- " Word splitting (add hyphen)
 " set lazyredraw " Don't redraw while executing macros (good performance config)
 """ END REVIEW """
@@ -344,7 +345,7 @@ au BufNewFile,BufRead *.html    setlocal nocindent smartindent
 au BufNewFile,BufRead *.ini     setf conf
 au BufNewFile,BufRead *.json    set ft=json tw=0
 au BufNewFile,BufRead *.less    setlocal ft=less nocindent smartindent
-au BufNewFile,BufRead *.md      setlocal ft=markdown nolist " spell < disable spellchecker until I set up persistant wordlists
+au BufNewFile,BufRead *.md      setlocal ft=markdown nolist wrap " spell < disable spellchecker until I set up persistant wordlists
 au BufNewFile,BufRead *.md      setlocal formatoptions+=t " t - autowrap normal text
 au BufNewFile,BufRead *.md,*.markdown setlocal foldlevel=999 tw=0 nocin
 au BufNewFile,BufRead *.rb      setlocal noai
