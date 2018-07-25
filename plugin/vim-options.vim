@@ -77,6 +77,7 @@ nnoremap <leader>pydef :-1read $EditorDir/plugged/vim-options/snippets/python/py
 nnoremap <leader>pyclass :-1read $EditorDir/plugged/vim-options/snippets/python/pyclass.py<CR>/jump<CR>
 nnoremap <leader>pydev :0read $EditorDir/plugged/vim-options/snippets/python/local_dev.py<CR>/jump<CR>
 
+
 """ REVIEW
 " Insert timestamp
 "nnoremap <C-d> "=strftime("%-l:%M%p")<CR>P
@@ -195,6 +196,7 @@ set grepprg=grep\ -IrsnH    " TODO: document these options
 " set synmaxcol=250           " Limit syntax highlighting to speed up vim in files with large line lengths
 set omnifunc=syntaxcomplete#Complete " Enable omni-completion based off of syntax
 set noshowmode              " Don't need this anymore due to lightline plugin
+set shell=bash " Use bash in terminal mode
 
 " Essential for filetype plugins.
 filetype plugin indent on
@@ -322,6 +324,16 @@ let g:lightline = {
 
 " Argwrap
 nnoremap <leader>w :ArgWrap<CR>
+
+" vim-pbcopy
+" neovim (inside docker container) and vim
+if has('nvim')
+  let g:vim_pbcopy_local_cmd = "nc -w 0 172.17.0.1 41401"
+  let g:vim_pbcopy_remote_cmd = "nc -w 0 172.17.0.1 41401"
+else
+  let g:vim_pbcopy_local_cmd = "nc -w 0 localhost 41401"
+  let g:vim_pbcopy_remote_cmd = "nc -w 0 localhost 41401"
+endif
 
 
 "----------------------------------------------------------------------------------------------------------------------
