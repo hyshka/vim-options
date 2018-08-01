@@ -300,14 +300,6 @@ cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
 noremap <Leader>A :Ack! <cword><cr>
 
-" Clipper (clipboard proxy)
-" specify UNIX domain socket to send data over
-"let g:ClipperAddress='~/.clipper.sock'
-" disable port number so socket works
-"let g:ClipperPort=0
-" push to docker host
-let g:ClipperAddress='172.17.0.1'
-
 " Ranger Intergration
 let g:ranger_map_keys = 0
 nnoremap <leader>n :Ranger<CR>
