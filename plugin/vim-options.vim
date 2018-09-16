@@ -197,6 +197,9 @@ set grepprg=grep\ -IrsnH    " TODO: document these options
 set omnifunc=syntaxcomplete#Complete " Enable omni-completion based off of syntax
 set noshowmode              " Don't need this anymore due to lightline plugin
 set shell=bash " Use bash in terminal mode
+set termguicolors " enable true color (24 bit)
+set t_8f=^[[38;2;%lu;%lu;%lum
+set t_8b=^[[48;2;%lu;%lu;%lum
 
 " Essential for filetype plugins.
 filetype plugin indent on
