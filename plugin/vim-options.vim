@@ -334,8 +334,7 @@ endif
 
 " Make sure colored syntax mode is on, and make it Just Work with 256-color terminals.
 set background=light
-" colorscheme solarized
-colorscheme NeoSolarized
+colorscheme solarized
 
 " ----------------------------------------------------------------------------
 " FILE TYPE TRIGGERS
