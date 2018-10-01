@@ -14,7 +14,7 @@ nmap \u :setlocal list!<CR>:setlocal list?<CR>
 nmap \w :setlocal wrap!<CR>:setlocal wrap?<CR>
 nmap \x :cclose<CR> " close quickfix
 nmap \t :%s/\s\+$//e " remove trailing spaces from buffer
-nmap \p :! prettier --no-semi --trailing-comma es5 --write % " visually format JS/CSS/Sass
+nmap \p :! prettier --no-semi --trailing-comma es5 --write %<CR> " visually format JS/CSS/Sass
 " nmap \z :w<CR>:!open %<CR><CR>
 
 " Set custom leader key
