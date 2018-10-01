@@ -65,7 +65,7 @@ nnoremap gV `[V`]
 vmap < <gv
 vmap > >gv
 
-" camelCase => camel_case
+" camelCase => snake_case
 vnoremap <leader>case :s/\v\C(([a-z]+)([A-Z]))/\2_\l\3/g<CR>
 
 " Snippets
@@ -183,7 +183,7 @@ set showmatch               " Hilight matching braces/parens/etc.
 set smartcase               " Lets you search for ALL CAPS
 set softtabstop=2           " Spaces 'feel' like tabs
 set suffixes+=.pyc          " Ignore these files when tab-completing
-set textwidth=100           " 100 is the new 80
+" set textwidth=80            " TODO: set local markdown, text files, etc.
 set notitle                 " Don't set the title of the Vim window
 set wildmenu                " Show possible completions on command line
 set wildmode=list:longest,full " List all options and complete
@@ -370,7 +370,7 @@ au FileType markdown syn sync fromstart
 au Filetype gitcommit setlocal tw=80
 au FileType htmldjango setlocal commentstring={#\ %s\ #} " use django single line comments
 
-au BufNewFile,BufRead * call matchadd('ColorColumn', '\%81v', 100) " Highlight long lines at 80 mark
+au BufNewFile,BufRead * call matchadd('ColorColumn', '\%81v', 80) " Highlight long lines at 80 mark
 au BufNewFile,BufRead * call matchadd('Error', '\%121v', 100) " Highlight super long lines
 
 " Return to last edit position when opening files (You want this!)
