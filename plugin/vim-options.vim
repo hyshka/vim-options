@@ -249,9 +249,9 @@ endfunction
 " ----------------------------------------------------------------------------
 
 " FZF (replaces Ctrl-P, FuzzyFinder and Command-T)
- nmap ; :Buffers<CR>
- nmap <Leader>r :Tags<CR>
- nmap <Leader>t :Files<CR>
+nmap ; :Buffers<CR>
+nmap <Leader>r :Tags<CR>
+nmap <Leader>t :Files<CR>
 
 " Tell ack.vim to use ag (the Silver Searcher) instead
 if executable('ag')
@@ -269,14 +269,14 @@ let g:SuperTabLongestEnhanced=1
 let g:SuperTabLongestHighlight=1
 
 " ALE
-let g:ale_enabled = 0
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_python_mypy_options='--ignore-missing-imports'
-let g:ale_fixers = {
-  \'javascript': ['eslint'],
-  \'scss': ['stylelint'],
-\}
+" let g:ale_enabled = 0
+" let g:ale_lint_on_enter = 0
+" let g:ale_lint_on_text_changed = 'never'
+" let g:ale_python_mypy_options='--ignore-missing-imports'
+" let g:ale_fixers = {
+"   \'javascript': ['eslint'],
+"   \'scss': ['stylelint'],
+" \}
 " let g:ale_sign_warning = '▲'
 " let g:ale_sign_error = '✗'
 " highlight link ALEWarningSign String
@@ -285,16 +285,10 @@ let g:ale_fixers = {
 " nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 " nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
-" Vim Commentary
-" Re-map these to use <Plug> command to load on demand since Commentary takes
-" a while to load.
-map  gc  <Plug>Commentary
-nmap gcc <Plug>CommentaryLine
-
 " CamelCaseMotion
-map <silent> ,w <Plug>CamelCaseMotion_w
-map <silent> ,e <Plug>CamelCaseMotion_e
-map <silent> ,b <Plug>CamelCaseMotion_b
+map <silent> <leader>w <Plug>CamelCaseMotion_w
+map <silent> <leader>e <Plug>CamelCaseMotion_e
+map <silent> <leader>b <Plug>CamelCaseMotion_b
 
 " if you don't want to jump to first result...
 cnoreabbrev Ack Ack!
