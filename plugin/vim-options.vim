@@ -287,9 +287,9 @@ let g:SuperTabLongestHighlight=1
 " nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " CamelCaseMotion
-map <silent> <leader>w <Plug>CamelCaseMotion_w
-map <silent> <leader>e <Plug>CamelCaseMotion_e
-map <silent> <leader>b <Plug>CamelCaseMotion_b
+" map <silent> <leader>w <Plug>CamelCaseMotion_w
+" map <silent> <leader>e <Plug>CamelCaseMotion_e
+" map <silent> <leader>b <Plug>CamelCaseMotion_b
 
 " if you don't want to jump to first result...
 cnoreabbrev Ack Ack!
@@ -301,9 +301,9 @@ let g:ranger_map_keys = 0
 nnoremap <leader>n :Ranger<CR>
 
 " Indent Guides
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_start_level = 2
-let g:indent_guides_auto_colors = 0
+" let g:indent_guides_enable_on_vim_startup = 1
+" let g:indent_guides_start_level = 2
+" let g:indent_guides_auto_colors = 0
 
 " Lightline
 let g:lightline = {
@@ -312,6 +312,7 @@ let g:lightline = {
 
 " Argwrap
 nnoremap <leader>w :ArgWrap<CR>
+let g:argwrap_tail_comma = 1
 
 " vim-pbcopy
 " neovim (inside docker container) and vim
