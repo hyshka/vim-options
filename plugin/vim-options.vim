@@ -330,6 +330,17 @@ let g:easyescape_timeout = 100
 cnoremap jk <ESC>
 cnoremap kj <ESC>
 
+" indent lines
+let g:indentLine_enabled = 0
+
+" indent guides
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_guide_size = 0
+let g:indent_guides_exclude_filetypes = ['help', 'markdown']
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=white   ctermbg=15
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=lightgray ctermbg=7
+
 
 "----------------------------------------------------------------------------------------------------------------------
 " COLORS
