@@ -311,7 +311,7 @@ let g:lightline = {
   \ }
 
 " Argwrap
-nnoremap <leader>w :ArgWrap<CR>
+nnoremap <leader>W :ArgWrap<CR>
 let g:argwrap_tail_comma = 1
 
 " vim-pbcopy
