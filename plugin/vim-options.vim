@@ -78,6 +78,8 @@ nnoremap <leader>pudb :-1read $EditorDir/plugged/vim-options/snippets/python/pud
 nnoremap <leader>pydef :-1read $EditorDir/plugged/vim-options/snippets/python/pydef.py<CR>/jump<CR>V12j
 nnoremap <leader>pyclass :-1read $EditorDir/plugged/vim-options/snippets/python/pyclass.py<CR>/jump<CR>
 nnoremap <leader>pydev :0read $EditorDir/plugged/vim-options/snippets/python/local_dev.py<CR>/jump<CR>
+nnoremap <leader>ps :0read $EditorDir/plugged/vim-options/snippets/javascript/performance-start.js<CR>
+nnoremap <leader>pe :0read $EditorDir/plugged/vim-options/snippets/javascript/performance-end.js<CR>
 
 
 """ REVIEW
@@ -155,7 +157,8 @@ set fileformats=unix,dos,mac  " Prefer Unix
 set fillchars=vert:\ ,stl:\ ,stlnc:\ ,fold:-,diff:┄
                             " Unicode chars for diffs/folds, and rely on
                             " Colors for window borders
-silent! set foldmethod=marker " Use braces by default
+set foldmethod=indent       " Use indent by default
+set foldlevel=3
 set formatoptions=cqjn1     " t - autowrap normal text
                             " c - autowrap comments
                             " q - gq formats comments
