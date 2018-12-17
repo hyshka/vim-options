@@ -78,8 +78,8 @@ nnoremap <leader>pudb :-1read $EditorDir/plugged/vim-options/snippets/python/pud
 nnoremap <leader>pydef :-1read $EditorDir/plugged/vim-options/snippets/python/pydef.py<CR>/jump<CR>V12j
 nnoremap <leader>pyclass :-1read $EditorDir/plugged/vim-options/snippets/python/pyclass.py<CR>/jump<CR>
 nnoremap <leader>pydev :0read $EditorDir/plugged/vim-options/snippets/python/local_dev.py<CR>/jump<CR>
-nnoremap <leader>ps :0read $EditorDir/plugged/vim-options/snippets/javascript/performance-start.js<CR>
-nnoremap <leader>pe :0read $EditorDir/plugged/vim-options/snippets/javascript/performance-end.js<CR>
+nnoremap <leader>ps :-1read $EditorDir/plugged/vim-options/snippets/javascript/performance-start.js<CR>
+nnoremap <leader>pe :-1read $EditorDir/plugged/vim-options/snippets/javascript/performance-end.js<CR>
 
 
 """ REVIEW
