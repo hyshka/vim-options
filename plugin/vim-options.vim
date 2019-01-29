@@ -192,16 +192,17 @@ set suffixes+=.pyc          " Ignore these files when tab-completing
 set notitle                 " Don't set the title of the Vim window
 set wildmenu                " Show possible completions on command line
 set wildmode=list:longest,full " List all options and complete
-set wildignore=*.class,*.o,*~,*.pyc,.git,node_modules  " Ignore certain files in tab-completion
+set wildignore=*/app/cache,*/vendor,*/env,*.pyc,*/venv,*/__pycache__,*/.git,*/node_modules  " Ignore certain files in tab-completion
 set splitright              " Horizontal Splits go to the right
 set splitbelow              " Vertical  Splits go underneath
 set grepprg=grep\ -IrsnH    " TODO: document these options
 " set cursorline              " highlight current line
 " set statusline=%!MyStatusLine() " Custom status line
 " set synmaxcol=250           " Limit syntax highlighting to speed up vim in files with large line lengths
-set omnifunc=syntaxcomplete#Complete " Enable omni-completion based off of syntax
+" set omnifunc=syntaxcomplete#Complete " Enable omni-completion based off of syntax
 set noshowmode              " Don't need this anymore due to lightline plugin
 set shell=bash " Use bash in terminal mode
+set nowrap " Turn off TextWrapping
 
 " Essential for filetype plugins.
 filetype plugin indent on
@@ -209,7 +210,7 @@ filetype plugin indent on
 """ REVIEW """
 " let g:is_bash=1             " Always use bash syntax for sh filetype
 " set completeopt+=menuone,noinsert " Autocomplete options
-set nowrap " Turn off TextWrapping
+" set completeopt-=preview " Hide the preview/scratch window
 " set iskeyword+=- " Word splitting (add hyphen)
 " set lazyredraw " Don't redraw while executing macros (good performance config)
 """ END REVIEW """
@@ -308,9 +309,11 @@ cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
 noremap <Leader>A :Ack! <cword><cr>
 
-" Ranger Intergration
+" Ranger Integration
 let g:ranger_map_keys = 0
-nnoremap <leader>n :Ranger<CR>
+let g:ranger_replace_netrw = 1 " open ranger when vim open a directory
+nnoremap <leader>m :Ranger<CR>
+nnoremap <leader>n :RangerWorkingDirectory<CR>
 
 " Lightline
 let g:lightline = {
@@ -330,12 +333,6 @@ else
   let g:vim_pbcopy_local_cmd = "nc -w 0 localhost 41401"
   let g:vim_pbcopy_remote_cmd = "nc -w 0 localhost 41401"
 endif
-
-" vim-easyescape
-let g:easyescape_chars = { "j": 1, "k": 1 }
-let g:easyescape_timeout = 100
-cnoremap jk <ESC>
-cnoremap kj <ESC>
 
 " indent guides
 let g:indent_guides_enable_on_vim_startup = 1
