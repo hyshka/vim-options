@@ -16,7 +16,6 @@ nmap \x :cclose<CR> " close quickfix
 nmap \t :%s/\s\+$//e " remove trailing spaces from buffer
 nmap \p :! prettier --no-semi --trailing-comma es5 --write %<CR> " visually format JS/CSS/Sass
 nmap \h :syntax sync fromstart<CR> " refresh syntax highlighting
-nmap \c :! find . -type f -iregex ".*\.js$" -not -path "./node_modules/*" -exec jsctags {} -f \; | sed '/^$/d' | LANG=C sort > tags
 " nmap \z :w<CR>:!open %<CR><CR>
 
 " Set custom leader key
@@ -342,6 +341,9 @@ let g:indent_guides_guide_size = 0
 let g:indent_guides_exclude_filetypes = ['help', 'markdown']
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=white   ctermbg=15
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=lightgray ctermbg=7
+
+" tagbar
+let g:tagbar_ctags_bin = '/usr/local/bin/uctags'
 
 
 " ----------------------------------------------------------------------------
