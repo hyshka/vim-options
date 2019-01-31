@@ -278,26 +278,32 @@ endif
 " let g:gitgutter_sign_removed = '∙'
 " let g:gitgutter_sign_modified_removed = '∙'
 
-" SuperTab
-let g:SuperTabLongestEnhanced=1
-let g:SuperTabLongestHighlight=1
-
 " ALE
 " let g:ale_enabled = 0
-" let g:ale_lint_on_enter = 0
-" let g:ale_lint_on_text_changed = 'never'
-" let g:ale_python_mypy_options='--ignore-missing-imports'
-" let g:ale_fixers = {
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_sign_column_always = 1
+let g:ale_python_mypy_options='--ignore-missing-imports --disallow-untyped-defs'
+let g:ale_history_enabled = 0
+let g:ale_linters_explicit = 1
+let g:ale_fixers = {
+  \'javascript': ['prettier'],
+  \'css': ['prettier'],
+  \'scss': ['prettier'],
+  \'vue': ['prettier'],
+  \'html': ['prettier'],
+  \'md': ['prettier'],
+\}
+" let g:ale_linters = {
+"   \'vue': ['eslint', 'vls']
 "   \'javascript': ['eslint'],
+"   \'css': ['stylelint'],
 "   \'scss': ['stylelint'],
 " \}
-" let g:ale_sign_warning = '▲'
-" let g:ale_sign_error = '✗'
-" highlight link ALEWarningSign String
-" highlight link ALEErrorSign Title
-" TODO: navigate between errors quickly
-" nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-" nmap <silent> <C-j> <Plug>(ale_next_wrap)
+" let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
+let g:ale_completion_enabled = 1
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
 
 " CamelCaseMotion
 " map <silent> <leader>w <Plug>CamelCaseMotion_w
@@ -312,8 +318,8 @@ noremap <Leader>A :Ack! <cword><cr>
 " Ranger Integration
 let g:ranger_map_keys = 0
 let g:ranger_replace_netrw = 1 " open ranger when vim open a directory
-nnoremap <leader>m :Ranger<CR>
-nnoremap <leader>n :RangerWorkingDirectory<CR>
+nnoremap <leader>n :Ranger<CR>
+nnoremap <leader>m :RangerWorkingDirectory<CR>
 
 " Lightline
 let g:lightline = {
