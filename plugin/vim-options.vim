@@ -293,6 +293,7 @@ let g:ale_fixers = {
   \'vue': ['prettier'],
   \'html': ['prettier'],
   \'md': ['prettier'],
+  \'python': ['black'],
 \}
 " let g:ale_linters = {
 "   \'vue': ['eslint', 'vls']
