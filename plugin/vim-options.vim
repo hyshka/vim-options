@@ -260,7 +260,7 @@ let g:lightline = {
   \ }
 
 " Make sure colored syntax mode is on, and make it Just Work with 256-color terminals.
-set background=light
+set background=dark
 colorscheme solarized
 
 
