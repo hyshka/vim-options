@@ -252,6 +252,12 @@ endfunction
 "----------------------------------------------------------------------------------------------------------------------
 " COLORS
 "----------------------------------------------------------------------------------------------------------------------
+" Lightline
+" If this comes after we set our colorscheme than lightline won't properly set
+" it's own colors.
+let g:lightline = {
+  \ 'colorscheme': 'solarized',
+  \ }
 
 " Make sure colored syntax mode is on, and make it Just Work with 256-color terminals.
 set background=light
@@ -301,7 +307,7 @@ let g:ale_fixers = {
 "   \'css': ['stylelint'],
 "   \'scss': ['stylelint'],
 " \}
-" let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
+let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
 let g:ale_completion_enabled = 1
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
@@ -322,11 +328,6 @@ let g:ranger_map_keys = 0
 let g:ranger_replace_netrw = 1 " open ranger when vim open a directory
 nnoremap <leader>n :Ranger<CR>
 nnoremap <leader>m :RangerWorkingDirectory<CR>
-
-" Lightline
-let g:lightline = {
-  \ 'colorscheme': 'solarized',
-  \ }
 
 " Argwrap
 nnoremap <leader>W :ArgWrap<CR>
@@ -352,6 +353,10 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=lightgray ctermbg=7
 
 " tagbar
 let g:tagbar_ctags_bin = '/usr/local/bin/uctags'
+let g:tagbar_status_func = 'TagbarStatusFunc'
+  function! TagbarStatusFunc(current, sort, fname, ...) abort
+  return lightline#statusline(0)
+endfunction
 
 
 " ----------------------------------------------------------------------------
