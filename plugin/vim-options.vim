@@ -305,6 +305,7 @@ let g:ale_fixers = {
 let g:ale_completion_enabled = 1
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
+nmap <Leader>f <Plug>(ale_fix)
 
 " CamelCaseMotion
 " map <silent> <leader>w <Plug>CamelCaseMotion_w
