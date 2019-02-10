@@ -352,7 +352,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=white   ctermbg=15
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=lightgray ctermbg=7
 
 " tagbar
-let g:tagbar_ctags_bin = '/usr/local/bin/uctags'
+let g:tagbar_ctags_bin = '/usr/bin/ctags-universal'
 let g:tagbar_status_func = 'TagbarStatusFunc'
   function! TagbarStatusFunc(current, sort, fname, ...) abort
   return lightline#statusline(0)
