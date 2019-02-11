@@ -403,6 +403,9 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 "au FileType html,htmldjango,css,sass,scss,javascript,python,json setl foldmethod=indent foldenable
 " au FileType html,htmldjango,css,sass,scss,javascript,python,json setl foldmethod=manual
 
+" Neomutt composition
+au BufRead /tmp/neomutt-* set tw=72
+
 augroup END
 
 " vim:set tw=100:
