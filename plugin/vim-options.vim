@@ -273,11 +273,6 @@ nmap ; :Buffers<CR>
 nmap <Leader>r :Tags<CR>
 nmap <Leader>t :Files<CR>
 
-" Tell ack.vim to use ag (the Silver Searcher) instead
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
-endif
-
 " GitGutter styling to use · instead of +/-
 " let g:gitgutter_sign_added = '∙'
 " let g:gitgutter_sign_modified = '∙'
@@ -319,7 +314,10 @@ nmap <Leader>f <Plug>(ale_fix)
 " map <silent> <leader>b <Plug>CamelCaseMotion_b
 
 " if you don't want to jump to first result...
-cnoreabbrev Ack Ack!
+" Tell ack.vim to use ag (the Silver Searcher) instead
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 nnoremap <Leader>a :Ack!<Space>
 noremap <Leader>A :Ack! <cword><cr>
 
