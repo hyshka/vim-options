@@ -318,8 +318,8 @@ nmap <Leader>f <Plug>(ale_fix)
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
-nnoremap <Leader>a :Ack!<Space>
-noremap <Leader>A :Ack! <cword><cr>
+" nnoremap <Leader>a :Ack!<Space>
+" noremap <Leader>A :Ack! <cword><cr>
 
 " Ranger Integration
 let g:ranger_map_keys = 0
