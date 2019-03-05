@@ -345,8 +345,9 @@ endif
 
 " indent lines
 let g:indentLine_setColors = 0
+let g:indentLine_color_term = 10
 let g:indentLine_color_tty_light = 10 " (default: 4)
-let g:indentLine_color_dark = 2 " (default: 2)
+let g:indentLine_color_dark = 10 " (default: 2)
 
 " tagbar
 let g:tagbar_ctags_bin = '/usr/bin/ctags-universal'
