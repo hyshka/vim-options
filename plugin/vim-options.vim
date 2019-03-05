@@ -281,8 +281,8 @@ nmap <Leader>t :Files<CR>
 
 " ALE
 " let g:ale_enabled = 0
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_text_changed = 'never'
+" let g:ale_lint_on_enter = 0
+" let g:ale_lint_on_text_changed = 'never'
 let g:ale_sign_column_always = 1
 let g:ale_python_mypy_options='--ignore-missing-imports --disallow-untyped-defs'
 let g:ale_history_enabled = 0
@@ -303,10 +303,12 @@ let g:ale_fixers = {
 "   \'scss': ['stylelint'],
 " \}
 let g:ale_linter_aliases = {'vue': ['vue', 'javascript']}
-let g:ale_completion_enabled = 1
-highlight clear ALEErrorSign
-highlight clear ALEWarningSign
-nmap <Leader>f <Plug>(ale_fix)
+" highlight clear ALEErrorSign
+" highlight clear ALEWarningSign
+nmap <Leader>af <Plug>(ale_fix)
+nmap <Leader>ag <Plug>(ale_go_to_definition)
+" nmap <Leader>ap <Plug>(ale_previous_wrap)
+" nmap <Leader>an <Plug>(ale_next_wrap)
 
 " CamelCaseMotion
 " map <silent> <leader>w <Plug>CamelCaseMotion_w
@@ -341,13 +343,10 @@ else
   let g:vim_pbcopy_remote_cmd = "nc -w 0 localhost 41401"
 endif
 
-" indent guides
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_auto_colors = 0
-let g:indent_guides_guide_size = 0
-let g:indent_guides_exclude_filetypes = ['help', 'markdown']
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=white   ctermbg=15
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=lightgray ctermbg=7
+" indent lines
+let g:indentLine_setColors = 0
+let g:indentLine_color_tty_light = 10 " (default: 4)
+let g:indentLine_color_dark = 2 " (default: 2)
 
 " tagbar
 let g:tagbar_ctags_bin = '/usr/bin/ctags-universal'
